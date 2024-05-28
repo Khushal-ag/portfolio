@@ -1,6 +1,6 @@
+/* eslint-disable */
 import svgToDataUri from "mini-svg-data-uri";
 import type { Config } from "tailwindcss";
-import colors from "tailwindcss/colors";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 const config = {

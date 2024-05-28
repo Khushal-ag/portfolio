@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import "@/styles/globals.css";
 
+import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <TailwindIndicator />
       </body>
     </html>
   );

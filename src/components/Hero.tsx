@@ -27,10 +27,10 @@ const Hero = () => {
             Khushal&apos;s Portfolio
           </h2>
           <TextGenerateEffect
-            className="text-40[px] text-center md:text-5xl lg:text-6xl"
+            className="text-40[px] text-center md:text-4xl lg:text-5xl"
             words="Transforming Concepts into Seamless User Experiences"
           />
-          <p className="mb-4 text-center text-sm md:text-lg md:tracking-wider lg:text-2xl">
+          <p className="mb-4 text-center text-sm md:text-lg md:tracking-wider lg:text-2xl xl:max-w-4xl">
             Hi, I&apos;m Khushal, a Next.js Developer from India. I specialize
             in building Full-stack web apps with a focus on performance and user
             experience.
