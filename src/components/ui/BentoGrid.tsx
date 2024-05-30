@@ -49,7 +49,7 @@ export const BentoGridItem = ({
   spareImg?: string;
 }) => {
   const [copied, setCopied] = useState(false);
-  const leftLists = ["ReactJS", "NextJs", "Typescript"];
+  const leftLists = ["NextJs", "ReactJs", "Typescript"];
   const rightLists = ["Golang", "NodeJs", "Docker"];
   const defaultOptions = {
     loop: copied,
@@ -107,7 +107,7 @@ export const BentoGridItem = ({
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+            "group-hover/bento:scale-105 transition duration-300 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
           )}
         >
           <div className="z-10 font-sans text-sm font-extralight text-[#c1c2d3] md:max-w-32 md:text-xs lg:text-base">
@@ -118,13 +118,13 @@ export const BentoGridItem = ({
           </div>
           {id === 2 && <GridGlobe />}
           {id === 3 && (
-            <div className="absolute -right-1 flex w-fit gap-1 lg:-right-1 lg:gap-3">
+            <div className="absolute -right-0 flex w-fit gap-1 lg:-right-0 lg:gap-3">
               <div className="flex flex-col gap-2 md:gap-3 lg:gap-3">
                 {leftLists.map((item, i) => (
                   <span
                     key={i}
-                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-50
-                    lg:p-3 lg:text-base lg:opacity-100"
+                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-80
+                    lg:p-3 lg:text-base"
                   >
                     {item}
                   </span>
@@ -136,8 +136,8 @@ export const BentoGridItem = ({
                 {rightLists.map((item, i) => (
                   <span
                     key={i}
-                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-50
-                    lg:p-3 lg:text-base lg:opacity-100"
+                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-80
+                    lg:p-3 lg:text-base"
                   >
                     {item}
                   </span>

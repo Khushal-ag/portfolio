@@ -12,7 +12,7 @@
 
 ## A Modern & Minimal Portfolio to showcase my work and skills
 
-### Currently under development
+- Currently under development
 
 </div>
 
