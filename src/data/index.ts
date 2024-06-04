@@ -103,13 +103,13 @@ export const projects = [
   {
     id: 3,
     title: "Triphive - Hotel Review Website",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
+    des: "A hotel review website that allows users to find hotels and leave reviews for them & in return users will get rewarded for their valuable reviews.",
     img: "/p3.png",
     iconLists: [
       "/re.svg",
       "/tail.svg",
       "/js.svg",
-      "/supabase-icon.png",
+      "/mongodb-icon.svg",
       "/passport.svg",
     ],
     siteLink: "https://triphive.khushalagarwal.me/",
