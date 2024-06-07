@@ -29,7 +29,7 @@ const RecentProjects = () => {
                   <img
                     src={img}
                     alt={title}
-                    className="z-110 absolute bottom-0"
+                    className="absolute bottom-0 z-10"
                   />
                 </div>
                 <h1 className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl">
