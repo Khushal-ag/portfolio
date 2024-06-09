@@ -4,17 +4,17 @@ import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
 
 const Testimonial = () => {
   return (
-    <div className="py-5" id="testimonials">
-      <h1 className="heading mb-10">
+    <section className="pb-20 pt-10" id="testimonials">
+      <h1 className="heading">
         Kind words from <span className="text-purple"> satisfied clients</span>
       </h1>
-      <div className="flex flex-col items-center max-lg:mt-10">
+      <div className="mt-16 flex flex-col items-center">
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
           speed="slow"
         />
-        <div className="flex flex-wrap items-center justify-center gap-4 max-lg:mt-10 md:gap-16">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-16">
           {companies.map(({ id, name, img, nameImg }) => (
             <div key={id} className="flex max-w-32 gap-2 md:max-w-60">
               <img src={img} alt={name} className="w-5 md:w-10" />
@@ -23,7 +23,7 @@ const Testimonial = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

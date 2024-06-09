@@ -104,19 +104,17 @@ export const InfiniteMovingCards = ({
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <div className="me-3">
-                    <img src="/profile.png" alt="profile" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <span className=" text-xl font-bold leading-[1.6] text-white">
-                      {item.name}
-                    </span>
-                    <span className=" text-white-200 text-sm font-normal leading-[1.6]">
-                      {item.title}
-                    </span>
-                  </div>
-                </span>
+                <div className="me-3">
+                  <img src="/profile.png" alt="profile" />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className=" text-xl font-bold leading-[1.6] text-white">
+                    {item.name}
+                  </span>
+                  <span className=" text-white-200 text-sm font-normal leading-[1.6]">
+                    {item.title}
+                  </span>
+                </div>
               </div>
             </blockquote>
           </li>
