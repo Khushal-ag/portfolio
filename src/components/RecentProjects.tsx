@@ -5,12 +5,12 @@ import { PinContainer } from "./ui/Pin";
 
 const RecentProjects = () => {
   return (
-    <div className="py-20" id="projects">
+    <div className="py-5" id="projects">
       <h1 className="heading">
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
       </h1>
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-x-24 gap-y-8 p-4">
+      <div className="flex flex-wrap items-center justify-center gap-x-24 gap-y-8 p-4">
         {projects.map(
           ({ id, title, des, img, iconLists, siteLink, githubLink }) => (
             <div

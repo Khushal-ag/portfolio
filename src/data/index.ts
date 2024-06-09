@@ -135,33 +135,27 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Collaborating with Khushal was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Khushal's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Khushal is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Working with Khushal as our backend developer was a transformative experience. His technical expertise and meticulous approach ensured that our systems were both robust and scalable. Throughout the project, Khushal demonstrated an impressive ability to solve complex problems quickly and efficiently. His clear communication and reliable delivery made a significant impact on our project's success. I highly recommend Khushal for any backend development needs.",
+    name: "Justin Martinez",
+    title: "MixR.gg",
   },
   {
     quote:
-      "Collaborating with Khushal was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Khushal's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Khushal is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Participating in a hackathon with Khushal as our team leader was an inspiring experience. His leadership and organizational skills were key to our team's success. Khushal motivated us to push our boundaries, and his innovative thinking brought fresh perspectives to our project. His ability to coordinate tasks and foster a collaborative environment made the intense hours of the hackathon enjoyable and productive. If you're looking for a dynamic and effective leader, Khushal is the person you need.",
+    name: "Dev Busters",
+    title: "HackCBS 6.0",
   },
   {
     quote:
-      "Collaborating with Khushal was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Khushal's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Khushal is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Having Khushal on board as our full stack developer was a game-changer for our project. His comprehensive understanding of both front-end and back-end technologies allowed us to create a seamless and user-friendly application. Khushal's attention to detail and proactive approach ensured that we met all our milestones on time. His enthusiasm for development and commitment to excellence were evident in every aspect of his work. I would highly recommend Khushal to anyone looking for a top-notch full stack developer.",
+    name: "Hemant Rajput",
+    title: "Infinitunes",
   },
   {
     quote:
-      "Collaborating with Khushal was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Khushal's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Khushal is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Khushal was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Khushal's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Khushal is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Collaborating with Khushal on our backend infrastructure was a decision we’re proud of. His in-depth knowledge of database management, server-side logic, and API integrations played a crucial role in enhancing our platform's performance and security. Khushal's professionalism and dedication to quality were evident from the outset, and his problem-solving skills were instrumental in overcoming several technical challenges. For anyone in need of a backend developer who delivers outstanding results, Khushal is an excellent choice.",
+    name: "Yash Goyal",
+    title: "MixR.gg",
   },
 ];
 
