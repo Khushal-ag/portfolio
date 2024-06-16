@@ -9,6 +9,9 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
+import { FaArrowDownLong } from "react-icons/fa6";
+
+import { Button } from "./ui/MovingBorders";
 
 type NavItem = {
   name: string;
@@ -80,6 +83,20 @@ const FloatingNav = ({
             <span className="!cursor-pointer text-sm">{navItem.name}</span>
           </Link>
         ))}
+        <Button
+          className="relative flex items-center justify-center gap-1 border border-neutral-200 px-4 py-2  text-base font-semibold text-black dark:border-slate-800 dark:text-white"
+          duration={Math.floor(Math.random() * 10000) + 1000}
+          style={{
+            background: "rgb(4,7,29)",
+            backgroundColor:
+              "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+            borderRadius: `calc(1.75rem* 0.96)`,
+          }}
+        >
+          <FaArrowDownLong />
+          <span>Resume</span>
+          <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 " />
+        </Button>
       </motion.div>
     </AnimatePresence>
   );

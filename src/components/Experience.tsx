@@ -14,6 +14,7 @@ const Experience = () => {
             key={card.id}
             className="flex-1 border-neutral-200 text-black dark:border-slate-800 dark:text-white"
             duration={Math.floor(Math.random() * 10000) + 10000}
+            borderRadius="1.75rem"
             style={{
               background: "rgb(4,7,29)",
               backgroundColor:
