@@ -209,8 +209,8 @@ export const workExperience = [
   },
   {
     id: 3,
-    title: "Freelance Full Stack Project",
-    desc: "Led the dev of a full stack web app for a client, from initial concept to deployment on hosting services.",
+    title: "Team Leader - HackCBS 5.0 & 6.0",
+    desc: "Led the development of a full-stack project, ensuring timely delivery and high-quality standards during the hackathon.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp3.svg",
   },
@@ -227,13 +227,21 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/Khushal-ag",
   },
   {
     id: 2,
     img: "/twit.svg",
+    link: "https://x.com/starkhush5",
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/khushal-agarwal/",
+  },
+  {
+    id: 4,
+    img: "/insta.svg",
+    link: "https://www.instagram.com/starkhush/",
   },
 ];
