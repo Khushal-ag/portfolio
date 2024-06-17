@@ -12,9 +12,9 @@
 
 ## A Modern & Minimal Portfolio to showcase my work and skills
 
-- Currently under development
-
 </div>
+
+- Currently under development
 
 ## License
 

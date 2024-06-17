@@ -1,5 +1,6 @@
 import { navItems } from "@/data";
 
+import Approach from "@/components/Approach";
 import Experience from "@/components/Experience";
 import FloatingNav from "@/components/FloatingNav";
 import Grid from "@/components/Grid";
@@ -17,6 +18,7 @@ const Home = () => {
         <RecentProjects />
         <Testimonial />
         <Experience />
+        <Approach />
       </div>
     </main>
   );
