@@ -3,13 +3,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
 
-
-
 import { Button } from "./ui/MovingBorders";
-
 
 type NavItem = {
   name: string;
@@ -117,7 +119,7 @@ const FloatingNav = ({
           onClick={handleDownload}
         >
           <FaArrowDown />
-          <span>Resume</span>
+          <span className="hidden sm:block">Resume</span>
           <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 " />
         </Button>
       </motion.div>
