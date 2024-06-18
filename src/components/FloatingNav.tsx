@@ -3,15 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-} from "framer-motion";
-import { FaArrowDownLong } from "react-icons/fa6";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { FaArrowDown } from "react-icons/fa";
+
+
 
 import { Button } from "./ui/MovingBorders";
+
 
 type NavItem = {
   name: string;
@@ -31,7 +29,6 @@ const FloatingNav = ({
   const [visible, setVisible] = useState(false);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
-    // Check if current is not undefined and is a number
     if (typeof current === "number") {
       const direction = current! - scrollYProgress.getPrevious()!;
 
@@ -46,6 +43,31 @@ const FloatingNav = ({
       }
     }
   });
+
+  const resumeLink =
+    "https://drive.google.com/uc?export=download&id=1l8x_xKx8T2ylh5T76OlhZX7aWZGawRjD";
+
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(resumeLink, { method: "GET" });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Khushal_Agarwal_resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download failed", error);
+    }
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -92,8 +114,9 @@ const FloatingNav = ({
               "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
             borderRadius: `calc(1.75rem* 0.96)`,
           }}
+          onClick={handleDownload}
         >
-          <FaArrowDownLong />
+          <FaArrowDown />
           <span>Resume</span>
           <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 " />
         </Button>

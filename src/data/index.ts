@@ -130,6 +130,21 @@ export const projects = [
     siteLink: "https://prod.mixr.gg/",
     githubLink: "https://github.com/MixR-gg",
   },
+  {
+    id: 5,
+    title: "NextJS Template - Starter Template",
+    des: "A starter template for NextJS with TailwindCSS, TypeScript, prettier & eslint pre-configured. Get started with your next project in minutes.",
+    img: "/p5.png",
+    iconLists: [
+      "/next.svg",
+      "/tail.svg",
+      "/nodejs.svg",
+      "/ts.svg",
+      "/vercel-light.png",
+    ],
+    siteLink: "https://nextjs-template.khushalagarwal.me/",
+    githubLink: "https://github.com/Khushal-ag/nextjs-template",
+  },
 ];
 
 export const testimonials = [
@@ -162,9 +177,9 @@ export const testimonials = [
 export const companies = [
   {
     id: 1,
-    name: "cloudinary",
-    img: "/cloud.svg",
-    nameImg: "/cloudName.svg",
+    name: "NextJs",
+    img: "/next.svg",
+    nameImg: "/nextname.svg",
   },
   {
     id: 2,
@@ -174,15 +189,15 @@ export const companies = [
   },
   {
     id: 3,
-    name: "HOSTINGER",
-    img: "/host.svg",
-    nameImg: "/hostName.svg",
+    name: "Vercel",
+    img: "/vercel-light.png",
+    nameImg: "/vercelname.svg",
   },
   {
     id: 4,
-    name: "stream",
-    img: "/s.svg",
-    nameImg: "/streamName.svg",
+    name: "supabase",
+    img: "/supabase-icon.png",
+    nameImg: "/supaname.png",
   },
   {
     id: 5,
@@ -204,14 +219,14 @@ export const workExperience = [
     id: 2,
     title: "Mobile App Dev - JOVAC",
     desc: "Designed and developed mobile app for both iOS & Android platforms using Flutter.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
     title: "Team Leader - HackCBS 5.0 & 6.0",
     desc: "Led the development of a full-stack project, ensuring timely delivery and high-quality standards during the hackathon.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/exp3.svg",
   },
   {
