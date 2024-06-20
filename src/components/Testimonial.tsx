@@ -12,7 +12,7 @@ const Testimonial = () => {
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
-          speed="slow"
+          speed="normal"
         />
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-16">
           {companies.map(({ id, name, img, nameImg }) => (
