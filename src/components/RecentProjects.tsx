@@ -1,9 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import { projects } from "@/data";
 import { FaGithub, FaLocationArrow } from "react-icons/fa";
 
 import { PinContainer } from "./ui/Pin";
 
 const RecentProjects = () => {
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+
+  const handleExpandClick = (id: number) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
   return (
     <section className="py-20" id="projects">
       <h1 className="heading">
@@ -35,15 +44,27 @@ const RecentProjects = () => {
                 <h1 className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl">
                   {title}
                 </h1>
-                <p
-                  className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal"
-                  style={{
-                    color: "#BEC1DD",
-                    margin: "1vh 0",
-                  }}
+                <div
+                  className={`overflow-hidden transition-all duration-700 ease-in-out ${
+                    expandedId === id ? "h-auto" : "h-16"
+                  }`}
                 >
-                  {des}
-                </p>
+                  <p
+                    className="text-sm font-light lg:text-xl lg:font-normal"
+                    style={{
+                      color: "#BEC1DD",
+                      margin: "1vh 0",
+                    }}
+                  >
+                    {des}
+                  </p>
+                </div>
+                <span
+                  className="text-purple cursor-pointer"
+                  onClick={() => handleExpandClick(id)}
+                >
+                  {expandedId === id ? "Show less" : "More..."}
+                </span>
                 <div className="mb-3 mt-7 flex items-center justify-between">
                   <div className="flex items-center">
                     {iconLists.map((icon, index) => (
