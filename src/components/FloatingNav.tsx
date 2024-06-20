@@ -51,21 +51,11 @@ const FloatingNav = ({
 
   const handleDownload = async () => {
     try {
-      const response = await fetch(resumeLink, { method: "GET" });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = url;
-      a.download = "Khushal_Agarwal_resume.pdf";
+      a.href = resumeLink;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Download failed", error);
     }
@@ -86,7 +76,7 @@ const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-center space-x-4 rounded-full",
+          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-4 sm:px-10 py-2 sm:py-5 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-center space-x-2 sm:space-x-4 rounded-full",
           className
         )}
         style={{
@@ -108,7 +98,7 @@ const FloatingNav = ({
           </Link>
         ))}
         <Button
-          className="relative flex items-center justify-center gap-1 border border-neutral-200 px-4 py-2  text-base font-semibold text-black dark:border-slate-800 dark:text-white"
+          className="relative flex items-center justify-center gap-1 border border-neutral-200 px-3 py-1 text-xs font-semibold text-black sm:px-4 sm:py-2 sm:text-base dark:border-slate-800 dark:text-white"
           duration={Math.floor(Math.random() * 10000) + 1000}
           style={{
             background: "rgb(4,7,29)",

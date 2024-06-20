@@ -5,7 +5,7 @@ import MagicButton from "./MagicButton";
 
 const Footer = () => {
   return (
-    <footer className="mb-[60px] w-full pb-10 md:mb-5" id="contact">
+    <footer className="mb-[30px] w-full pb-10 md:mb-5" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Ready to take <span className="text-purple">your</span> digital
@@ -22,7 +22,7 @@ const Footer = () => {
           />
         </a>
       </div>
-      <div className="mt-16 flex flex-col items-center justify-between gap-3 md:flex-row">
+      <div className="mt-16 flex flex-col items-center justify-between gap-5 md:flex-row">
         <p className="text-sm font-light md:text-base md:font-normal">
           Copyright © 2024 Khushal
         </p>
