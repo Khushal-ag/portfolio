@@ -47,7 +47,7 @@ const FloatingNav = ({
   });
 
   const resumeLink =
-    "https://drive.google.com/uc?export=download&id=1l8x_xKx8T2ylh5T76OlhZX7aWZGawRjD";
+    "https://drive.google.com/uc?export=download&id=1c8SylmHOFtl5Ak0FvlYvXjwppTUQ7fRE";
 
   const handleDownload = async () => {
     try {

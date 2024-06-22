@@ -18,7 +18,7 @@ const Testimonial = () => {
           {companies.map(({ id, name, img, nameImg }) => (
             <div key={id} className="flex max-w-32 gap-2 md:max-w-60">
               <img src={img} alt={name} className="w-5 md:w-10" />
-              <img src={nameImg} alt={name} className="w-24 md:w-28" />
+              <img src={nameImg} alt={name} className="w-24 md:w-32" />
             </div>
           ))}
         </div>
