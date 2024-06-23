@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 
 import "@/styles/globals.css";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import { siteConfig } from "@/config/site";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "./provider";
@@ -62,6 +64,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <TailwindIndicator />
+        <SpeedInsights />
       </body>
     </html>
   );
