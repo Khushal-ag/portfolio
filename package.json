@@ -21,11 +21,11 @@
     "cleani": "rm -rf .next && rm -rf node_modules && bun i"
   },
   "dependencies": {
-    "@react-three/drei": "^9.114.3",
+    "@react-three/drei": "^9.114.6",
     "@react-three/fiber": "^8.17.10",
     "@sentry/nextjs": "^8.34.0",
     "@vercel/speed-insights": "^1.0.12",
-    "framer-motion": "^11.11.8",
+    "framer-motion": "^11.11.9",
     "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.15",
     "next-themes": "^0.3.0",
@@ -35,12 +35,12 @@
     "react-lottie": "^1.2.4",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.169.0",
-    "three-globe": "^2.32.0"
+    "three-globe": "^2.33.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/node": "^20.16.11",
+    "@types/node": "^20.16.13",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@types/react-lottie": "^1.2.10",
@@ -55,8 +55,8 @@
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "tailwind-merge": "^2.5.3",
-    "tailwindcss": "^3.4.13",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss": "^3.4.14",
     "typescript": "^5.6.3"
   },
   "trustedDependencies": [
