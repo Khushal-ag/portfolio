@@ -23,7 +23,7 @@
   "dependencies": {
     "@react-three/drei": "^9.115.0",
     "@react-three/fiber": "^8.17.10",
-    "@sentry/nextjs": "^8.35.0",
+    "@sentry/nextjs": "^10.38.0",
     "@vercel/speed-insights": "^1.0.14",
     "framer-motion": "^11.11.10",
     "mini-svg-data-uri": "^1.4.4",
