@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { testimonials } from "@/data";
 import { motion, useInView } from "framer-motion";
 
-import { Section, SectionHeading } from "@/components/Section";
+import { Section, SectionFileLabel, SectionHeading } from "@/components/Section";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
@@ -18,6 +18,7 @@ export default function Testimonials() {
   return (
     <Section id="testimonials" reveal={false}>
       <div ref={ref}>
+        <SectionFileLabel file="~/portfolio/testimonials.ts" />
         <SectionHeading>
           Kind words from <span className="text-accent">satisfied clients</span>
         </SectionHeading>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Outfit } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Outfit } from "next/font/google";
 
 import "@/styles/globals.css";
 
@@ -17,6 +17,12 @@ const dmSans = DM_Sans({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -53,7 +59,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${dmSans.variable} ${outfit.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased font-[var(--font-body)]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

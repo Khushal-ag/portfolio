@@ -33,6 +33,14 @@ export const site = {
 
   resumeUrl:
     "https://drive.google.com/file/d/1G--7hh0MFgapSgJPQpelYxsDi1aOtOyo/view?usp=drive_link",
+
+  /** GitHub profile – single source for "View GitHub" links across the site */
+  github: {
+    username: "Khushal-ag",
+    href: "https://github.com/Khushal-ag",
+    label: "View my GitHub",
+    blurb: "More projects, open-source contributions, and code on GitHub.",
+  },
 };
 
 // ─── Hero ───────────────────────────────────────────────────────────────────

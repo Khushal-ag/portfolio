@@ -18,28 +18,16 @@ export default function Home() {
     <div className="bg-bg min-h-screen">
       <ScrollProgress />
       <Nav />
-      <main>
+      <main className="relative md:pr-1.5">
         <Hero />
         <MarqueeStrip />
-        <div className="bg-bg">
-          <Summary />
-        </div>
-        <div className="bg-bg-elevated">
-          <Skills />
-        </div>
-        <div className="bg-bg">
-          <Experience />
-        </div>
+        <Summary />
+        <Skills />
+        <Experience />
         <StickyBreak />
-        <div className="bg-bg-elevated">
-          <Projects />
-        </div>
-        <div className="bg-bg">
-          <Testimonials />
-        </div>
-        <div className="bg-bg-elevated">
-          <Achievements />
-        </div>
+        <Projects />
+        <Testimonials />
+        <Achievements />
         <Footer />
       </main>
     </div>

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { achievements, education } from "@/data";
 import { motion, useInView } from "framer-motion";
 
-import { Section, SectionHeading } from "@/components/Section";
+import { Section, SectionFileLabel, SectionHeading } from "@/components/Section";
 
 const item = {
   hidden: { opacity: 0, x: -12 },
@@ -18,6 +18,7 @@ export default function Achievements() {
   return (
     <Section id="achievements" reveal={false}>
       <div ref={ref}>
+        <SectionFileLabel file="~/portfolio/achievements.ts" />
         <SectionHeading>Education & achievements</SectionHeading>
 
         <motion.div
@@ -33,7 +34,7 @@ export default function Achievements() {
           <motion.div
             variants={item}
             transition={{ duration: 0.35 }}
-            className="card-surface p-6 md:p-8"
+            className="editor-panel p-6 md:p-8"
           >
             <h3 className="text-xs font-semibold tracking-wider text-accent uppercase">
               Education
@@ -56,7 +57,7 @@ export default function Achievements() {
                   key={i}
                   variants={item}
                   transition={{ duration: 0.35 }}
-                  className="flex items-start gap-3 rounded-lg border border-border bg-surface px-4 py-3 text-sm text-text-muted md:text-base"
+                  className="flex items-start gap-3 rounded-md border border-border bg-bg-panel px-4 py-3 text-sm text-text-muted md:text-base"
                 >
                   <span className="mt-1.5 size-2 shrink-0 rounded-full bg-accent" />
                   {text}

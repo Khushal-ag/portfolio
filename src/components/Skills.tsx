@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { skills } from "@/data";
 import { motion, useInView } from "framer-motion";
 
-import { Section, SectionHeading } from "@/components/Section";
+import { Section, SectionFileLabel, SectionHeading } from "@/components/Section";
 
 const groups = [
   { label: "Languages", items: skills.languages },
@@ -29,6 +29,7 @@ export default function Skills() {
   return (
     <Section id="skills" reveal={false}>
       <div ref={ref}>
+        <SectionFileLabel file="~/portfolio/skills.ts" />
         <SectionHeading>Technical skills</SectionHeading>
         <motion.div
           initial="hidden"
@@ -53,7 +54,7 @@ export default function Skills() {
                       scale: 1.03,
                       borderColor: "var(--color-accent)",
                     }}
-                    className="rounded-full border border-border bg-surface px-4 py-2 text-sm text-text-muted transition-colors hover:text-text"
+                    className="font-editor rounded-md border border-border bg-bg-panel px-3 py-1.5 text-xs text-text-muted transition-colors hover:border-accent/30 hover:text-text"
                   >
                     {skill}
                   </motion.span>

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { workExperience } from "@/data";
 import { motion, useInView } from "framer-motion";
 
-import { Section, SectionHeading } from "@/components/Section";
+import { Section, SectionFileLabel, SectionHeading } from "@/components/Section";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
@@ -18,6 +18,7 @@ export default function Experience() {
   return (
     <Section id="experience" reveal={false}>
       <div ref={ref}>
+        <SectionFileLabel file="~/portfolio/experience.ts" />
         <SectionHeading>Work experience</SectionHeading>
         <motion.div
           initial="hidden"
@@ -34,7 +35,7 @@ export default function Experience() {
               key={job.id}
               variants={card}
               transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-              className="card-surface p-6 md:p-8"
+              className="editor-panel p-6 md:p-8"
             >
               <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
                 <div>

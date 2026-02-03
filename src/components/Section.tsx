@@ -86,10 +86,25 @@ export function SectionHeading({
   return (
     <motion.h2
       variants={defaultReveal}
-      className={`section-heading mb-12 text-center text-text md:mb-14 ${className}`}
+      className={`section-heading mb-12 text-center font-[var(--font-heading)] text-text md:mb-14 ${className}`}
     >
       {children}
     </motion.h2>
+  );
+}
+
+/** File-path style label for sections (e.g. ~/portfolio/about.ts) */
+export function SectionFileLabel({
+  file,
+  className = "",
+}: {
+  file: string;
+  className?: string;
+}) {
+  return (
+    <p className={`file-path mb-4 ${className}`} aria-hidden>
+      {file}
+    </p>
   );
 }
 
