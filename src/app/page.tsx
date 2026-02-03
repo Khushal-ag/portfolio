@@ -1,29 +1,47 @@
-import { navItems } from "@/data";
-
-import Approach from "@/components/Approach";
+import Achievements from "@/components/Achievements";
 import Experience from "@/components/Experience";
-import FloatingNav from "@/components/FloatingNav";
 import Footer from "@/components/Footer";
-import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
-import RecentProjects from "@/components/RecentProjects";
-import Testimonial from "@/components/Testimonial";
+import MarqueeStrip from "@/components/MarqueeStrip";
+import Nav from "@/components/Nav";
+import Projects from "@/components/Projects";
+import ScrollProgress from "@/components/ScrollProgress";
+import Skills from "@/components/Skills";
+import StickyBreak from "@/components/StickyBreak";
+import Summary from "@/components/Summary";
+import Testimonials from "@/components/Testimonials";
 
-const Home = () => {
+export const dynamic = "force-dynamic";
+
+export default function Home() {
   return (
-    <main className="bg-black-100 relative mx-auto flex flex-col items-center justify-center overflow-hidden text-clip px-5 sm:px-10">
-      <div className="w-full max-w-7xl">
-        <FloatingNav navItems={navItems} />
+    <div className="bg-bg min-h-screen">
+      <ScrollProgress />
+      <Nav />
+      <main>
         <Hero />
-        <Grid />
-        <RecentProjects />
-        <Testimonial />
-        <Experience />
-        <Approach />
+        <MarqueeStrip />
+        <div className="bg-bg">
+          <Summary />
+        </div>
+        <div className="bg-bg-elevated">
+          <Skills />
+        </div>
+        <div className="bg-bg">
+          <Experience />
+        </div>
+        <StickyBreak />
+        <div className="bg-bg-elevated">
+          <Projects />
+        </div>
+        <div className="bg-bg">
+          <Testimonials />
+        </div>
+        <div className="bg-bg-elevated">
+          <Achievements />
+        </div>
         <Footer />
-      </div>
-    </main>
+      </main>
+    </div>
   );
-};
-
-export default Home;
+}

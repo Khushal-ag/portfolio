@@ -1,30 +1,30 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Outfit } from "next/font/google";
 
 import "@/styles/globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { siteConfig } from "@/config/site";
-import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "./provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
+  title: { default: siteConfig.name, template: `%s · ${siteConfig.name}` },
   description: siteConfig.description,
-  keywords: [],
-  authors: [
-    {
-      name: "Khushal Agarwal",
-      url: "https://khushalagarwal.me",
-    },
-  ],
-  creator: "Khushal Agarwal",
+  authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
+  creator: siteConfig.author.name,
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -37,12 +37,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    creator: siteConfig.links.twitter.href.split("/").pop(),
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/github-profile.png",
-    apple: "/github-profile.png",
+    shortcut: "/images/github-profile.png",
+    apple: "/images/github-profile.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
 };
@@ -53,8 +52,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className={`${dmSans.variable} ${outfit.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -63,7 +62,6 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        <TailwindIndicator />
         <SpeedInsights />
       </body>
     </html>

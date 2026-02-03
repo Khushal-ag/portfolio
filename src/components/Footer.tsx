@@ -1,51 +1,84 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { footer as footerContent } from "@/content";
 import { socialMedia } from "@/data";
-import { FaLocationArrow } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
-import MagicButton from "./MagicButton";
-
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="mb-[30px] w-full pb-10 md:mb-5" id="contact">
-      <div className="flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw]">
-          Ready to take <span className="text-purple">your</span> digital
-          presence to the next level?
-        </h1>
-        <p className="text-white-200 my-5 text-center md:mt-10">
-          Reach out to me Today! Let&apos; build something amazing together ❤️.
-        </p>
-        <a href="mailto:starkhush5@gmail.com" target="_blank">
-          <MagicButton
-            title="Let's get in touch"
-            icon={<FaLocationArrow />}
-            position="right"
-          />
-        </a>
-      </div>
-      <div className="mt-16 flex flex-col items-center justify-between gap-5 md:flex-row">
-        <p className="text-sm font-light md:text-base md:font-normal">
-          Copyright © 2024 Khushal
-        </p>
-        <div className="flex items-center gap-6 md:gap-3">
-          {socialMedia.map((profile) => (
-            <div
-              key={profile.id}
-              className="bg-black-200 bg-opacity/75 border-black-300 flex size-10 cursor-pointer items-center justify-center rounded-lg border saturate-150 backdrop-blur-lg"
+    <footer
+      id="contact"
+      className="section-padding scroll-mt-20 border-t border-border"
+    >
+      <div className="section-container text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4 }}
+          className="section-heading text-text"
+        >
+          {footerContent.heading}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, delay: 0.05 }}
+          className="mt-3 text-text-muted"
+        >
+          {footerContent.subtext}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          <Link
+            href={`mailto:${footerContent.contactEmail}`}
+            className="btn-primary mt-6 inline-flex"
+          >
+            {footerContent.ctaText}
+          </Link>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.15 }}
+          className="mt-12 flex flex-wrap items-center justify-center gap-4"
+        >
+          {socialMedia.map((item) => (
+            <a
+              key={item.id}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex size-12 items-center justify-center rounded-xl border border-border bg-surface transition hover:border-accent/40 hover:bg-surface-hover"
+              aria-label={item.label ?? "Social link"}
             >
-              <a href={profile.link} target="_blank">
-                <img
-                  src={profile.img}
-                  alt={`${profile.id}`}
-                  height={20}
-                  width={20}
-                />
-              </a>
-            </div>
+              <Image
+                src={item.img}
+                alt={item.label ?? ""}
+                width={22}
+                height={22}
+              />
+            </a>
           ))}
-        </div>
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-10 text-sm text-text-subtle"
+        >
+          {footerContent.copyright}
+        </motion.p>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
