@@ -202,12 +202,11 @@
     border: none;
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    transition: filter 0.2s, transform 0.15s;
   }
 
   .btn-primary:hover {
-    background: #6ee7a6;
-    box-shadow: 0 0 20px var(--color-accent-glow);
+    filter: brightness(1.05);
     transform: translateY(-1px);
   }
 

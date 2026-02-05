@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { projects } from "@/content";
 import { motion, useInView } from "framer-motion";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaExpandAlt, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 import GitHubCTA from "@/components/GitHubCTA";
+import ProjectDetailModal from "@/components/ProjectDetailModal";
 import {
   Section,
   SectionFileLabel,
@@ -28,6 +29,9 @@ function slug(name: string) {
 export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[0] | null
+  >(null);
 
   return (
     <Section id="projects" reveal={false}>
@@ -49,13 +53,28 @@ export default function Projects() {
               key={proj.id}
               variants={card}
               transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-              className="group border-border bg-bg-panel hover:border-border-strong flex flex-col overflow-hidden rounded-lg border transition-colors"
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedProject(proj)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedProject(proj);
+                }
+              }}
+              className="group border-border bg-bg-panel hover:border-border-strong flex cursor-pointer flex-col overflow-hidden rounded-lg border transition-colors"
             >
               {/* Filename bar (editor tab style) */}
-              <div className="border-border bg-bg-elevated border-b px-3 py-2">
+              <div className="border-border bg-bg-elevated flex items-center justify-between border-b px-3 py-2">
                 <p className="font-editor text-text-subtle text-xs">
                   {slug(proj.title)}.tsx
                 </p>
+                <span
+                  className="text-text-dim opacity-0 transition-opacity group-hover:opacity-100"
+                  aria-hidden
+                >
+                  <FaExpandAlt className="size-3" />
+                </span>
               </div>
               <div className="flex flex-1 flex-col">
                 <div className="bg-bg-elevated relative aspect-video w-full overflow-hidden">
@@ -63,10 +82,13 @@ export default function Projects() {
                     src={proj.img}
                     alt={proj.title}
                     fill
-                    className="object-cover transition duration-300 group-hover:scale-[1.02]"
+                    className="object-contain transition duration-300 group-hover:scale-[1.02]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className="from-bg-panel/80 absolute inset-0 bg-linear-to-t to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  <span className="text-text-muted bg-bg-panel/90 font-editor absolute right-2 bottom-2 rounded px-2 py-1 text-[10px] opacity-0 transition-opacity group-hover:opacity-100">
+                    View details
+                  </span>
                 </div>
                 <div className="flex flex-1 flex-col p-4">
                   <h3 className="text-text text-base font-semibold">
@@ -76,7 +98,7 @@ export default function Projects() {
                     {proj.des}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
-                    {proj.iconLists.slice(0, 5).map((icon) => (
+                    {proj.iconLists.slice(0, 6).map((icon) => (
                       <div
                         key={icon}
                         className="bg-surface relative size-6 overflow-hidden rounded-sm md:size-7"
@@ -92,7 +114,10 @@ export default function Projects() {
                       </div>
                     ))}
                   </div>
-                  <div className="border-border mt-4 flex gap-4 border-t pt-3">
+                  <div
+                    className="border-border mt-4 flex gap-4 border-t pt-3"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <a
                       href={proj.siteLink}
                       target="_blank"
@@ -118,6 +143,10 @@ export default function Projects() {
           ))}
         </motion.div>
         <GitHubCTA />
+        <ProjectDetailModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </div>
     </Section>
   );
