@@ -19,12 +19,12 @@ export default function ScrollProgress() {
       />
       {/* Vertical scrollbar (editor-style, right edge) */}
       <div
-        className="fixed right-0 top-0 z-[calc(var(--z-nav)-1)] hidden h-full w-1.5 md:block pointer-events-none"
+        className="pointer-events-none fixed top-0 right-0 z-[calc(var(--z-nav)-1)] hidden h-full w-1.5 md:block"
         aria-hidden
       >
         <div className="bg-border-muted h-full w-full rounded-l" />
         <motion.div
-          className="bg-accent absolute left-0 top-0 w-full origin-top rounded-l opacity-70"
+          className="bg-accent absolute top-0 left-0 w-full origin-top rounded-l opacity-70"
           style={{ scaleY: smoothProgress }}
         />
       </div>

@@ -86,7 +86,7 @@ export function SectionHeading({
   return (
     <motion.h2
       variants={defaultReveal}
-      className={`section-heading mb-12 text-center font-[var(--font-heading)] text-text md:mb-14 ${className}`}
+      className={`section-heading text-text mb-12 text-center font-(--font-heading) md:mb-14 ${className}`}
     >
       {children}
     </motion.h2>

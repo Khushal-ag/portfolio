@@ -7,11 +7,9 @@
     "<THIRD_PARTY_MODULES>",
     "",
     "^@/types/(.*)$",
-    "^@/config/(.*)$",
     "^@/components/(.*)$",
     "^@/styles/(.*)$",
     "^@/utils/(.*)$",
-    "^@/data/(.*)$",
     "^[./]"
   ],
   "importOrderParserPlugins": ["typescript", "jsx"],

@@ -2,12 +2,16 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { projects } from "@/data";
+import { projects } from "@/content";
 import { motion, useInView } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 import GitHubCTA from "@/components/GitHubCTA";
-import { Section, SectionFileLabel, SectionHeading } from "@/components/Section";
+import {
+  Section,
+  SectionFileLabel,
+  SectionHeading,
+} from "@/components/Section";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
@@ -45,11 +49,11 @@ export default function Projects() {
               key={proj.id}
               variants={card}
               transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
-              className="group flex flex-col overflow-hidden rounded-lg border border-border bg-bg-panel transition-colors hover:border-border-strong"
+              className="group border-border bg-bg-panel hover:border-border-strong flex flex-col overflow-hidden rounded-lg border transition-colors"
             >
               {/* Filename bar (editor tab style) */}
-              <div className="border-b border-border bg-bg-elevated px-3 py-2">
-                <p className="font-editor text-xs text-text-subtle">
+              <div className="border-border bg-bg-elevated border-b px-3 py-2">
+                <p className="font-editor text-text-subtle text-xs">
                   {slug(proj.title)}.tsx
                 </p>
               </div>
@@ -62,10 +66,10 @@ export default function Projects() {
                     className="object-cover transition duration-300 group-hover:scale-[1.02]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="from-bg-panel/80 absolute inset-0 bg-gradient-to-t to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="from-bg-panel/80 absolute inset-0 bg-linear-to-t to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
                 <div className="flex flex-1 flex-col p-4">
-                  <h3 className="font-[var(--font-heading)] text-text text-base font-semibold">
+                  <h3 className="text-text text-base font-semibold">
                     {proj.title}
                   </h3>
                   <p className="text-text-muted mt-1.5 line-clamp-2 text-sm leading-relaxed">
@@ -75,7 +79,8 @@ export default function Projects() {
                     {proj.iconLists.slice(0, 5).map((icon) => (
                       <div
                         key={icon}
-                        className="bg-surface relative size-6 overflow-hidden rounded md:size-7"
+                        className="bg-surface relative size-6 overflow-hidden rounded-sm md:size-7"
+                        aria-hidden
                       >
                         <Image
                           src={icon}
@@ -87,7 +92,7 @@ export default function Projects() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-4 flex gap-4 border-t border-border pt-3">
+                  <div className="border-border mt-4 flex gap-4 border-t pt-3">
                     <a
                       href={proj.siteLink}
                       target="_blank"

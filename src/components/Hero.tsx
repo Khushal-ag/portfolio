@@ -4,13 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { hero as heroContent, site } from "@/content";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  FaEnvelope,
-  FaGithub,
-  FaLinkedin,
-  FaMapMarkerAlt,
-  FaPhone,
-} from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 import { HiChevronDown } from "react-icons/hi";
 
 const container = {
@@ -52,13 +46,13 @@ export default function Hero() {
         className="relative z-10 flex w-full max-w-2xl flex-col items-center text-center"
       >
         {/* Avatar */}
-        <motion.div
-          variants={item}
-          className="mb-8 flex justify-center"
-        >
+        <motion.div variants={item} className="mb-8 flex justify-center">
           <motion.div
             className="border-border-strong bg-bg-panel relative size-28 overflow-hidden rounded-xl border shadow-lg shadow-black/20 md:size-32"
-            whileHover={{ scale: 1.03, boxShadow: "0 20px 40px -15px rgba(62, 207, 142, 0.15)" }}
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0 20px 40px -15px rgba(62, 207, 142, 0.15)",
+            }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
             <Image
@@ -75,13 +69,13 @@ export default function Hero() {
         {/* Headline */}
         <motion.p
           variants={item}
-          className="text-accent mb-2 font-editor text-sm font-medium tracking-wide md:text-base"
+          className="text-accent font-editor mb-2 text-sm font-medium tracking-wide md:text-base"
         >
           {heroContent.greeting}
         </motion.p>
         <motion.h1
           variants={item}
-          className="text-text mb-2 text-3xl font-[var(--font-heading)] font-bold tracking-tight md:text-4xl lg:text-5xl"
+          className="text-text mb-2 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
         >
           {heroContent.title}
         </motion.h1>
@@ -98,7 +92,7 @@ export default function Hero() {
           className="bg-bg-panel border-border w-full max-w-lg overflow-hidden rounded-lg border shadow-xl shadow-black/10"
         >
           {/* Window bar */}
-          <div className="border-b border-border bg-bg-elevated flex items-center gap-2 px-3 py-2">
+          <div className="border-border bg-bg-elevated flex items-center gap-2 border-b px-3 py-2">
             <span className="size-2 rounded-full bg-[#ff5f56]" aria-hidden />
             <span className="size-2 rounded-full bg-[#ffbd2e]" aria-hidden />
             <span className="size-2 rounded-full bg-[#27c93f]" aria-hidden />
@@ -106,20 +100,24 @@ export default function Hero() {
               intro.ts
             </span>
           </div>
-          <div className="border-accent/20 border-l-2 bg-bg-panel px-4 py-4 md:px-5 md:py-5">
+          <div className="border-accent/20 bg-bg-panel border-l-2 px-4 py-4 md:px-5 md:py-5">
             <div className="font-editor space-y-2 text-left text-sm leading-relaxed md:text-[0.9375rem]">
-              <p className="text-[var(--color-comment)]">
-                {"// "}{heroContent.greeting}
+              <p className="text-comment">
+                {"// "}
+                {heroContent.greeting}
               </p>
               <p>
-                <span className="text-[var(--color-keyword)]">const</span>{" "}
+                <span className="text-keyword">const</span>{" "}
                 <span className="text-accent">role</span>{" "}
-                <span className="text-[var(--color-keyword)]">=</span>{" "}
-                <span className="text-[var(--color-string)]">&quot;{heroContent.subtitle}&quot;</span>
-                <span className="text-[var(--color-keyword)]">;</span>
+                <span className="text-keyword">=</span>{" "}
+                <span className="text-string">
+                  &quot;{heroContent.subtitle}&quot;
+                </span>
+                <span className="text-keyword">;</span>
               </p>
-              <p className="text-[var(--color-comment)]">
-                {"// "}{heroContent.tagline}
+              <p className="text-comment">
+                {"// "}
+                {heroContent.tagline}
               </p>
             </div>
           </div>
@@ -139,7 +137,11 @@ export default function Hero() {
             Resume
           </a>
           <a
-            href={site.github?.href ?? site.links?.github?.href ?? "https://github.com/Khushal-ag"}
+            href={
+              site.github?.href ??
+              site.links?.github?.href ??
+              "https://github.com/Khushal-ag"
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="btn-ghost inline-flex items-center gap-2"
@@ -152,22 +154,24 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Contact + location – secondary, compact */}
+        {/* Contact – secondary, compact */}
         <motion.div
           variants={item}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3 text-text-muted"
+          className="text-text-muted mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <a
             href={`mailto:${site.author.mail}`}
-            className="hover:text-accent flex items-center gap-2 rounded-md px-2 py-1 font-editor text-xs transition"
+            className="hover:text-accent font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition"
           >
             <FaEnvelope className="size-3.5 shrink-0" />
-            <span className="hidden max-w-[180px] truncate sm:inline md:max-w-none">{site.author.mail}</span>
+            <span className="hidden max-w-[180px] truncate sm:inline md:max-w-none">
+              {site.author.mail}
+            </span>
           </a>
           <span className="text-text-dim">·</span>
           <a
             href={`tel:${site.author.phone?.replace(/\s/g, "")}`}
-            className="hover:text-accent flex items-center gap-2 rounded-md px-2 py-1 font-editor text-xs transition"
+            className="hover:text-accent font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition"
           >
             <FaPhone className="size-3.5 shrink-0" />
             <span>{site.author.phone}</span>
@@ -177,16 +181,11 @@ export default function Hero() {
             href={site.author.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent flex items-center gap-2 rounded-md px-2 py-1 font-editor text-xs transition"
+            className="hover:text-accent font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition"
           >
             <FaLinkedin className="size-3.5 shrink-0" />
             <span>LinkedIn</span>
           </a>
-          <span className="text-text-dim">·</span>
-          <span className="flex items-center gap-2 px-2 py-1 font-editor text-xs">
-            <FaMapMarkerAlt className="text-accent size-3.5 shrink-0" />
-            {site.author.location}
-          </span>
         </motion.div>
       </motion.div>
 
@@ -194,7 +193,7 @@ export default function Hero() {
       <motion.a
         href="#about"
         style={{ opacity: scrollIndicatorOpacity }}
-        className="text-text-muted hover:text-accent absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-0.5 font-editor text-[10px] uppercase tracking-widest transition"
+        className="text-text-muted hover:text-accent font-editor absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-0.5 text-[10px] tracking-widest uppercase transition"
         aria-label="Scroll to content"
       >
         <motion.span

@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { footer as footerContent, site } from "@/content";
-import { socialMedia } from "@/data";
+import { footer as footerContent, site, socialMedia } from "@/content";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
@@ -11,10 +10,10 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="section-padding scroll-mt-20 border-t border-border bg-bg-elevated"
+      className="section-padding border-border bg-bg-elevated scroll-mt-20 border-t"
     >
       <div className="section-container text-center">
-        <p className="font-editor mb-2 text-xs text-[var(--color-comment)]" aria-hidden>
+        <p className="font-editor text-comment mb-2 text-xs" aria-hidden>
           ~/portfolio/contact.ts
         </p>
         <motion.h2
@@ -31,7 +30,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.4, delay: 0.05 }}
-          className="mt-3 text-text-muted"
+          className="text-text-muted mt-3"
         >
           {footerContent.subtext}
         </motion.p>
@@ -49,7 +48,11 @@ export default function Footer() {
             {footerContent.ctaText}
           </Link>
           <a
-            href={site.github?.href ?? site.links?.github?.href ?? "https://github.com/Khushal-ag"}
+            href={
+              site.github?.href ??
+              site.links?.github?.href ??
+              "https://github.com/Khushal-ag"
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="btn-ghost inline-flex items-center gap-2"
@@ -58,7 +61,7 @@ export default function Footer() {
             {site.github?.label ?? "View GitHub"}
           </a>
         </motion.div>
-        <p className="text-text-muted mt-6 text-center font-editor text-xs">
+        <p className="text-text-muted font-editor mt-6 text-center text-xs">
           {site.github?.blurb ?? "More projects and code on GitHub."}
         </p>
         <motion.div
@@ -74,7 +77,7 @@ export default function Footer() {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex size-12 items-center justify-center rounded-lg border border-border bg-bg-panel transition hover:border-accent/40 hover:bg-surface-hover"
+              className="border-border bg-bg-panel hover:border-accent/40 hover:bg-surface-hover flex size-12 items-center justify-center rounded-lg border transition"
               aria-label={item.label ?? "Social link"}
             >
               <Image
@@ -91,9 +94,12 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-10 text-sm text-text-subtle"
+          className="text-text-subtle mt-10 text-sm"
         >
-          {footerContent.copyright}
+          {footerContent.copyright.replace(
+            "{year}",
+            String(new Date().getFullYear()),
+          )}
         </motion.p>
       </div>
     </footer>

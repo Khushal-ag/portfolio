@@ -1,10 +1,14 @@
 "use client";
 
 import { useRef } from "react";
-import { workExperience } from "@/data";
+import { workExperience } from "@/content";
 import { motion, useInView } from "framer-motion";
 
-import { Section, SectionFileLabel, SectionHeading } from "@/components/Section";
+import {
+  Section,
+  SectionFileLabel,
+  SectionHeading,
+} from "@/components/Section";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
@@ -35,11 +39,15 @@ export default function Experience() {
               key={job.id}
               variants={card}
               transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-              className="editor-panel p-6 md:p-8"
+              whileHover={{
+                y: -6,
+                transition: { type: "spring", stiffness: 400, damping: 25 },
+              }}
+              className="experience-card editor-panel group relative overflow-hidden p-6 md:p-8"
             >
               <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
                 <div>
-                  <h3 className="text-text text-lg font-(--font-heading) font-semibold md:text-xl">
+                  <h3 className="text-text text-lg font-semibold md:text-xl">
                     {job.role} · {job.company}
                   </h3>
                   <p className="text-accent/90 text-sm">

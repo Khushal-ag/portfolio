@@ -1,10 +1,14 @@
 "use client";
 
 import { useRef } from "react";
-import { testimonials } from "@/data";
+import { testimonials } from "@/content";
 import { motion, useInView } from "framer-motion";
 
-import { Section, SectionFileLabel, SectionHeading } from "@/components/Section";
+import {
+  Section,
+  SectionFileLabel,
+  SectionHeading,
+} from "@/components/Section";
 
 const card = {
   hidden: { opacity: 0, y: 20 },

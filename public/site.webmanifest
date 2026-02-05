@@ -1,0 +1,17 @@
+{
+  "name": "Khushal Agarwal | Full-Stack Developer",
+  "short_name": "Khushal Agarwal",
+  "description": "Full-stack developer with experience building scalable microservices, high-performance UIs, and crypto-enabled payment solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f10",
+  "theme_color": "#3ecf8e",
+  "icons": [
+    {
+      "src": "/images/profile/github-profile.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
