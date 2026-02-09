@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import Achievements from "@/components/Achievements";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
@@ -12,6 +14,18 @@ import Summary from "@/components/Summary";
 import Testimonials from "@/components/Testimonials";
 
 export const dynamic = "force-dynamic";
+
+const homeTitle = "Khushal Agarwal – Full Stack Developer | Portfolio";
+const homeDescription =
+  "Khushal Agarwal. Full Stack Developer. Portfolio website — scalable microservices, high-performance UIs, Golang, React, Node.js, and cloud.";
+
+export const metadata: Metadata = {
+  title: homeTitle,
+  description: homeDescription,
+  openGraph: { title: homeTitle, description: homeDescription },
+  twitter: { title: homeTitle, description: homeDescription },
+  alternates: { canonical: "https://khushalagarwal.tech" },
+};
 
 export default function Home() {
   return (

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navItems, site } from "@/content";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
@@ -36,9 +37,11 @@ function getSectionInView(): string {
 }
 
 export default function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onHashChange = () => setActiveSection(getActiveHash());
@@ -85,13 +88,13 @@ export default function Nav() {
               <span className="size-2 rounded-full bg-[#27c93f]" aria-hidden />
             </div>
             <Link
-              href="#"
+              href={isHome ? "#" : "/"}
               className="font-editor text-text hover:text-accent shrink-0 text-sm font-medium transition"
             >
               <span className="hidden sm:inline">
-                {site.author.name.split(" ")[0]}
+                {isHome ? site.author.name.split(" ")[0] : "Portfolio"}
               </span>
-              <span className="sm:hidden">portfolio</span>
+              <span className="sm:hidden">{isHome ? "portfolio" : "Home"}</span>
             </Link>
           </div>
 
@@ -102,11 +105,12 @@ export default function Nav() {
           >
             {navItems.map((item) => {
               const hash = linkToHash(item.link);
-              const isActive = activeSection === hash;
+              const isActive = isHome && activeSection === hash;
+              const href = isHome ? item.link : `/${item.link}`;
               return (
                 <Link
                   key={item.link}
-                  href={item.link}
+                  href={href}
                   className={`font-editor shrink-0 rounded-md px-3 py-2 text-xs transition md:text-[0.8125rem] ${
                     isActive
                       ? "bg-surface-active text-accent"
@@ -184,10 +188,19 @@ export default function Nav() {
                 className="section-container flex flex-col py-4"
                 aria-label="Main"
               >
+                {!isHome && (
+                  <Link
+                    href="/"
+                    onClick={() => setMobileOpen(false)}
+                    className="text-text hover:bg-surface-hover hover:text-accent font-editor rounded-lg px-4 py-3 text-sm transition"
+                  >
+                    Home
+                  </Link>
+                )}
                 {navItems.map((item) => (
                   <Link
                     key={item.link}
-                    href={item.link}
+                    href={isHome ? item.link : `/${item.link}`}
                     onClick={() => setMobileOpen(false)}
                     className="text-text hover:bg-surface-hover hover:text-accent font-editor rounded-lg px-4 py-3 text-sm transition"
                   >

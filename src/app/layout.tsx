@@ -8,6 +8,22 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { ThemeProvider } from "./provider";
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Khushal Agarwal",
+  url: "https://khushalagarwal.tech",
+  jobTitle: "Full Stack Developer",
+  sameAs: [
+    siteConfig.author.linkedin,
+    siteConfig.links?.github?.href ??
+      siteConfig.github?.href ??
+      "https://github.com/Khushal-ag",
+  ].filter(Boolean),
+  image: siteConfig.url + siteConfig.author.avatar,
+  email: siteConfig.author.mail,
+} as const;
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
@@ -89,6 +105,12 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <SpeedInsights />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
+          }}
+        />
       </body>
     </html>
   );

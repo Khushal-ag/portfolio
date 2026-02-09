@@ -99,7 +99,14 @@ export default function Footer() {
           {footerContent.copyright.replace(
             "{year}",
             String(new Date().getFullYear()),
-          )}
+          )}{" "}
+          ·{" "}
+          <Link
+            href="/khushal-agarwal"
+            className="hover:text-accent underline underline-offset-2"
+          >
+            Khushal Agarwal
+          </Link>
         </motion.p>
       </div>
     </footer>

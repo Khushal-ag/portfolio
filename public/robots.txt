@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio.khushalagarwal.tech/sitemap.xml
+Sitemap: https://khushalagarwal.tech/sitemap.xml

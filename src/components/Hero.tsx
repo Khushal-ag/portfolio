@@ -79,6 +79,9 @@ export default function Hero() {
         >
           {heroContent.title}
         </motion.h1>
+        <motion.h2 variants={item} className="sr-only">
+          Full Stack Developer
+        </motion.h2>
         <motion.p
           variants={item}
           className="text-text-muted mb-10 max-w-md text-base md:text-lg"
