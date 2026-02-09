@@ -17,11 +17,20 @@ export const dynamic = "force-dynamic";
 
 const homeTitle = "Khushal Agarwal – Full Stack Developer | Portfolio";
 const homeDescription =
-  "Khushal Agarwal. Full Stack Developer. Portfolio website — scalable microservices, high-performance UIs, Golang, React, Node.js, and cloud.";
+  "Khushal Agarwal — Full Stack Developer. Portfolio (also find: Kushal Agarwal, Khusal Agarwal, Khushal Agrawal). Scalable microservices, Golang, React, Node.js.";
 
 export const metadata: Metadata = {
   title: homeTitle,
   description: homeDescription,
+  keywords: [
+    "Khushal Agarwal",
+    "Kushal Agarwal",
+    "Khusal Agarwal",
+    "Khushal Agrawal",
+    "Khushaal Agarwal",
+    "Full Stack Developer",
+    "portfolio",
+  ],
   openGraph: { title: homeTitle, description: homeDescription },
   twitter: { title: homeTitle, description: homeDescription },
   alternates: { canonical: "https://khushalagarwal.tech" },

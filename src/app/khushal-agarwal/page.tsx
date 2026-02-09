@@ -9,11 +9,21 @@ import ScrollProgress from "@/components/ScrollProgress";
 const canonical = "https://khushalagarwal.tech/khushal-agarwal";
 const title = "Khushal Agarwal – Full Stack Developer & Software Engineer";
 const description =
-  "Khushal Agarwal is a Full Stack Developer and software engineer. Official Khushal Agarwal portfolio: experience, tech stack, and projects. Based in India.";
+  "Khushal Agarwal (Kushal Agarwal, Khusal Agarwal, Khushal Agrawal). Full Stack Developer and software engineer. Official portfolio: experience, tech stack, projects. India.";
 
 export const metadata: Metadata = {
   title,
   description,
+  keywords: [
+    "Khushal Agarwal",
+    "Kushal Agarwal",
+    "Khusal Agarwal",
+    "Khushal Agrawal",
+    "Khushaal Agarwal",
+    "Full Stack Developer",
+    "software engineer",
+    "portfolio",
+  ],
   openGraph: { title, description, url: canonical },
   alternates: { canonical },
 };
@@ -70,6 +80,17 @@ export default function KhushalAgarwalPage() {
           </h2>
         </header>
 
+        {/* Name spellings – screen reader only, for SEO and accessibility */}
+        <section className="sr-only" aria-label="Name spellings">
+          <h2>Name spellings</h2>
+          <p>
+            This is the official site for Khushal Agarwal. If you searched for
+            Kushal Agarwal, Khusal Agarwal, Khushal Agrawal, or Khushaal Agarwal
+            — you&apos;re in the right place; those are common spellings of the
+            same name.
+          </p>
+        </section>
+
         {/* Bio */}
         <section className="mb-12">
           <h2 className="section-heading text-text mb-6 text-left text-xl md:text-2xl">
@@ -77,11 +98,12 @@ export default function KhushalAgarwalPage() {
           </h2>
           <div className="text-text-muted space-y-4 text-lg leading-relaxed">
             <p>
-              <strong className="text-text">Khushal Agarwal</strong> is a Full
-              Stack Developer and software engineer with experience building
-              scalable microservices, high-performance UIs, and crypto-enabled
-              payment solutions. This is the official Khushal Agarwal developer
-              portfolio and Khushal Agarwal engineer profile.
+              <strong className="text-text">Khushal Agarwal</strong> (also
+              spelled Kushal Agarwal) is a Full Stack Developer and software
+              engineer with experience building scalable microservices,
+              high-performance UIs, and crypto-enabled payment solutions. This
+              is the official Khushal Agarwal developer portfolio and Khushal
+              Agarwal engineer profile.
             </p>
             <p>
               The Khushal Agarwal portfolio showcases work across Golang, React,
@@ -156,18 +178,10 @@ export default function KhushalAgarwalPage() {
           </p>
         </section>
 
-        {/* Name variants (SEO) */}
-        <aside className="editor-panel border-border mb-12 rounded-lg p-5">
-          <p className="text-text-dim text-sm leading-relaxed">
-            People sometimes search for Khushal Agarwal using spellings like{" "}
-            <span className="text-text">Kushal Agarwal</span>,{" "}
-            <span className="text-text">Khusal Agarwal</span>,{" "}
-            <span className="text-text">Khushal Agrawal</span>, or{" "}
-            <span className="text-text">Khushaal Agarwal</span>. This page
-            refers to the same person: Khushal Agarwal, Full Stack Developer and
-            software engineer.
-          </p>
-        </aside>
+        <p className="sr-only mb-12">
+          Kushal Agarwal, Khusal Agarwal, Khushal Agrawal, Khushaal Agarwal —
+          same person, this portfolio.
+        </p>
 
         {/* CTAs */}
         <nav className="text-text-muted border-border flex flex-wrap items-center gap-4 border-t pt-8">

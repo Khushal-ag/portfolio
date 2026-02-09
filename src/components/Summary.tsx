@@ -27,7 +27,7 @@ export default function Summary() {
             href="/khushal-agarwal"
             className="hover:text-accent text-sm underline underline-offset-2"
           >
-            About Khushal Agarwal
+            More about me
           </Link>
         </p>
       </Reveal>

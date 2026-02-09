@@ -12,6 +12,12 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Khushal Agarwal",
+  alternateName: [
+    "Kushal Agarwal",
+    "Khusal Agarwal",
+    "Khushal Agrawal",
+    "Khushaal Agarwal",
+  ],
   url: "https://khushalagarwal.tech",
   jobTitle: "Full Stack Developer",
   sameAs: [
@@ -22,7 +28,7 @@ const personSchema = {
   ].filter(Boolean),
   image: siteConfig.url + siteConfig.author.avatar,
   email: siteConfig.author.mail,
-} as const;
+};
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
