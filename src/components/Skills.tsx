@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { skills } from "@/content";
+
 import { motion, useInView } from "framer-motion";
 
 import {
@@ -9,6 +9,7 @@ import {
   SectionFileLabel,
   SectionHeading,
 } from "@/components/Section";
+import { skills } from "@/content";
 
 const groups = [
   { label: "Languages", items: skills.languages },
@@ -45,7 +46,7 @@ export default function Skills() {
             <div key={label}>
               <motion.h3
                 variants={pill}
-                className="text-accent mb-3 text-xs font-semibold tracking-wider uppercase"
+                className="mb-3 text-xs font-semibold tracking-wider text-accent uppercase"
               >
                 {label}
               </motion.h3>
@@ -58,7 +59,7 @@ export default function Skills() {
                       scale: 1.03,
                       borderColor: "var(--color-accent)",
                     }}
-                    className="font-editor border-border bg-bg-panel text-text-muted hover:border-accent/30 hover:text-text rounded-md border px-3 py-1.5 text-xs transition-colors"
+                    className="font-editor rounded-md border border-border bg-bg-panel px-3 py-1.5 text-xs text-text-muted transition-colors hover:border-accent/30 hover:text-text"
                   >
                     {skill}
                   </motion.span>

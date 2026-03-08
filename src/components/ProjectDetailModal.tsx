@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect } from "react";
 import Image from "next/image";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub, FaTimes } from "react-icons/fa";
 
@@ -76,7 +77,7 @@ export default function ProjectDetailModal({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Editor title bar – macOS style */}
-            <div className="border-border bg-bg-elevated flex shrink-0 items-center gap-2 border-b px-3 py-2">
+            <div className="flex shrink-0 items-center gap-2 border-b border-border bg-bg-elevated px-3 py-2">
               <span
                 className="size-2 shrink-0 rounded-full bg-[#ff5f56]"
                 aria-hidden
@@ -89,13 +90,13 @@ export default function ProjectDetailModal({
                 className="size-2 shrink-0 rounded-full bg-[#27c93f]"
                 aria-hidden
               />
-              <span className="font-editor text-text-dim ml-2 shrink-0 text-xs">
+              <span className="font-editor ml-2 shrink-0 text-xs text-text-dim">
                 {slug(project.title)}.tsx
               </span>
               <button
                 type="button"
                 onClick={onClose}
-                className="text-text-muted hover:text-text hover:bg-surface-hover ml-auto flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors"
+                className="ml-auto flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-text-muted transition-colors hover:bg-surface-hover hover:text-text"
                 aria-label="Close"
               >
                 <FaTimes className="size-4" />
@@ -105,8 +106,8 @@ export default function ProjectDetailModal({
             {/* Scrollable content */}
             <div className="max-h-[calc(90vh-48px)] overflow-y-auto">
               {/* Preview pane – image */}
-              <div className="border-border bg-bg-elevated border-b border-l-2">
-                <div className="bg-bg-elevated relative aspect-video w-full">
+              <div className="border-b border-l-2 border-border bg-bg-elevated">
+                <div className="relative aspect-video w-full bg-bg-elevated">
                   <Image
                     src={project.img}
                     alt={project.title}
@@ -119,14 +120,14 @@ export default function ProjectDetailModal({
               </div>
 
               {/* Details – code-style layout */}
-              <div className="border-border bg-bg-panel border-l-2 px-4 py-5 md:px-6 md:py-6">
+              <div className="border-l-2 border-border bg-bg-panel px-4 py-5 md:px-6 md:py-6">
                 <div className="font-editor space-y-4 text-sm leading-relaxed md:text-[0.9375rem]">
                   <div>
                     <p
                       className="text-comment"
                       id="project-modal-title"
                     >{`// ${project.title}`}</p>
-                    <p className="text-text-muted mt-2">{project.des}</p>
+                    <p className="mt-2 text-text-muted">{project.des}</p>
                   </div>
 
                   <div>
@@ -135,7 +136,7 @@ export default function ProjectDetailModal({
                       {project.iconLists.map((icon) => (
                         <div
                           key={icon}
-                          className="bg-surface relative size-8 overflow-hidden rounded-md md:size-9"
+                          className="relative size-8 overflow-hidden rounded-md bg-surface md:size-9"
                           aria-hidden
                         >
                           <Image

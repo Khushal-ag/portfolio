@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono, Outfit } from "next/font/google";
 
-import "@/styles/globals.css";
+import "../styles/globals.css";
 
-import { site as siteConfig } from "@/content";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import { siteConfig } from "@/config/site";
+import { fontVariables } from "@/lib/fonts";
 
 import { ThemeProvider } from "./provider";
 
@@ -30,36 +31,10 @@ const personSchema = {
   email: siteConfig.author.mail,
 };
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: { default: siteConfig.name, template: `%s · ${siteConfig.name}` },
   description: siteConfig.description,
-  keywords: [
-    "Full-stack developer",
-    "Golang",
-    "React",
-    "Node.js",
-    "TypeScript",
-    "Microservices",
-    "Khushal Agarwal",
-  ],
+  keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
   creator: siteConfig.author.name,
   openGraph: {
@@ -89,7 +64,7 @@ export const metadata: Metadata = {
     shortcut: "/images/profile/github-profile.png",
     apple: "/images/profile/github-profile.png",
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -99,9 +74,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body
-        className={`${dmSans.variable} ${outfit.variable} ${jetbrainsMono.variable} font-(--font-body) antialiased`}
-      >
+      <body className={`${fontVariables} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

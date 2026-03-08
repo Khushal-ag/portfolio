@@ -14,7 +14,7 @@ export default function ScrollProgress() {
     <>
       {/* Top bar – thin horizontal progress */}
       <motion.div
-        className="bg-accent fixed top-0 left-0 z-[calc(var(--z-nav)+1)] h-[2px] origin-left"
+        className="fixed top-0 left-0 z-[calc(var(--z-nav)+1)] h-[2px] origin-left bg-accent"
         style={{ scaleX: smoothProgress }}
       />
       {/* Vertical scrollbar (editor-style, right edge) */}
@@ -22,9 +22,9 @@ export default function ScrollProgress() {
         className="pointer-events-none fixed top-0 right-0 z-[calc(var(--z-nav)-1)] hidden h-full w-1.5 md:block"
         aria-hidden
       >
-        <div className="bg-border-muted h-full w-full rounded-l" />
+        <div className="h-full w-full rounded-l bg-border-muted" />
         <motion.div
-          className="bg-accent absolute top-0 left-0 w-full origin-top rounded-l opacity-70"
+          className="absolute top-0 left-0 w-full origin-top rounded-l bg-accent opacity-70"
           style={{ scaleY: smoothProgress }}
         />
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+
 import { motion, useInView } from "framer-motion";
 
 const defaultReveal = {
@@ -26,6 +27,22 @@ export function Section({
 }: SectionProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const sectionVariants =
+    stagger ?
+      {
+        visible: {
+          transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+        },
+      }
+    : undefined;
+  const contentVariants =
+    stagger ?
+      {
+        visible: {
+          transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+        },
+      }
+    : undefined;
 
   if (!reveal) {
     return (
@@ -45,29 +62,10 @@ export function Section({
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      variants={
-        stagger
-          ? {
-              visible: {
-                transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-              },
-            }
-          : {}
-      }
+      variants={sectionVariants}
       className={`section-padding scroll-mt-20 ${className}`}
     >
-      <motion.div
-        className="section-container"
-        variants={
-          stagger
-            ? {
-                visible: {
-                  transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-                },
-              }
-            : {}
-        }
-      >
+      <motion.div className="section-container" variants={contentVariants}>
         {children}
       </motion.div>
     </motion.section>
@@ -86,7 +84,7 @@ export function SectionHeading({
   return (
     <motion.h2
       variants={defaultReveal}
-      className={`section-heading text-text mb-12 text-center font-(--font-heading) md:mb-14 ${className}`}
+      className={`section-heading mb-12 text-center font-(--font-heading) text-text md:mb-14 ${className}`}
     >
       {children}
     </motion.h2>

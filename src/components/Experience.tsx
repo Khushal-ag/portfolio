@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { workExperience } from "@/content";
+
 import { motion, useInView } from "framer-motion";
 
 import {
@@ -9,6 +9,7 @@ import {
   SectionFileLabel,
   SectionHeading,
 } from "@/components/Section";
+import { workExperience } from "@/content";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
@@ -47,16 +48,16 @@ export default function Experience() {
             >
               <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
                 <div>
-                  <h3 className="text-text text-lg font-semibold md:text-xl">
+                  <h3 className="text-lg font-semibold text-text md:text-xl">
                     {job.role} · {job.company}
                   </h3>
-                  <p className="text-accent/90 text-sm">
+                  <p className="text-sm text-accent/90">
                     {job.location}
                     {job.period && ` · ${job.period}`}
                   </p>
                 </div>
               </div>
-              <ul className="text-text-muted mt-4 list-inside list-disc space-y-2 text-sm leading-relaxed md:text-base">
+              <ul className="mt-4 list-inside list-disc space-y-2 text-sm leading-relaxed text-text-muted md:text-base">
                 {job.bullets.map((bullet, i) => (
                   <li key={i}>{bullet}</li>
                 ))}

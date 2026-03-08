@@ -2,18 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { footer as footerContent, site, socialMedia } from "@/content";
+
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
+
+import { footer as footerContent, site, socialMedia } from "@/content";
 
 export default function Footer() {
   return (
     <footer
       id="contact"
-      className="section-padding border-border bg-bg-elevated scroll-mt-20 border-t"
+      className="section-padding scroll-mt-20 border-t border-border bg-bg-elevated"
     >
       <div className="section-container text-center">
-        <p className="font-editor text-comment mb-2 text-xs" aria-hidden>
+        <p className="font-editor mb-2 text-xs text-comment" aria-hidden>
           ~/portfolio/contact.ts
         </p>
         <motion.h2
@@ -30,7 +32,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.4, delay: 0.05 }}
-          className="text-text-muted mt-3"
+          className="mt-3 text-text-muted"
         >
           {footerContent.subtext}
         </motion.p>
@@ -61,7 +63,7 @@ export default function Footer() {
             {site.github?.label ?? "View GitHub"}
           </a>
         </motion.div>
-        <p className="text-text-muted font-editor mt-6 text-center text-xs">
+        <p className="font-editor mt-6 text-center text-xs text-text-muted">
           {site.github?.blurb ?? "More projects and code on GitHub."}
         </p>
         <motion.div
@@ -77,7 +79,7 @@ export default function Footer() {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-border bg-bg-panel hover:border-accent/40 hover:bg-surface-hover flex size-12 items-center justify-center rounded-lg border transition"
+              className="flex size-12 items-center justify-center rounded-lg border border-border bg-bg-panel transition hover:border-accent/40 hover:bg-surface-hover"
               aria-label={item.label ?? "Social link"}
             >
               <Image
@@ -94,7 +96,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-text-subtle mt-10 text-sm"
+          className="mt-10 text-sm text-text-subtle"
         >
           {footerContent.copyright.replace(
             "{year}",
@@ -103,7 +105,7 @@ export default function Footer() {
           ·{" "}
           <Link
             href="/khushal-agarwal"
-            className="hover:text-accent underline underline-offset-2"
+            className="underline underline-offset-2 hover:text-accent"
           >
             Khushal Agarwal
           </Link>

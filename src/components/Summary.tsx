@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { summary } from "@/content";
 
 import {
   Reveal,
@@ -9,6 +8,7 @@ import {
   SectionFileLabel,
   SectionHeading,
 } from "@/components/Section";
+import { summary } from "@/content";
 
 export default function Summary() {
   return (
@@ -19,13 +19,13 @@ export default function Summary() {
         <h3 className="sr-only">
           Software Engineer · Backend &amp; Systems Engineer
         </h3>
-        <p className="text-text-muted mx-auto max-w-2xl text-center text-lg leading-relaxed md:text-xl">
+        <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-text-muted md:text-xl">
           {summary.paragraph}
         </p>
-        <p className="text-text-dim mt-4 text-center">
+        <p className="mt-4 text-center text-text-dim">
           <Link
             href="/khushal-agarwal"
-            className="hover:text-accent text-sm underline underline-offset-2"
+            className="text-sm underline underline-offset-2 hover:text-accent"
           >
             More about me
           </Link>

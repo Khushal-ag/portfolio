@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { hero as heroContent, site } from "@/content";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 import { HiChevronDown } from "react-icons/hi";
+
+import { hero as heroContent, site } from "@/content";
 
 const container = {
   hidden: { opacity: 0 },
@@ -48,7 +50,7 @@ export default function Hero() {
         {/* Avatar */}
         <motion.div variants={item} className="mb-8 flex justify-center">
           <motion.div
-            className="border-border-strong bg-bg-panel relative size-28 overflow-hidden rounded-xl border shadow-lg shadow-black/20 md:size-32"
+            className="relative size-28 overflow-hidden rounded-xl border border-border-strong bg-bg-panel shadow-lg shadow-black/20 md:size-32"
             whileHover={{
               scale: 1.03,
               boxShadow: "0 20px 40px -15px rgba(62, 207, 142, 0.15)",
@@ -69,13 +71,13 @@ export default function Hero() {
         {/* Headline */}
         <motion.p
           variants={item}
-          className="text-accent font-editor mb-2 text-sm font-medium tracking-wide md:text-base"
+          className="font-editor mb-2 text-sm font-medium tracking-wide text-accent md:text-base"
         >
           {heroContent.greeting}
         </motion.p>
         <motion.h1
           variants={item}
-          className="text-text mb-2 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
+          className="mb-2 text-3xl font-bold tracking-tight text-text md:text-4xl lg:text-5xl"
         >
           {heroContent.title}
         </motion.h1>
@@ -84,7 +86,7 @@ export default function Hero() {
         </motion.h2>
         <motion.p
           variants={item}
-          className="text-text-muted mb-10 max-w-md text-base md:text-lg"
+          className="mb-10 max-w-md text-base text-text-muted md:text-lg"
         >
           {heroContent.subtitle}
         </motion.p>
@@ -92,18 +94,18 @@ export default function Hero() {
         {/* Code block – editor window style */}
         <motion.div
           variants={item}
-          className="bg-bg-panel border-border w-full max-w-lg overflow-hidden rounded-lg border shadow-xl shadow-black/10"
+          className="w-full max-w-lg overflow-hidden rounded-lg border border-border bg-bg-panel shadow-xl shadow-black/10"
         >
           {/* Window bar */}
-          <div className="border-border bg-bg-elevated flex items-center gap-2 border-b px-3 py-2">
+          <div className="flex items-center gap-2 border-b border-border bg-bg-elevated px-3 py-2">
             <span className="size-2 rounded-full bg-[#ff5f56]" aria-hidden />
             <span className="size-2 rounded-full bg-[#ffbd2e]" aria-hidden />
             <span className="size-2 rounded-full bg-[#27c93f]" aria-hidden />
-            <span className="font-editor text-text-dim ml-2 text-xs">
+            <span className="font-editor ml-2 text-xs text-text-dim">
               intro.ts
             </span>
           </div>
-          <div className="border-accent/20 bg-bg-panel border-l-2 px-4 py-4 md:px-5 md:py-5">
+          <div className="border-l-2 border-accent/20 bg-bg-panel px-4 py-4 md:px-5 md:py-5">
             <div className="font-editor space-y-2 text-left text-sm leading-relaxed md:text-[0.9375rem]">
               <p className="text-comment">
                 {"// "}
@@ -160,21 +162,21 @@ export default function Hero() {
         {/* Contact – secondary, compact */}
         <motion.div
           variants={item}
-          className="text-text-muted mt-8 flex flex-wrap items-center justify-center gap-3"
+          className="mt-8 flex flex-wrap items-center justify-center gap-3 text-text-muted"
         >
           <a
             href={`mailto:${site.author.mail}`}
-            className="hover:text-accent font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition"
+            className="font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition hover:text-accent"
           >
             <FaEnvelope className="size-3.5 shrink-0" />
-            <span className="hidden max-w-[180px] truncate sm:inline md:max-w-none">
+            <span className="hidden max-w-45 truncate sm:inline md:max-w-none">
               {site.author.mail}
             </span>
           </a>
           <span className="text-text-dim">·</span>
           <a
             href={`tel:${site.author.phone?.replace(/\s/g, "")}`}
-            className="hover:text-accent font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition"
+            className="font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition hover:text-accent"
           >
             <FaPhone className="size-3.5 shrink-0" />
             <span>{site.author.phone}</span>
@@ -184,7 +186,7 @@ export default function Hero() {
             href={site.author.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition"
+            className="font-editor flex items-center gap-2 rounded-md px-2 py-1 text-xs transition hover:text-accent"
           >
             <FaLinkedin className="size-3.5 shrink-0" />
             <span>LinkedIn</span>
@@ -196,7 +198,7 @@ export default function Hero() {
       <motion.a
         href="#about"
         style={{ opacity: scrollIndicatorOpacity }}
-        className="text-text-muted hover:text-accent font-editor absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-0.5 text-[10px] tracking-widest uppercase transition"
+        className="font-editor absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-0.5 text-[10px] tracking-widest text-text-muted uppercase transition hover:text-accent"
         aria-label="Scroll to content"
       >
         <motion.span

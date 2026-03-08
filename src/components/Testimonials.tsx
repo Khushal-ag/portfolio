@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { testimonials } from "@/content";
+
 import { motion, useInView } from "framer-motion";
 
 import {
@@ -9,6 +9,7 @@ import {
   SectionFileLabel,
   SectionHeading,
 } from "@/components/Section";
+import { testimonials } from "@/content";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
@@ -43,18 +44,18 @@ export default function Testimonials() {
               transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
               className="card-surface p-6 md:p-8"
             >
-              <p className="text-text-muted leading-relaxed md:text-lg">
+              <p className="leading-relaxed text-text-muted md:text-lg">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <footer className="mt-4 flex items-center gap-3">
-                <div className="bg-accent-dim font-heading text-accent flex size-10 items-center justify-center rounded-full font-semibold">
+                <div className="flex size-10 items-center justify-center rounded-full bg-accent-dim font-heading font-semibold text-accent">
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <cite className="text-text font-semibold not-italic">
+                  <cite className="font-semibold text-text not-italic">
                     {t.name}
                   </cite>
-                  <p className="text-text-subtle text-sm">{t.title}</p>
+                  <p className="text-sm text-text-subtle">{t.title}</p>
                 </div>
               </footer>
             </motion.blockquote>

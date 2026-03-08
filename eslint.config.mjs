@@ -1,37 +1,49 @@
-/**
- * ESLint 9 flat config for Next.js 16 + TypeScript.
- * Run type-check separately or via `lint` (tsc --noEmit && eslint .).
- */
+import js from "@eslint/js";
+import nextPlugin from "@next/eslint-plugin-next";
+import prettier from "eslint-config-prettier/flat";
+import reactCompiler from "eslint-plugin-react-compiler";
 import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-import eslintConfigPrettier from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
 
-export default defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  {
-    files: ["**/*.{ts,tsx}"],
-    rules: {
-      "@next/next/no-html-link-for-pages": "off",
-      "react/jsx-key": "off",
-    },
-  },
-  { rules: eslintConfigPrettier.rules },
+const eslintConfig = defineConfig([
   globalIgnores([
     ".next/**",
     "out/**",
     "build/**",
-    "next-env.d.ts",
-    "node_modules/**",
     "dist/**",
-    ".cache/**",
-    "public/**",
-    "*.esm.js",
-    "*.d.ts",
-    "bun.lock",
-    "*.config.js",
-    "*.config.mjs",
-    "*.config.cjs",
+    "node_modules/**",
+    "next-env.d.ts",
+    "eslint.config.mjs",
+    ".env",
+    ".env.*",
   ]),
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  prettier,
+  {
+    files: ["src/**/*.{js,jsx,ts,tsx}", "app/**/*.{js,jsx,ts,tsx}"],
+    ...nextPlugin.configs["core-web-vitals"],
+  },
+  {
+    plugins: {
+      "react-compiler": reactCompiler,
+    },
+    rules: {
+      ...reactCompiler.configs.recommended.rules,
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_" },
+      ],
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        { prefer: "type-imports" },
+      ],
+      "@typescript-eslint/array-type": "off",
+      "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/require-await": "off",
+      "@next/next/no-html-link-for-pages": "off",
+    },
+  },
 ]);
+
+export default eslintConfig;

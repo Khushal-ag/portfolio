@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+
 import { site } from "@/content";
 
 export default function Error({
@@ -16,24 +17,24 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="bg-bg flex min-h-dvh flex-col items-center justify-center px-4">
-      <div className="border-border bg-bg-panel w-full max-w-lg overflow-hidden rounded-lg border shadow-xl shadow-black/10">
-        <div className="border-border bg-bg-elevated flex items-center gap-2 border-b px-3 py-2">
+    <div className="flex min-h-dvh flex-col items-center justify-center bg-bg px-4">
+      <div className="w-full max-w-lg overflow-hidden rounded-lg border border-border bg-bg-panel shadow-xl shadow-black/10">
+        <div className="flex items-center gap-2 border-b border-border bg-bg-elevated px-3 py-2">
           <span className="size-2 rounded-full bg-[#ff5f56]" aria-hidden />
           <span className="size-2 rounded-full bg-[#ffbd2e]" aria-hidden />
           <span className="size-2 rounded-full bg-[#27c93f]" aria-hidden />
-          <span className="font-editor text-text-dim ml-2 text-xs">
+          <span className="font-editor ml-2 text-xs text-text-dim">
             error.tsx
           </span>
         </div>
-        <div className="border-accent/20 bg-bg-panel border-l-2 px-6 py-8 md:px-8 md:py-10">
-          <p className="font-editor text-comment text-sm">
+        <div className="border-l-2 border-accent/20 bg-bg-panel px-6 py-8 md:px-8 md:py-10">
+          <p className="font-editor text-sm text-comment">
             {"// Something went wrong"}
           </p>
-          <p className="text-text mt-2 text-xl font-(--font-heading) tracking-tight md:text-2xl">
+          <p className="mt-2 text-xl font-(--font-heading) tracking-tight text-text md:text-2xl">
             <span className="text-accent">Application error</span>
           </p>
-          <p className="text-text-muted mt-3 text-sm leading-relaxed">
+          <p className="mt-3 text-sm leading-relaxed text-text-muted">
             {error.message ||
               "An unexpected error occurred. Try again or go back home."}
           </p>

@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { education, hero, site, skills, workExperience } from "@/content";
+
+import type { Metadata } from "next";
 
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
+import { education, hero, site, skills, workExperience } from "@/content";
 
 const canonical = "https://khushalagarwal.tech/khushal-agarwal";
 const title = "Khushal Agarwal – Full Stack Developer & Software Engineer";
@@ -41,10 +42,10 @@ const skillGroups = [
 
 export default function KhushalAgarwalPage() {
   return (
-    <div className="bg-bg min-h-screen">
+    <div className="min-h-screen bg-bg">
       <a
         href="#main-content"
-        className="bg-accent text-bg fixed top-4 left-4 z-[calc(var(--z-nav)+2)] rounded-md px-3 py-2 text-sm font-medium opacity-0 focus:opacity-100 focus:ring-2 focus:ring-white focus:outline-none"
+        className="fixed top-4 left-4 z-[calc(var(--z-nav)+2)] rounded-md bg-accent px-3 py-2 text-sm font-medium text-bg opacity-0 focus:opacity-100 focus:ring-2 focus:ring-white focus:outline-none"
       >
         Skip to content
       </a>
@@ -54,14 +55,14 @@ export default function KhushalAgarwalPage() {
         id="main-content"
         className="section-padding section-container mx-auto max-w-3xl pt-24 pb-20"
       >
-        <p className="font-editor text-comment mb-6 text-xs" aria-hidden>
+        <p className="font-editor mb-6 text-xs text-comment" aria-hidden>
           ~/khushal-agarwal
         </p>
 
         {/* Name + role */}
         <header className="mb-12">
           <div className="mb-6 flex justify-center">
-            <div className="border-border-strong bg-bg-panel relative size-24 overflow-hidden rounded-xl border shadow-lg md:size-28">
+            <div className="relative size-24 overflow-hidden rounded-xl border border-border-strong bg-bg-panel shadow-lg md:size-28">
               <Image
                 src={hero.avatar}
                 alt=""
@@ -72,10 +73,10 @@ export default function KhushalAgarwalPage() {
               />
             </div>
           </div>
-          <h1 className="text-text mb-2 text-center text-3xl font-bold tracking-tight md:text-4xl">
+          <h1 className="mb-2 text-center text-3xl font-bold tracking-tight text-text md:text-4xl">
             Khushal Agarwal
           </h1>
-          <h2 className="text-text-muted text-center text-xl font-semibold md:text-2xl">
+          <h2 className="text-center text-xl font-semibold text-text-muted md:text-2xl">
             Full Stack Developer · Software Engineer
           </h2>
         </header>
@@ -93,10 +94,10 @@ export default function KhushalAgarwalPage() {
 
         {/* Bio */}
         <section className="mb-12">
-          <h2 className="section-heading text-text mb-6 text-left text-xl md:text-2xl">
+          <h2 className="section-heading mb-6 text-left text-xl text-text md:text-2xl">
             About
           </h2>
-          <div className="text-text-muted space-y-4 text-lg leading-relaxed">
+          <div className="space-y-4 text-lg leading-relaxed text-text-muted">
             <p>
               <strong className="text-text">Khushal Agarwal</strong> (also
               spelled Kushal Agarwal) is a Full Stack Developer and software
@@ -116,7 +117,7 @@ export default function KhushalAgarwalPage() {
 
         {/* Experience */}
         <section className="mb-12">
-          <h2 className="section-heading text-text mb-6 text-left text-xl md:text-2xl">
+          <h2 className="section-heading mb-6 text-left text-xl text-text md:text-2xl">
             Experience
           </h2>
           <ul className="space-y-4">
@@ -126,15 +127,15 @@ export default function KhushalAgarwalPage() {
                 className="experience-card editor-panel p-5 transition-colors md:p-6"
               >
                 <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
-                  <h3 className="text-text text-lg font-semibold">
+                  <h3 className="text-lg font-semibold text-text">
                     {job.role} · {job.company}
                   </h3>
                   {job.period && (
-                    <span className="text-accent/90 text-sm">{job.period}</span>
+                    <span className="text-sm text-accent/90">{job.period}</span>
                   )}
                 </div>
                 {job.location && (
-                  <p className="text-text-dim mt-1 text-sm">{job.location}</p>
+                  <p className="mt-1 text-sm text-text-dim">{job.location}</p>
                 )}
               </li>
             ))}
@@ -143,20 +144,20 @@ export default function KhushalAgarwalPage() {
 
         {/* Tech stack */}
         <section className="mb-12">
-          <h2 className="section-heading text-text mb-6 text-left text-xl md:text-2xl">
+          <h2 className="section-heading mb-6 text-left text-xl text-text md:text-2xl">
             Tech stack
           </h2>
           <div className="space-y-6">
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <h3 className="text-text-muted mb-2 text-sm font-medium tracking-wider uppercase">
+                <h3 className="mb-2 text-sm font-medium tracking-wider text-text-muted uppercase">
                   {group.label}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {group.items.map((s) => (
                     <span
                       key={s}
-                      className="border-border bg-bg-panel rounded-md border px-2.5 py-1 text-sm"
+                      className="rounded-md border border-border bg-bg-panel px-2.5 py-1 text-sm"
                     >
                       {s}
                     </span>
@@ -169,7 +170,7 @@ export default function KhushalAgarwalPage() {
 
         {/* Education */}
         <section className="mb-12">
-          <h2 className="section-heading text-text mb-4 text-left text-xl md:text-2xl">
+          <h2 className="section-heading mb-4 text-left text-xl text-text md:text-2xl">
             Education
           </h2>
           <p className="text-text-muted">
@@ -184,7 +185,7 @@ export default function KhushalAgarwalPage() {
         </p>
 
         {/* CTAs */}
-        <nav className="text-text-muted border-border flex flex-wrap items-center gap-4 border-t pt-8">
+        <nav className="flex flex-wrap items-center gap-4 border-t border-border pt-8 text-text-muted">
           <Link href="/" className={navLinkClass}>
             ← Back to portfolio
           </Link>

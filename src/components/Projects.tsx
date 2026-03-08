@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { projects } from "@/content";
+
 import { motion, useInView } from "framer-motion";
 import { FaExpandAlt, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
@@ -13,6 +13,7 @@ import {
   SectionFileLabel,
   SectionHeading,
 } from "@/components/Section";
+import { projects } from "@/content";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
@@ -62,11 +63,11 @@ export default function Projects() {
                   setSelectedProject(proj);
                 }
               }}
-              className="group border-border bg-bg-panel hover:border-border-strong flex cursor-pointer flex-col overflow-hidden rounded-lg border transition-colors"
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-lg border border-border bg-bg-panel transition-colors hover:border-border-strong"
             >
               {/* Filename bar (editor tab style) */}
-              <div className="border-border bg-bg-elevated flex items-center justify-between border-b px-3 py-2">
-                <p className="font-editor text-text-subtle text-xs">
+              <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-2">
+                <p className="font-editor text-xs text-text-subtle">
                   {slug(proj.title)}.tsx
                 </p>
                 <span
@@ -77,7 +78,7 @@ export default function Projects() {
                 </span>
               </div>
               <div className="flex flex-1 flex-col">
-                <div className="bg-bg-elevated relative aspect-video w-full overflow-hidden">
+                <div className="relative aspect-video w-full overflow-hidden bg-bg-elevated">
                   <Image
                     src={proj.img}
                     alt={proj.title}
@@ -85,23 +86,23 @@ export default function Projects() {
                     className="object-contain transition duration-300 group-hover:scale-[1.02]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="from-bg-panel/80 absolute inset-0 bg-linear-to-t to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                  <span className="text-text-muted bg-bg-panel/90 font-editor absolute right-2 bottom-2 rounded px-2 py-1 text-[10px] opacity-0 transition-opacity group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-linear-to-t from-bg-panel/80 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  <span className="font-editor absolute right-2 bottom-2 rounded bg-bg-panel/90 px-2 py-1 text-[10px] text-text-muted opacity-0 transition-opacity group-hover:opacity-100">
                     View details
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-4">
-                  <h3 className="text-text text-base font-semibold">
+                  <h3 className="text-base font-semibold text-text">
                     {proj.title}
                   </h3>
-                  <p className="text-text-muted mt-1.5 line-clamp-2 text-sm leading-relaxed">
+                  <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-text-muted">
                     {proj.des}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {proj.iconLists.slice(0, 6).map((icon) => (
                       <div
                         key={icon}
-                        className="bg-surface relative size-6 overflow-hidden rounded-sm md:size-7"
+                        className="relative size-6 overflow-hidden rounded-sm bg-surface md:size-7"
                         aria-hidden
                       >
                         <Image
@@ -115,7 +116,7 @@ export default function Projects() {
                     ))}
                   </div>
                   <div
-                    className="border-border mt-4 flex gap-4 border-t pt-3"
+                    className="mt-4 flex gap-4 border-t border-border pt-3"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <a

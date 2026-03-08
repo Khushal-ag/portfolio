@@ -18,7 +18,7 @@ export default function GlobalError({
   return (
     <html lang="en" className="dark">
       <body
-        className="bg-bg text-text font-(--font-body) antialiased"
+        className="bg-bg font-(--font-body) text-text antialiased"
         style={{
           backgroundColor: "#0f0f10",
           color: "#ededed",

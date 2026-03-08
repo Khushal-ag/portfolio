@@ -1,8 +1,9 @@
 "use client";
 
-import { site } from "@/content";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
+
+import { site } from "@/content";
 
 const href =
   site.github?.href ??
@@ -16,9 +17,9 @@ export default function GitHubCTA() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4 }}
-      className="border-border bg-bg-panel mt-10 flex flex-wrap items-center justify-center gap-4 rounded-lg border px-6 py-5 text-center"
+      className="mt-10 flex flex-wrap items-center justify-center gap-4 rounded-lg border border-border bg-bg-panel px-6 py-5 text-center"
     >
-      <p className="text-text-muted text-sm md:text-base">
+      <p className="text-sm text-text-muted md:text-base">
         {site.github?.blurb ??
           "More projects, open-source work, and code on GitHub."}
       </p>

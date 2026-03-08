@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { achievements, education } from "@/content";
+
 import { motion, useInView } from "framer-motion";
 
 import {
@@ -9,6 +9,7 @@ import {
   SectionFileLabel,
   SectionHeading,
 } from "@/components/Section";
+import { achievements, education } from "@/content";
 
 const item = {
   hidden: { opacity: 0, x: -12 },
@@ -40,19 +41,19 @@ export default function Achievements() {
             transition={{ duration: 0.35 }}
             className="editor-panel p-6 md:p-8"
           >
-            <h3 className="text-accent text-xs font-semibold tracking-wider uppercase">
+            <h3 className="text-xs font-semibold tracking-wider text-accent uppercase">
               Education
             </h3>
-            <p className="text-text mt-2 font-semibold">
+            <p className="mt-2 font-semibold text-text">
               {education.degree} · {education.school}
             </p>
-            <p className="text-text-muted text-sm">
+            <p className="text-sm text-text-muted">
               {education.cpi} · {education.year}
             </p>
           </motion.div>
 
           <div>
-            <h3 className="text-accent mb-4 text-xs font-semibold tracking-wider uppercase">
+            <h3 className="mb-4 text-xs font-semibold tracking-wider text-accent uppercase">
               Achievements
             </h3>
             <ul className="space-y-3">
@@ -61,9 +62,9 @@ export default function Achievements() {
                   key={i}
                   variants={item}
                   transition={{ duration: 0.35 }}
-                  className="border-border bg-bg-panel text-text-muted flex items-start gap-3 rounded-md border px-4 py-3 text-sm md:text-base"
+                  className="flex items-start gap-3 rounded-md border border-border bg-bg-panel px-4 py-3 text-sm text-text-muted md:text-base"
                 >
-                  <span className="bg-accent mt-1.5 size-2 shrink-0 rounded-full" />
+                  <span className="mt-1.5 size-2 shrink-0 rounded-full bg-accent" />
                   {text}
                 </motion.li>
               ))}

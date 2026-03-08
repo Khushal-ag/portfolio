@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tailwind-animate";
 
 @theme {
   /* Supabase + Code Editor design system */
@@ -31,8 +32,8 @@
   --radius-xl: 0.625rem;
   --radius-2xl: 0.75rem;
   --radius-full: 9999px;
-  --font-heading: var(--font-outfit), system-ui, sans-serif;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-heading: var(--font-poppins), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
   /* --font-mono is set by layout.tsx (JetBrains Mono); use it in .font-editor and .file-path */
   --z-nav: 1000;
 }
@@ -53,7 +54,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
   }
 
@@ -64,7 +70,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -114,7 +122,9 @@
     background: var(--color-bg-panel);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    transition: background 0.2s, border-color 0.2s;
+    transition:
+      background 0.2s,
+      border-color 0.2s;
   }
 
   .card-surface:hover {
@@ -168,7 +178,9 @@
     padding: 0.5rem 0.75rem;
     border-radius: var(--radius-sm);
     color: var(--color-text-muted);
-    transition: color 0.2s, background 0.2s;
+    transition:
+      color 0.2s,
+      background 0.2s;
   }
 
   .editor-tab:hover {
@@ -179,7 +191,9 @@
   .link-accent {
     color: var(--color-accent);
     text-decoration: none;
-    transition: color 0.2s, text-decoration-color 0.2s;
+    transition:
+      color 0.2s,
+      text-decoration-color 0.2s;
   }
 
   .link-accent:hover {
@@ -202,7 +216,9 @@
     border: none;
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: filter 0.2s, transform 0.15s;
+    transition:
+      filter 0.2s,
+      transform 0.15s;
   }
 
   .btn-primary:hover {
@@ -228,7 +244,10 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      transform 0.15s;
   }
 
   .btn-ghost:hover {

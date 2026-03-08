@@ -38,10 +38,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="bg-bg min-h-screen">
+    <div className="min-h-screen bg-bg">
       <a
         href="#main-content"
-        className="bg-accent text-bg fixed top-4 left-4 z-[calc(var(--z-nav)+2)] rounded-md px-3 py-2 text-sm font-medium opacity-0 focus:opacity-100 focus:ring-2 focus:ring-white focus:outline-none"
+        className="fixed top-4 left-4 z-[calc(var(--z-nav)+2)] rounded-md bg-accent px-3 py-2 text-sm font-medium text-bg opacity-0 focus:opacity-100 focus:ring-2 focus:ring-white focus:outline-none"
       >
         Skip to content
       </a>
