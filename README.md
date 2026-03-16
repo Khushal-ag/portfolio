@@ -32,11 +32,11 @@ Full-stack developer with experience building scalable microservices, high-perfo
 
 ## 💼 Experience
 
-| Role | Company | Location | Period |
-| :--- | :------ | :------- | :----- |
-| **Full Stack Developer** | Kreedalabs | Pune | Aug 2024 – Present |
-| **Backend Developer** | MixR | Remote | Mar 2024 – Aug 2024 |
-| **Full Stack Developer** | Vyloo | Remote | — |
+| Role                     | Company    | Location | Period              |
+| :----------------------- | :--------- | :------- | :------------------ |
+| **Full Stack Developer** | Kreedalabs | Pune     | Aug 2024 – Present  |
+| **Backend Developer**    | MixR       | Remote   | Mar 2024 – Aug 2024 |
+| **Full Stack Developer** | Vyloo      | Remote   | —                   |
 
 ### Kreedalabs · Full Stack Developer
 
@@ -65,29 +65,29 @@ Full-stack developer with experience building scalable microservices, high-perfo
 
 ## 🚀 Projects
 
-| Project | Description | Tech | Live | Code |
-| :------ | :---------- | :--- | :--- | :--- |
-| **Strova** | AI model finetuning platform with proof-of-data rails, blockchain storage & payments | Vite, Node.js, MongoDB, AWS, Coinbase | [Live](https://strova.xyz/) | [Site](https://strova.xyz/) |
-| **MixR** | AI-powered marketplace with autonomous agents, crypto checkout | Next.js, Golang, Supabase | [Live](https://mixr.gg/) | [GitHub](https://github.com/MixR-gg) |
-| **Capsule Cloud** | Inventory management (Vyloo ERP) – stock, WhatsApp orders, product catalog | Next.js, NestJS, MongoDB, Tailwind, AWS | [Live](https://capsule.vyloo.in/signin) | [Vyloo](https://www.vyloo.in/) |
-| **Vyloo** | Three platforms – ERP, Admin, Merchant for pharmacy operations | Next.js, NestJS, MongoDB, Tailwind, AWS | [Live](https://www.vyloo.in/) | [Site](https://www.vyloo.in/) |
-| **Eventloop** | Event creation & management with auth, ticket purchase, Stripe | Next.js, Tailwind, TypeScript | [Live](https://eventloop.khushalagarwal.tech/) | [GitHub](https://github.com/Khushal-ag/eventloop) |
-| **Infinitunes** | Music streaming with playlists and discovery | Next.js, Supabase, Vercel | [Live](https://infinitunes.khushalagarwal.tech/) | [GitHub](https://github.com/Khushal-ag/infinitunes) |
-| **Sealog** | Hotel management – cabins, bookings, guest info | React, Supabase, React Query | [Live](https://sealog.khushalagarwal.tech) | [GitHub](https://github.com/Khushal-ag/sealog) |
-| **Triphive** | Hotel reviews and rewards | Node.js, MongoDB, Passport | [Live](https://triphive.khushalagarwal.tech/) | [GitHub](https://github.com/Khushal-ag/TripHive) |
-| **Next.js Starter** | Template with Tailwind, TypeScript, Prettier, ESLint | Next.js, Vercel | [Live](https://nextjs-template.khushalagarwal.tech/) | [GitHub](https://github.com/Khushal-ag/nextjs-template) |
+| Project             | Description                                                                          | Tech                                    | Live                                                 | Code                                                    |
+| :------------------ | :----------------------------------------------------------------------------------- | :-------------------------------------- | :--------------------------------------------------- | :------------------------------------------------------ |
+| **Strova**          | AI model finetuning platform with proof-of-data rails, blockchain storage & payments | Vite, Node.js, MongoDB, AWS, Coinbase   | [Live](https://strova.xyz/)                          | [Site](https://strova.xyz/)                             |
+| **MixR**            | AI-powered marketplace with autonomous agents, crypto checkout                       | Next.js, Golang, Supabase               | [Live](https://mixr.gg/)                             | [GitHub](https://github.com/MixR-gg)                    |
+| **Capsule Cloud**   | Inventory management (Vyloo ERP) – stock, WhatsApp orders, product catalog           | Next.js, NestJS, MongoDB, Tailwind, AWS | [Live](https://capsule.vyloo.in/signin)              | [Vyloo](https://www.vyloo.in/)                          |
+| **Vyloo**           | Three platforms – ERP, Admin, Merchant for pharmacy operations                       | Next.js, NestJS, MongoDB, Tailwind, AWS | [Live](https://www.vyloo.in/)                        | [Site](https://www.vyloo.in/)                           |
+| **Eventloop**       | Event creation & management with auth, ticket purchase, Stripe                       | Next.js, Tailwind, TypeScript           | [Live](https://eventloop.khushalagarwal.tech/)       | [GitHub](https://github.com/Khushal-ag/eventloop)       |
+| **Infinitunes**     | Music streaming with playlists and discovery                                         | Next.js, Supabase, Vercel               | [Live](https://infinitunes.khushalagarwal.tech/)     | [GitHub](https://github.com/Khushal-ag/infinitunes)     |
+| **Sealog**          | Hotel management – cabins, bookings, guest info                                      | React, Supabase, React Query            | [Live](https://sealog.khushalagarwal.tech)           | [GitHub](https://github.com/Khushal-ag/sealog)          |
+| **Triphive**        | Hotel reviews and rewards                                                            | Node.js, MongoDB, Passport              | [Live](https://triphive.khushalagarwal.tech/)        | [GitHub](https://github.com/Khushal-ag/TripHive)        |
+| **Next.js Starter** | Template with Tailwind, TypeScript, Prettier, ESLint                                 | Next.js, Vercel                         | [Live](https://nextjs-template.khushalagarwal.tech/) | [GitHub](https://github.com/Khushal-ag/nextjs-template) |
 
 ---
 
 ## 🛠️ Skills
 
-| Category | Technologies |
-| :------- | :----------- |
-| **Languages** | `C++` `JavaScript` `TypeScript` `Golang` `Java` `Dart` |
-| **Backend & Cloud** | `Node.js` `Express` `REST APIs` `GraphQL` `Microservices` `AWS` `Docker` `CI/CD` |
-| **Frontend & Mobile** | `React.js` `Next.js` `React Native` `ShadCN UI` `TailwindCSS` |
-| **Databases & DevOps** | `PostgreSQL` `MongoDB` `MySQL` `Redis` `Git` `Linux` `Docker Compose` |
-| **Other** | `Web3` `Stripe` `Drizzle ORM` `Prisma` `Kubernetes` |
+| Category               | Technologies                                                                     |
+| :--------------------- | :------------------------------------------------------------------------------- |
+| **Languages**          | `C++` `JavaScript` `TypeScript` `Golang` `Java` `Dart`                           |
+| **Backend & Cloud**    | `Node.js` `Express` `REST APIs` `GraphQL` `Microservices` `AWS` `Docker` `CI/CD` |
+| **Frontend & Mobile**  | `React.js` `Next.js` `React Native` `ShadCN UI` `TailwindCSS`                    |
+| **Databases & DevOps** | `PostgreSQL` `MongoDB` `MySQL` `Redis` `Git` `Linux` `Docker Compose`            |
+| **Other**              | `Web3` `Stripe` `Drizzle ORM` `Prisma` `Kubernetes`                              |
 
 ---
 
@@ -108,16 +108,16 @@ Full-stack developer with experience building scalable microservices, high-perfo
 
 ## 💬 Testimonials
 
-> *"Working with Khushal as our backend developer was a transformative experience. His technical expertise and meticulous approach ensured that our systems were both robust and scalable."*  
+> _"Working with Khushal as our backend developer was a transformative experience. His technical expertise and meticulous approach ensured that our systems were both robust and scalable."_
 > — **Justin Martinez**, MixR.gg
 
-> *"Participating in a hackathon with Khushal as our team leader was an inspiring experience. His leadership and organizational skills were key to our team's success."*  
+> _"Participating in a hackathon with Khushal as our team leader was an inspiring experience. His leadership and organizational skills were key to our team's success."_
 > — **Dev Busters**, HackCBS 6.0
 
-> *"Having Khushal on board as our full stack developer was a game-changer. His comprehensive understanding of both front-end and back-end technologies allowed us to create a seamless application."*  
+> _"Having Khushal on board as our full stack developer was a game-changer. His comprehensive understanding of both front-end and back-end technologies allowed us to create a seamless application."_
 > — **Hemant Rajput**, Infinitunes
 
-> *"Collaborating with Khushal on our backend infrastructure was a decision we're proud of. His in-depth knowledge of database management and API integrations played a crucial role."*  
+> _"Collaborating with Khushal on our backend infrastructure was a decision we're proud of. His in-depth knowledge of database management and API integrations played a crucial role."_
 > — **Yash Goyal**, MixR.gg
 
 ---
