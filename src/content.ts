@@ -8,7 +8,7 @@ export const site = {
   name: "Khushal Agarwal | Full-Stack Developer",
   description:
     "Full-stack developer with experience building scalable microservices, high-performance UIs, and crypto-enabled payment solutions. Golang, React, Node.js, Cloud.",
-  url: "https://khushalagarwal.tech",
+  url: "https://www.khushalagarwal.dev",
 
   author: {
     name: "Khushal Agarwal",
@@ -16,7 +16,7 @@ export const site = {
     subtitle: "Go • React.js • Microservices • Node.js • Cloud",
     location: "",
     phone: "+91 9557429766",
-    url: "https://khushalagarwal.tech",
+    url: "https://www.khushalagarwal.dev",
     avatar: "/images/profile/github-profile.png",
     mail: "starkhush5@gmail.com",
     linkedin: "https://www.linkedin.com/in/khushal-agarwal",

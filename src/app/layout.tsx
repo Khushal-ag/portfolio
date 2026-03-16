@@ -19,7 +19,7 @@ const personSchema = {
     "Khushal Agrawal",
     "Khushaal Agarwal",
   ],
-  url: "https://khushalagarwal.tech",
+  url: "https://www.khushalagarwal.dev",
   jobTitle: "Full Stack Developer",
   sameAs: [
     siteConfig.author.linkedin,

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://portfolio.khushalagarwal.tech/images/profile/github-profile.png" alt="Khushal Agarwal" width="140" height="140" style="border-radius: 16px;" />
+<img src="https://www.khushalagarwal.dev/images/profile/github-profile.png" alt="Khushal Agarwal" width="140" height="140" style="border-radius: 16px;" />
 
 # Khushal Agarwal
 
@@ -8,7 +8,7 @@
 
 `Go` · `React.js` · `Microservices` · `Node.js` · `Cloud`
 
-[![Portfolio](https://img.shields.io/badge/portfolio-View_Live-0f172a?style=for-the-badge&labelColor=0f172a)](https://portfolio.khushalagarwal.tech)
+[![Portfolio](https://img.shields.io/badge/portfolio-View_Live-0f172a?style=for-the-badge&labelColor=0f172a)](https://www.khushalagarwal.dev)
 [![Resume](https://img.shields.io/badge/resume-Download_PDF-27c93f?style=for-the-badge&labelColor=0f172a)](https://drive.google.com/file/d/1G--7hh0MFgapSgJPQpelYxsDi1aOtOyo/view?usp=drive_link)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0a66c2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/khushal-agarwal)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/Khushal-ag)
@@ -128,7 +128,7 @@ Full-stack developer with experience building scalable microservices, high-perfo
 
 **Open to full-time roles and freelance projects.**
 
-[Portfolio](https://portfolio.khushalagarwal.tech) · [Resume](https://drive.google.com/file/d/1G--7hh0MFgapSgJPQpelYxsDi1aOtOyo/view?usp=drive_link) · [GitHub](https://github.com/Khushal-ag) · [LinkedIn](https://www.linkedin.com/in/khushal-agarwal) · [Email](mailto:starkhush5@gmail.com)
+[Portfolio](https://www.khushalagarwal.dev) · [Resume](https://drive.google.com/file/d/1G--7hh0MFgapSgJPQpelYxsDi1aOtOyo/view?usp=drive_link) · [GitHub](https://github.com/Khushal-ag) · [LinkedIn](https://www.linkedin.com/in/khushal-agarwal) · [Email](mailto:starkhush5@gmail.com)
 
 ---
 

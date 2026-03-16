@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ],
   openGraph: { title: homeTitle, description: homeDescription },
   twitter: { title: homeTitle, description: homeDescription },
-  alternates: { canonical: "https://khushalagarwal.tech" },
+  alternates: { canonical: "https://www.khushalagarwal.dev" },
 };
 
 export default function Home() {

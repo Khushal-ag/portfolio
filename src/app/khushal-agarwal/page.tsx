@@ -7,7 +7,7 @@ import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
 import { education, hero, site, skills, workExperience } from "@/content";
 
-const canonical = "https://khushalagarwal.tech/khushal-agarwal";
+const canonical = "https://www.khushalagarwal.dev/khushal-agarwal";
 const title = "Khushal Agarwal – Full Stack Developer & Software Engineer";
 const description =
   "Khushal Agarwal (Kushal Agarwal, Khusal Agarwal, Khushal Agrawal). Full Stack Developer and software engineer. Official portfolio: experience, tech stack, projects. India.";
