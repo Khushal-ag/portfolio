@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20.20.1"
+    "node": ">=20.20.2"
   },
   "author": {
     "name": "Khushal Agarwal",
@@ -60,7 +60,7 @@
     "tailwind-animate": "^0.2.10",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.1"
+    "typescript-eslint": "^8.57.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
