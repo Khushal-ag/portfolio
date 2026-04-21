@@ -9,6 +9,9 @@ const imageHostnames = (process.env.NEXT_PUBLIC_IMAGE_HOSTS ?? "")
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   reactCompiler: isProd,
+  experimental: {
+    optimizePackageImports: ["react-icons"],
+  },
   ...(imageHostnames.length > 0 && {
     images: {
       remotePatterns: imageHostnames.map((hostname) => ({

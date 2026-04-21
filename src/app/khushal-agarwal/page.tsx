@@ -5,28 +5,30 @@ import type { Metadata } from "next";
 
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
-import { education, hero, site, skills, workExperience } from "@/content";
+import { education, hero, seo, site, skills, workExperience } from "@/content";
+import { buildProfileBreadcrumbJsonLd } from "@/lib/json-ld";
 
-const canonical = "https://www.khushalagarwal.dev/khushal-agarwal";
-const title = "Khushal Agarwal – Full Stack Developer & Software Engineer";
-const description =
-  "Khushal Agarwal (Kushal Agarwal, Khusal Agarwal, Khushal Agrawal). Full Stack Developer and software engineer. Official portfolio: experience, tech stack, projects. India.";
+const title = "Khushal Agarwal – Full-Stack Developer & Software Engineer";
+const profileDescription = seo.profileMetaDescription;
 
 export const metadata: Metadata = {
   title,
-  description,
-  keywords: [
-    "Khushal Agarwal",
-    "Kushal Agarwal",
-    "Khusal Agarwal",
-    "Khushal Agrawal",
-    "Khushaal Agarwal",
-    "Full Stack Developer",
-    "software engineer",
-    "portfolio",
-  ],
-  openGraph: { title, description, url: canonical },
-  alternates: { canonical },
+  description: profileDescription,
+  keywords: [...site.keywords, "software engineer", "India", "Pune"],
+  openGraph: {
+    title,
+    description: profileDescription,
+    url: "/khushal-agarwal",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: profileDescription,
+    creator: `@${site.twitterHandle}`,
+  },
+  alternates: { canonical: "/khushal-agarwal" },
+  robots: { index: true, follow: true },
 };
 
 const navLinkClass =
@@ -59,13 +61,12 @@ export default function KhushalAgarwalPage() {
           ~/khushal-agarwal
         </p>
 
-        {/* Name + role */}
         <header className="mb-12">
           <div className="mb-6 flex justify-center">
             <div className="relative size-24 overflow-hidden rounded-xl border border-border-strong bg-bg-panel shadow-lg md:size-28">
               <Image
                 src={hero.avatar}
-                alt=""
+                alt={hero.title}
                 fill
                 className="object-cover"
                 sizes="112px"
@@ -77,11 +78,10 @@ export default function KhushalAgarwalPage() {
             Khushal Agarwal
           </h1>
           <h2 className="text-center text-xl font-semibold text-text-muted md:text-2xl">
-            Full Stack Developer · Software Engineer
+            Full-Stack Developer · TypeScript · Go · AI · Web3
           </h2>
         </header>
 
-        {/* Name spellings – screen reader only, for SEO and accessibility */}
         <section className="sr-only" aria-label="Name spellings">
           <h2>Name spellings</h2>
           <p>
@@ -92,7 +92,6 @@ export default function KhushalAgarwalPage() {
           </p>
         </section>
 
-        {/* Bio */}
         <section className="mb-12">
           <h2 className="section-heading mb-6 text-left text-xl text-text md:text-2xl">
             About
@@ -100,22 +99,20 @@ export default function KhushalAgarwalPage() {
           <div className="space-y-4 text-lg leading-relaxed text-text-muted">
             <p>
               <strong className="text-text">Khushal Agarwal</strong> (also
-              spelled Kushal Agarwal) is a Full Stack Developer and software
-              engineer with experience building scalable microservices,
-              high-performance UIs, and crypto-enabled payment solutions. This
-              is the official Khushal Agarwal developer portfolio and Khushal
-              Agarwal engineer profile.
+              spelled Kushal Agarwal) is a full-stack developer with 2+ years
+              building web and mobile products across AI, Web3, and SaaS. This
+              is the official Khushal Agarwal developer portfolio and engineer
+              profile.
             </p>
             <p>
-              The Khushal Agarwal portfolio showcases work across Golang, React,
-              Node.js, TypeScript, and cloud-native systems. He has shipped
-              production applications at Kreedalabs, MixR, and Vyloo—spanning
-              edtech, e-commerce, pharmacy ERP, and AI/Web3 products.
+              The portfolio highlights work at Kreedalabs (Syncora), MixR, Hench
+              Solutions (BillBook, Mera Coach), and Vyloo — spanning AI data
+              marketplaces, social commerce and agents, billing and IAM, and
+              pharmacy operations platforms.
             </p>
           </div>
         </section>
 
-        {/* Experience */}
         <section className="mb-12">
           <h2 className="section-heading mb-6 text-left text-xl text-text md:text-2xl">
             Experience
@@ -142,7 +139,6 @@ export default function KhushalAgarwalPage() {
           </ul>
         </section>
 
-        {/* Tech stack */}
         <section className="mb-12">
           <h2 className="section-heading mb-6 text-left text-xl text-text md:text-2xl">
             Tech stack
@@ -168,14 +164,13 @@ export default function KhushalAgarwalPage() {
           </div>
         </section>
 
-        {/* Education */}
         <section className="mb-12">
           <h2 className="section-heading mb-4 text-left text-xl text-text md:text-2xl">
             Education
           </h2>
           <p className="text-text-muted">
             {education.degree}, {education.school} — {education.cpi},{" "}
-            {education.year}
+            {education.years}
           </p>
         </section>
 
@@ -184,7 +179,6 @@ export default function KhushalAgarwalPage() {
           same person, this portfolio.
         </p>
 
-        {/* CTAs */}
         <nav className="flex flex-wrap items-center gap-4 border-t border-border pt-8 text-text-muted">
           <Link href="/" className={navLinkClass}>
             ← Back to portfolio
@@ -218,6 +212,12 @@ export default function KhushalAgarwalPage() {
           </a>
         </nav>
       </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildProfileBreadcrumbJsonLd()),
+        }}
+      />
     </div>
   );
 }

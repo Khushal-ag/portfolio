@@ -6,25 +6,12 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub, FaTimes } from "react-icons/fa";
 
-function slug(name: string) {
-  return name
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-}
+import type { PortfolioProject } from "@/content";
 
-type Project = {
-  id: number;
-  title: string;
-  des: string;
-  img: string;
-  iconLists: string[];
-  siteLink: string;
-  githubLink: string;
-};
+import { projectTitleToFileSlug } from "@/lib/slug";
 
 type ProjectDetailModalProps = {
-  project: Project | null;
+  project: PortfolioProject | null;
   onClose: () => void;
 };
 
@@ -64,10 +51,8 @@ export default function ProjectDetailModal({
           aria-modal="true"
           aria-labelledby="project-modal-title"
         >
-          {/* Backdrop */}
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
-          {/* Modal panel */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -76,7 +61,6 @@ export default function ProjectDetailModal({
             className="editor-panel relative max-h-[90vh] w-full max-w-3xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Editor title bar – macOS style */}
             <div className="flex shrink-0 items-center gap-2 border-b border-border bg-bg-elevated px-3 py-2">
               <span
                 className="size-2 shrink-0 rounded-full bg-[#ff5f56]"
@@ -91,7 +75,7 @@ export default function ProjectDetailModal({
                 aria-hidden
               />
               <span className="font-editor ml-2 shrink-0 text-xs text-text-dim">
-                {slug(project.title)}.tsx
+                {projectTitleToFileSlug(project.title)}.tsx
               </span>
               <button
                 type="button"
@@ -103,9 +87,7 @@ export default function ProjectDetailModal({
               </button>
             </div>
 
-            {/* Scrollable content */}
             <div className="max-h-[calc(90vh-48px)] overflow-y-auto">
-              {/* Preview pane – image */}
               <div className="border-b border-l-2 border-border bg-bg-elevated">
                 <div className="relative aspect-video w-full bg-bg-elevated">
                   <Image
@@ -119,7 +101,6 @@ export default function ProjectDetailModal({
                 </div>
               </div>
 
-              {/* Details – code-style layout */}
               <div className="border-l-2 border-border bg-bg-panel px-4 py-5 md:px-6 md:py-6">
                 <div className="font-editor space-y-4 text-sm leading-relaxed md:text-[0.9375rem]">
                   <div>

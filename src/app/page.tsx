@@ -12,28 +12,28 @@ import Skills from "@/components/Skills";
 import StickyBreak from "@/components/StickyBreak";
 import Summary from "@/components/Summary";
 import Testimonials from "@/components/Testimonials";
+import { seo, site } from "@/content";
 
-export const dynamic = "force-dynamic";
-
-const homeTitle = "Khushal Agarwal – Full Stack Developer | Portfolio";
-const homeDescription =
-  "Khushal Agarwal — Full Stack Developer. Portfolio (also find: Kushal Agarwal, Khusal Agarwal, Khushal Agrawal). Scalable microservices, Golang, React, Node.js.";
+const homeTitle = `${site.author.name} – Full-Stack Developer | Portfolio`;
+const homeDescription = seo.homeMetaDescription;
 
 export const metadata: Metadata = {
   title: homeTitle,
   description: homeDescription,
-  keywords: [
-    "Khushal Agarwal",
-    "Kushal Agarwal",
-    "Khusal Agarwal",
-    "Khushal Agrawal",
-    "Khushaal Agarwal",
-    "Full Stack Developer",
-    "portfolio",
-  ],
-  openGraph: { title: homeTitle, description: homeDescription },
-  twitter: { title: homeTitle, description: homeDescription },
-  alternates: { canonical: "https://www.khushalagarwal.dev" },
+  keywords: [...site.keywords],
+  openGraph: {
+    title: homeTitle,
+    description: homeDescription,
+    url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homeTitle,
+    description: homeDescription,
+  },
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
 };
 
 export default function Home() {

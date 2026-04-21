@@ -2,7 +2,6 @@
 @import "tailwind-animate";
 
 @theme {
-  /* Supabase + Code Editor design system */
   --color-bg: #0f0f10;
   --color-bg-elevated: #18181b;
   --color-bg-panel: #1c1c1f;
@@ -16,11 +15,9 @@
   --color-text-muted: rgba(237, 237, 237, 0.7);
   --color-text-subtle: rgba(237, 237, 237, 0.5);
   --color-text-dim: rgba(237, 237, 237, 0.35);
-  /* Supabase green accent */
   --color-accent: #3ecf8e;
   --color-accent-dim: rgba(62, 207, 142, 0.12);
   --color-accent-glow: rgba(62, 207, 142, 0.2);
-  /* Syntax-style colors for code-editor feel */
   --color-keyword: #c678dd;
   --color-string: #98c379;
   --color-comment: #5c6370;
@@ -34,7 +31,6 @@
   --radius-full: 9999px;
   --font-heading: var(--font-poppins), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
-  /* --font-mono is set by layout.tsx (JetBrains Mono); use it in .font-editor and .file-path */
   --z-nav: 1000;
 }
 
@@ -132,7 +128,6 @@
     border-color: var(--color-border-strong);
   }
 
-  /* Editor-style panel with left accent (like active tab) */
   .editor-panel {
     background: var(--color-bg-panel);
     border: 1px solid var(--color-border);
@@ -144,7 +139,6 @@
     border-color: var(--color-border-strong);
   }
 
-  /* Enhanced hover for experience cards */
   .experience-card {
     cursor: default;
     transition:
@@ -256,7 +250,6 @@
     transform: translateY(-1px);
   }
 
-  /* Code-style line number strip (optional use in sections) */
   .line-numbers {
     font-family: var(--font-mono);
     font-size: 0.75rem;

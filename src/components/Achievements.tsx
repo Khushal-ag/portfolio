@@ -48,7 +48,7 @@ export default function Achievements() {
               {education.degree} · {education.school}
             </p>
             <p className="text-sm text-text-muted">
-              {education.cpi} · {education.year}
+              {education.cpi} · {education.years}
             </p>
           </motion.div>
 

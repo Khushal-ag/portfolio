@@ -2,62 +2,53 @@ import type { Metadata } from "next";
 
 import "../styles/globals.css";
 
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { siteConfig } from "@/config/site";
+import { seo } from "@/content";
 import { fontVariables } from "@/lib/fonts";
+import { buildRootJsonLd } from "@/lib/json-ld";
 
-import { ThemeProvider } from "./provider";
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
-const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Khushal Agarwal",
-  alternateName: [
-    "Kushal Agarwal",
-    "Khusal Agarwal",
-    "Khushal Agrawal",
-    "Khushaal Agarwal",
-  ],
-  url: "https://www.khushalagarwal.dev",
-  jobTitle: "Full Stack Developer",
-  sameAs: [
-    siteConfig.author.linkedin,
-    siteConfig.links?.github?.href ??
-      siteConfig.github?.href ??
-      "https://github.com/Khushal-ag",
-  ].filter(Boolean),
-  image: siteConfig.url + siteConfig.author.avatar,
-  email: siteConfig.author.mail,
-};
+const layoutDescription = seo.metaDescription;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.name, template: `%s · ${siteConfig.name}` },
-  description: siteConfig.description,
+  description: layoutDescription,
   keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
   creator: siteConfig.author.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  ...(googleVerification && {
+    verification: { google: googleVerification },
+  }),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
     title: siteConfig.name,
-    description: siteConfig.description,
+    description: layoutDescription,
     siteName: siteConfig.name,
-    images: [
-      {
-        url: `${siteConfig.url}${siteConfig.author.avatar}`,
-        width: 512,
-        height: 512,
-        alt: siteConfig.author.name,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}${siteConfig.author.avatar}`],
+    description: layoutDescription,
+    creator: `@${siteConfig.twitterHandle}`,
+    site: `@${siteConfig.twitterHandle}`,
   },
   icons: {
     icon: "/favicon.ico",
@@ -75,19 +66,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${fontVariables} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
+        <Analytics />
         <SpeedInsights />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personSchema),
+            __html: JSON.stringify(buildRootJsonLd()),
           }}
         />
       </body>

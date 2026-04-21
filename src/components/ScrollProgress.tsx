@@ -12,12 +12,10 @@ export default function ScrollProgress() {
 
   return (
     <>
-      {/* Top bar – thin horizontal progress */}
       <motion.div
-        className="fixed top-0 left-0 z-[calc(var(--z-nav)+1)] h-[2px] origin-left bg-accent"
+        className="pointer-events-none fixed top-0 left-0 z-[calc(var(--z-nav)+1)] h-[2px] origin-left bg-accent"
         style={{ scaleX: smoothProgress }}
       />
-      {/* Vertical scrollbar (editor-style, right edge) */}
       <div
         className="pointer-events-none fixed top-0 right-0 z-[calc(var(--z-nav)-1)] hidden h-full w-1.5 md:block"
         aria-hidden

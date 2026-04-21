@@ -6,6 +6,8 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { FaExpandAlt, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
+import type { PortfolioProject } from "@/content";
+
 import GitHubCTA from "@/components/GitHubCTA";
 import ProjectDetailModal from "@/components/ProjectDetailModal";
 import {
@@ -14,25 +16,18 @@ import {
   SectionHeading,
 } from "@/components/Section";
 import { projects } from "@/content";
+import { projectTitleToFileSlug } from "@/lib/slug";
 
 const card = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
-function slug(name: string) {
-  return name
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-}
-
 export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
+  const [selectedProject, setSelectedProject] =
+    useState<PortfolioProject | null>(null);
 
   return (
     <Section id="projects" reveal={false}>
@@ -65,10 +60,9 @@ export default function Projects() {
               }}
               className="group flex cursor-pointer flex-col overflow-hidden rounded-lg border border-border bg-bg-panel transition-colors hover:border-border-strong"
             >
-              {/* Filename bar (editor tab style) */}
               <div className="flex items-center justify-between border-b border-border bg-bg-elevated px-3 py-2">
                 <p className="font-editor text-xs text-text-subtle">
-                  {slug(proj.title)}.tsx
+                  {projectTitleToFileSlug(proj.title)}.tsx
                 </p>
                 <span
                   className="text-text-dim opacity-0 transition-opacity group-hover:opacity-100"

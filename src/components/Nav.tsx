@@ -9,6 +9,7 @@ import { FaGithub } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 
 import { navItems, site } from "@/content";
+import { githubProfileHref } from "@/lib/links";
 
 const SECTION_IDS = navItems
   .map((item) => (item.link.startsWith("#") ? item.link.slice(1) : item.link))
@@ -64,15 +65,11 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () =>
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
       setActiveSection((prev) => getSectionInView() || prev);
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -86,7 +83,6 @@ export default function Nav() {
         className={`fixed top-0 right-0 left-0 z-(--z-nav) border-b transition-all duration-300 ${scrolledHeaderClass}`}
       >
         <div className="section-container flex h-14 items-center gap-3 md:h-12 md:gap-4">
-          {/* Window controls + brand */}
           <div className="flex shrink-0 items-center gap-3">
             <div className="hidden shrink-0 items-center gap-1.5 md:flex">
               <span className="size-2 rounded-full bg-[#ff5f56]" aria-hidden />
@@ -104,7 +100,6 @@ export default function Nav() {
             </Link>
           </div>
 
-          {/* Nav tabs */}
           <nav
             className="hidden flex-1 items-center justify-center gap-0.5 md:flex"
             aria-label="Main"
@@ -131,14 +126,9 @@ export default function Nav() {
             })}
           </nav>
 
-          {/* GitHub + Resume + mobile toggle */}
           <div className="ml-auto flex shrink-0 items-center gap-2">
             <a
-              href={
-                site.github?.href ??
-                site.links?.github?.href ??
-                "https://github.com/Khushal-ag"
-              }
+              href={githubProfileHref}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden size-9 items-center justify-center rounded-lg text-text-muted transition hover:text-accent md:flex"
@@ -169,7 +159,6 @@ export default function Nav() {
         </div>
       </header>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -193,6 +182,16 @@ export default function Nav() {
                 className="section-container flex flex-col py-4"
                 aria-label="Main"
               >
+                <a
+                  href={githubProfileHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="font-editor flex items-center gap-2 rounded-lg px-4 py-3 text-sm text-text transition hover:bg-surface-hover hover:text-accent"
+                >
+                  <FaGithub className="size-5 shrink-0" />
+                  GitHub
+                </a>
                 {!isHome && (
                   <Link
                     href="/"

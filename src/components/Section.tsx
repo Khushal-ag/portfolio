@@ -10,12 +10,18 @@ const defaultReveal = {
   transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
 };
 
+const sectionVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
+};
+
 type SectionProps = {
   id?: string;
   className?: string;
   children: React.ReactNode;
   reveal?: boolean;
-  stagger?: boolean;
 };
 
 export function Section({
@@ -23,26 +29,9 @@ export function Section({
   className = "",
   children,
   reveal = true,
-  stagger = false,
 }: SectionProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const sectionVariants =
-    stagger ?
-      {
-        visible: {
-          transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-        },
-      }
-    : undefined;
-  const contentVariants =
-    stagger ?
-      {
-        visible: {
-          transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-        },
-      }
-    : undefined;
 
   if (!reveal) {
     return (
@@ -65,9 +54,7 @@ export function Section({
       variants={sectionVariants}
       className={`section-padding scroll-mt-20 ${className}`}
     >
-      <motion.div className="section-container" variants={contentVariants}>
-        {children}
-      </motion.div>
+      <motion.div className="section-container">{children}</motion.div>
     </motion.section>
   );
 }
@@ -91,7 +78,6 @@ export function SectionHeading({
   );
 }
 
-/** File-path style label for sections (e.g. ~/portfolio/about.ts) */
 export function SectionFileLabel({
   file,
   className = "",

@@ -17,7 +17,7 @@ export default function Summary() {
       <SectionHeading>About me</SectionHeading>
       <Reveal>
         <h3 className="sr-only">
-          Software Engineer · Backend &amp; Systems Engineer
+          Full-Stack Developer · TypeScript · Go · AI · Web3
         </h3>
         <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-text-muted md:text-xl">
           {summary.paragraph}

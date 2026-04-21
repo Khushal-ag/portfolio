@@ -4,11 +4,7 @@ import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
 import { site } from "@/content";
-
-const href =
-  site.github?.href ??
-  site.links?.github?.href ??
-  "https://github.com/Khushal-ag";
+import { githubProfileHref } from "@/lib/links";
 
 export default function GitHubCTA() {
   return (
@@ -24,7 +20,7 @@ export default function GitHubCTA() {
           "More projects, open-source work, and code on GitHub."}
       </p>
       <a
-        href={href}
+        href={githubProfileHref}
         target="_blank"
         rel="noopener noreferrer"
         className="link-accent font-editor inline-flex items-center gap-2 text-sm font-medium"

@@ -8,6 +8,7 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 import { HiChevronDown } from "react-icons/hi";
 
 import { hero as heroContent, site } from "@/content";
+import { githubProfileHref } from "@/lib/links";
 
 const container = {
   hidden: { opacity: 0 },
@@ -24,13 +25,12 @@ const item = {
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  const parallaxBg = useTransform(scrollY, [0, 400], [0, 80]);
-  const parallaxFade = useTransform(scrollY, [0, 300], [1, 0]);
-  const scrollIndicatorOpacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const parallaxBg = useTransform(scrollY, [0, 720], [0, 80]);
+  const parallaxFade = useTransform(scrollY, [0, 100, 720], [1, 1, 0]);
+  const scrollIndicatorOpacity = useTransform(scrollY, [0, 180], [1, 0]);
 
   return (
     <section className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-4 pt-24 pb-20">
-      {/* Background */}
       <motion.div
         style={{ y: parallaxBg }}
         className="absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,var(--color-accent-dim),transparent_50%)]"
@@ -47,7 +47,6 @@ export default function Hero() {
         animate="visible"
         className="relative z-10 flex w-full max-w-2xl flex-col items-center text-center"
       >
-        {/* Avatar */}
         <motion.div variants={item} className="mb-8 flex justify-center">
           <motion.div
             className="relative size-28 overflow-hidden rounded-xl border border-border-strong bg-bg-panel shadow-lg shadow-black/20 md:size-32"
@@ -68,7 +67,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Headline */}
         <motion.p
           variants={item}
           className="font-editor mb-2 text-sm font-medium tracking-wide text-accent md:text-base"
@@ -82,7 +80,7 @@ export default function Hero() {
           {heroContent.title}
         </motion.h1>
         <motion.h2 variants={item} className="sr-only">
-          Full Stack Developer
+          Full-Stack Developer
         </motion.h2>
         <motion.p
           variants={item}
@@ -91,12 +89,10 @@ export default function Hero() {
           {heroContent.subtitle}
         </motion.p>
 
-        {/* Code block – editor window style */}
         <motion.div
           variants={item}
           className="w-full max-w-lg overflow-hidden rounded-lg border border-border bg-bg-panel shadow-xl shadow-black/10"
         >
-          {/* Window bar */}
           <div className="flex items-center gap-2 border-b border-border bg-bg-elevated px-3 py-2">
             <span className="size-2 rounded-full bg-[#ff5f56]" aria-hidden />
             <span className="size-2 rounded-full bg-[#ffbd2e]" aria-hidden />
@@ -128,7 +124,6 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* CTAs – primary focus */}
         <motion.div
           variants={item}
           className="mt-10 flex flex-wrap items-center justify-center gap-3"
@@ -142,11 +137,7 @@ export default function Hero() {
             Resume
           </a>
           <a
-            href={
-              site.github?.href ??
-              site.links?.github?.href ??
-              "https://github.com/Khushal-ag"
-            }
+            href={githubProfileHref}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-ghost inline-flex items-center gap-2"
@@ -159,7 +150,6 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Contact – secondary, compact */}
         <motion.div
           variants={item}
           className="mt-8 flex flex-wrap items-center justify-center gap-3 text-text-muted"
@@ -194,7 +184,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll hint */}
       <motion.a
         href="#about"
         style={{ opacity: scrollIndicatorOpacity }}

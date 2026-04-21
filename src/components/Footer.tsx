@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
 import { footer as footerContent, site, socialMedia } from "@/content";
+import { githubProfileHref } from "@/lib/links";
 
 export default function Footer() {
   return (
@@ -50,11 +51,7 @@ export default function Footer() {
             {footerContent.ctaText}
           </Link>
           <a
-            href={
-              site.github?.href ??
-              site.links?.github?.href ??
-              "https://github.com/Khushal-ag"
-            }
+            href={githubProfileHref}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-ghost inline-flex items-center gap-2"
@@ -84,9 +81,11 @@ export default function Footer() {
             >
               <Image
                 src={item.img}
-                alt={item.label ?? ""}
+                alt=""
                 width={22}
                 height={22}
+                className="size-[22px]"
+                unoptimized
               />
             </a>
           ))}

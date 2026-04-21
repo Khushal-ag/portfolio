@@ -1,9 +1,5 @@
 "use client";
 
-/**
- * Full-bleed section that sticks while the next section scrolls over it.
- * Code-editor style: quote as a comment block.
- */
 export default function StickyBreak() {
   return (
     <div className="relative h-[40vh] min-h-[280px]">
