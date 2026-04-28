@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20.20.2"
+    "node": ">=24.15.0"
   },
   "author": {
     "name": "Khushal Agarwal",
