@@ -24,8 +24,8 @@
   --border-muted: rgba(0, 0, 0, 0.05);
   --text: #18181b;
   --text-muted: rgba(24, 24, 27, 0.74);
-  --text-subtle: rgba(24, 24, 27, 0.62);
-  --text-dim: rgba(24, 24, 27, 0.5);
+  --text-subtle: rgba(24, 24, 27, 0.7);
+  --text-dim: rgba(24, 24, 27, 0.62);
   --accent: #0a7a52;
   --accent-dim: rgba(10, 122, 82, 0.1);
   --accent-2: #0b8aa6;
@@ -52,8 +52,8 @@
   --border-muted: rgba(255, 255, 255, 0.04);
   --text: #ededed;
   --text-muted: rgba(237, 237, 237, 0.7);
-  --text-subtle: rgba(237, 237, 237, 0.6);
-  --text-dim: rgba(237, 237, 237, 0.45);
+  --text-subtle: rgba(237, 237, 237, 0.62);
+  --text-dim: rgba(237, 237, 237, 0.55);
   --accent: #3ecf8e;
   --accent-dim: rgba(62, 207, 142, 0.12);
   --accent-2: #2dd4e6;
@@ -374,19 +374,17 @@
      text stays a valid LCP candidate. */
   @keyframes word-in {
     from {
-      transform: translateY(0.4em);
-      filter: blur(10px);
+      transform: translateY(0.35em);
     }
     to {
       transform: none;
-      filter: blur(0);
     }
   }
 
   .reveal-word {
     display: inline-block;
-    animation: word-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+    animation: word-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 70ms);
   }
 
   @keyframes fade-up {
