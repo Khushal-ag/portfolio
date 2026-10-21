@@ -65,8 +65,8 @@ export default function KhushalAgarwalPage() {
               developer portfolio and engineer profile.
             </p>
             <p>
-              The portfolio highlights full-time work at Kreedalabs (AI search,
-              generative-AI tools, Syncora) and freelance work for MixR, Hench
+              The portfolio highlights work at Kreedalabs (AI search,
+              generative-AI tools, Syncora) and client projects for MixR, Hench
               Solutions (BillBook, IAMS, Mera Coach, Abvela) and Vyloo, spanning
               AI platforms, social commerce and agents, billing and insurance
               tools, and pharmacy operations.

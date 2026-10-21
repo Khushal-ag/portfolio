@@ -5,7 +5,6 @@ const TWITTER_HANDLE = "starkhush5";
 export const site = {
   name: "Khushal Agarwal | Full-Stack Developer",
   url: "https://www.khushalagarwal.dev",
-  urlBare: "https://khushalagarwal.dev",
   /** Bump when page content changes; feeds sitemap lastmod and JSON-LD dateModified. */
   lastUpdated: "2026-10-21",
 
@@ -52,10 +51,10 @@ export const site = {
 
 export const seo = {
   metaDescription:
-    "Portfolio of Khushal Agarwal, a full-stack developer in Pune, India working with TypeScript, Go, AI and Web3. Open to full-time roles and freelance projects.",
+    "Portfolio of Khushal Agarwal, a full-stack developer in Pune, India working with TypeScript, Go, AI and Web3. Open to full-time, contract and freelance work.",
 
   homeMetaDescription:
-    "Full-stack developer in Pune, India building AI, Web3 and SaaS products with React, Next.js, Node.js and Go. Open to full-time and freelance work.",
+    "Full-stack developer in Pune, India building AI, Web3 and SaaS products with React, Next.js, Node.js and Go. Open to full-time, contract and freelance work.",
 
   profileMetaDescription:
     "Khushal Agarwal, full-stack developer and software engineer in Pune, India. Work at Kreedalabs, MixR, Hench Solutions and Vyloo, plus tech stack and education.",
@@ -69,7 +68,7 @@ export const personAlternateNames = [
 ] as const;
 
 export const hero = {
-  status: "Open to full-time and freelance work",
+  status: "Open to full-time, contract and freelance work",
   blurb:
     "I build AI, Web3 and SaaS products for web and mobile, with React, Node.js, Go and .NET.",
 };
@@ -77,16 +76,16 @@ export const hero = {
 export const summary = {
   paragraphs: [
     "I'm a full-stack developer with 3+ years of experience shipping production software for startups across AI, Web3 and SaaS. I work end to end: React, Next.js and React Native on the front, Node.js, Go and .NET on the back, and smart contracts and LLM integrations wherever a product needs them.",
-    "I work full-time at Kreedalabs and take on freelance projects in parallel. I'm open to full-time roles and freelance work, onsite in India or remote worldwide.",
+    "I'm open to full-time roles, contracts and freelance projects, onsite in India or remote worldwide. If you have something interesting to build, I'd like to hear about it.",
   ],
   facts: [
     { label: "Based in", value: "Pune, India" },
-    {
-      label: "Right now",
-      value: "Full-time at Kreedalabs, with freelance projects in parallel",
-    },
+    { label: "Right now", value: "Full-time at Kreedalabs" },
     { label: "Focus", value: "AI, Web3 and SaaS products" },
-    { label: "Open to", value: "Full-time roles and freelance projects" },
+    {
+      label: "Open to",
+      value: "Full-time roles, contracts and freelance projects",
+    },
   ],
 } as const;
 
@@ -461,7 +460,7 @@ export const projects: PortfolioProject[] = [
     kind: "Pharmacy ERP",
     summary: "Batch and expiry tracking inventory ERP for pharmacies.",
     des: "An inventory ERP for pharmacies, built for Vyloo. It tracks medicines by batch and expiry, with stock levels and reorder alerts, a live dashboard, role-based access with permission gates, audit trails and light and dark themes.",
-    img: "/images/projects/capsule-cloud.jpg",
+    img: "/images/projects/capsule-cloud-dashboard.jpg",
     tech: ["nextjs", "typescript", "tailwind", "reactquery", "mongodb", "aws"],
     siteLink: "https://capsule.vyloo.in/signin",
   },
@@ -534,7 +533,7 @@ export const testimonials = [
 export const footer = {
   heading: "Let's build something together",
   subtext:
-    "Open to full-time roles and freelance projects, onsite in India or remote worldwide. Reach out anytime.",
+    "Open to full-time roles, contracts and freelance projects, onsite in India or remote worldwide. Reach out anytime.",
   ctaText: "Send an email",
   copyright: "© {year} Khushal Agarwal",
 };

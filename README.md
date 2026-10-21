@@ -28,7 +28,7 @@ Pune, Maharashtra · **starkhush5@gmail.com** · **+91 9557429766**
 
 ## About
 
-Full-stack developer with **3+ years** building web and mobile products across **AI**, **Web3**, and **SaaS**. Comfortable across the stack — from React, Next.js and React Native frontends to Node.js, Go and .NET backends, smart contracts and LLM integrations — shipping production systems for startups **full-time** and as a **freelancer**.
+Full-stack developer with **3+ years** building web and mobile products across **AI**, **Web3**, and **SaaS**. Comfortable across the stack — from React, Next.js and React Native frontends to Node.js, Go and .NET backends, smart contracts and LLM integrations — shipping production systems for startups.
 
 ---
 
@@ -144,7 +144,7 @@ Open-source and personal project code: [github.com/Khushal-ag](https://github.co
 
 <div align="center">
 
-**Open to full-time roles and freelance projects.**
+**Open to full-time roles, contracts and freelance projects.**
 
 [Portfolio](https://www.khushalagarwal.dev) · [Resume PDF](https://drive.google.com/file/d/1nW1Xe0eYhQ0QTlKrlM6XRfnFxD7GChOZ/view?usp=sharing) · [GitHub](https://github.com/Khushal-ag) · [LinkedIn](https://www.linkedin.com/in/khushal-agarwal) · [Email](mailto:starkhush5@gmail.com)
 

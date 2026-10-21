@@ -18,6 +18,10 @@ export default function Skills() {
     tabRefs.current[next]?.focus();
   }
 
+  function onPointerEnter(e: React.PointerEvent, index: number) {
+    if (e.pointerType === "mouse") setActive(index);
+  }
+
   function onKeyDown(e: React.KeyboardEvent, index: number) {
     const keys: Record<string, number | undefined> = {
       ArrowDown: index + 1,
@@ -61,6 +65,7 @@ export default function Skills() {
                 aria-controls={`skill-panel-${i}`}
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActive(i)}
+                onPointerEnter={(e) => onPointerEnter(e, i)}
                 onKeyDown={(e) => onKeyDown(e, i)}
                 className={`relative flex shrink-0 cursor-pointer snap-start items-center justify-between gap-4 rounded-xl border px-4 py-3 text-left transition-colors lg:w-full ${
                   selected ?
