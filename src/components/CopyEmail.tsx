@@ -22,11 +22,11 @@ export default function CopyEmail() {
   }
 
   return (
-    <Magnetic>
+    <Magnetic className="w-full sm:inline-block sm:w-auto">
       <button
         type="button"
         onClick={copy}
-        className="btn-primary cursor-pointer px-6 py-3.5 text-sm sm:text-base"
+        className="btn-primary min-h-14 w-full cursor-pointer px-6 py-3.5 text-sm sm:min-h-0 sm:w-auto sm:text-base"
       >
         {copied ?
           <FaCheck className="size-4" aria-hidden />

@@ -14,7 +14,7 @@ export default function ThemeToggle({
     <button
       type="button"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className={`flex size-9 cursor-pointer items-center justify-center rounded-lg text-text-muted transition hover:bg-surface-hover hover:text-accent ${className}`}
+      className={`flex size-10 cursor-pointer items-center justify-center rounded-lg text-text-muted transition hover:bg-surface-hover hover:text-accent lg:size-9 ${className}`}
       aria-label="Toggle color theme"
     >
       <FaSun className="hidden size-4 dark:block" aria-hidden />

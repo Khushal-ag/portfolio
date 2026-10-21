@@ -181,7 +181,8 @@ export type WorkExperience = {
   role: string;
   type: "Full-time" | "Freelance";
   location: string;
-  period: string;
+  /** Omitted for freelance work, which has no fixed tenure. */
+  period?: string;
   summary: string;
   bullets: readonly WorkBullet[];
   stack: readonly TechKey[];
@@ -196,27 +197,27 @@ export const workExperience: WorkExperience[] = [
     location: "Pune",
     period: "Aug 2024 - Present",
     summary:
-      "Product engineering across AI platforms, Web3 infrastructure and mobile apps.",
+      "Owning features end to end on AI, Web3 and mobile products, from API and data design to production releases.",
     bullets: [
       {
         lead: "AI image search",
-        text: "Built a multimodal search and analytics platform for an enterprise fashion client, with a React frontend, an Express and PostgreSQL API, AI keyword and catalog matching, and S3 presigned delivery.",
+        text: "Shipped a multimodal AI search and analytics platform for an enterprise fashion client, so teams can find catalog items from images and keywords. Built the React UI, the Express and PostgreSQL API, AI matching and secure S3 delivery.",
       },
       {
-        lead: "Collection builder",
-        text: "Developed features for a generative-AI collection builder: multi-select surfaces, range-plan validation and per-build AI usage and cost tracking.",
+        lead: "Generative AI tooling",
+        text: "Built features for a generative-AI collection builder, including multi-select workflows and range-plan validation, and added per-build AI usage and cost tracking so spend stays visible.",
       },
       {
         lead: "Syncora",
-        text: "Worked across an AI data marketplace, including WebSocket job updates, dataset quality scoring, Stripe subscriptions with automated credit recharge, and HuggingFace fine-tuning workflows.",
+        text: "Delivered core parts of an AI data marketplace: real-time job updates over WebSockets, dataset quality scoring, Stripe subscriptions with automated credit recharge and HuggingFace fine-tuning workflows.",
       },
       {
         lead: "On-chain",
-        text: "Wrote Solidity contracts (UUPS proxy on Base L2) and a Solana Anchor program for contribution records and token rewards, plus a Rust service that streams chain events without overloading RPC nodes.",
+        text: "Designed and shipped smart contracts (upgradeable Solidity on Base and a Solana Anchor program) for contribution records and token rewards, plus a Rust service that streams chain events without overloading RPC nodes.",
       },
       {
         lead: "Mobile",
-        text: "Built React Native features, including wallet transactions and refunds, for a social creator app.",
+        text: "Built React Native wallet features, including transactions and refunds, for a social creator app.",
       },
     ],
     stack: [
@@ -235,38 +236,75 @@ export const workExperience: WorkExperience[] = [
     ],
   },
   {
+    id: 2,
+    company: "MixR",
+    role: "Full Stack Developer",
+    type: "Full-time",
+    location: "Remote",
+    period: "Mar 2024 - Aug 2024",
+    summary:
+      "Backend and AI engineer on a community-first shopping marketplace, shipping the Go services and an agent that finds and buys products for users.",
+    bullets: [
+      {
+        lead: "Go backend",
+        text: "Built the Go services on PostgreSQL, Redis and GraphQL behind search, catalog sync and order flows.",
+      },
+      {
+        lead: "AI shopping agent",
+        text: "Built an agent on the Vercel AI SDK and OpenAI that finds products across stores and completes the purchase, and reshaped the APIs so the agent can read and act on them reliably.",
+      },
+      {
+        lead: "Payments",
+        text: "Shipped checkout with Stripe and Privy authentication, plus MixR Pay, a crypto checkout on embedded wallets that lets the agent pay on-chain.",
+      },
+      {
+        lead: "Fast search",
+        text: "Kept browsing quick with Redis caching and PostgreSQL trigram search over a Shopify catalog synced through the Rye API.",
+      },
+      {
+        lead: "Delivery",
+        text: "Owned deployment: Docker Compose on a VPS with CI/CD, plus webhook and cron-driven order and notification flows.",
+      },
+    ],
+    stack: [
+      "go",
+      "postgresql",
+      "redis",
+      "graphql",
+      "nextjs",
+      "openai",
+      "stripe",
+      "docker",
+    ],
+  },
+  {
     id: 3,
     company: "Hench Solutions",
     role: "Full Stack Developer",
     type: "Freelance",
     location: "Remote",
-    period: "2025 - Present",
     summary:
-      "Designed and shipped client products across billing, insurance, coaching and retail.",
+      "Freelance engineer taking client products from idea to production across billing, insurance, coaching and retail: API design, web, mobile and deployment.",
     bullets: [
       {
         lead: "BillBook",
-        text: "Multi-tenant billing and invoicing with GST reports, inventory and PDF exports, on Next.js, Express and PostgreSQL.",
+        text: "Built a multi-tenant billing and invoicing SaaS for Indian businesses, with GST reports, inventory tracking and PDF exports on Next.js, Express and PostgreSQL.",
       },
       {
-        lead: "IAM",
-        text: "Authentication, roles and policies shared across multiple service modules.",
-      },
-      {
-        lead: "IAMS",
-        text: "An ASP.NET Core app for broker and insurer management, with KYC uploads, OTP and premium-reminder emails, and CI/CD to AWS ECR and EC2.",
+        lead: "IAM and IAMS",
+        text: "Created shared authentication, roles and policies used across service modules, and an ASP.NET Core broker and insurer app with KYC uploads, OTP and premium-reminder emails, deployed through CI/CD to AWS ECR and EC2.",
       },
       {
         lead: "Mera Coach",
-        text: "An Expo mobile app with EAS builds and a Next.js website, both on a .NET API.",
+        text: "Shipped an Expo mobile app (EAS builds) and a Next.js website for health coaches, both on one .NET API.",
       },
       {
         lead: "Abvela",
-        text: "A fashion storefront with Razorpay checkout, backed by an Express and PostgreSQL API.",
+        text: "Launched a fashion storefront with Razorpay checkout on an Express and PostgreSQL API, so the label can sell online.",
       },
       {
         lead: "Vimpact",
-        text: "An offline-capable gate-pass PWA with camera capture, and a migration of its API from .NET to Node.js and SQL Server with S3 photo storage.",
+        text: "Migrated the API of an offline-capable gate-pass PWA from .NET to Node.js and SQL Server, keeping camera capture working and moving photos to S3.",
       },
     ],
     stack: [
@@ -286,25 +324,24 @@ export const workExperience: WorkExperience[] = [
     role: "Full Stack Developer",
     type: "Freelance",
     location: "Remote",
-    period: "2025 - Jun 2026",
     summary:
-      "Built the full stack behind an online pharmacy and its operations tooling.",
+      "Built the full stack behind an online pharmacy, from customer ordering to merchant fulfilment and admin operations.",
     bullets: [
       {
-        lead: "Suite",
-        text: "Delivered five connected apps: customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API.",
+        lead: "Five apps, one platform",
+        text: "Delivered customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API as one connected system.",
+      },
+      {
+        lead: "Live fulfilment",
+        text: "Built real-time order acceptance and delivery for merchants, with Google Maps delivery zones and live, location-aware tracking for customers.",
       },
       {
         lead: "Backend",
-        text: "Node.js with Hono and NestJS on MongoDB, Redis, AWS S3 and SQS, with Firebase push notifications and Puppeteer-generated PDF receipts and reports.",
+        text: "Designed the Node.js API (Hono, NestJS) on MongoDB, Redis, AWS S3 and SQS, with Firebase push notifications and Puppeteer PDF receipts and reports.",
       },
       {
-        lead: "Maps",
-        text: "Google Maps for delivery zones and live, location-aware order tracking.",
-      },
-      {
-        lead: "Operations",
-        text: "Real-time order acceptance and delivery workflows for merchants, and onboarding, analytics and billing for admins.",
+        lead: "Admin tooling",
+        text: "Gave admins onboarding, analytics and billing tools to manage merchants.",
       },
     ],
     stack: [
@@ -318,52 +355,9 @@ export const workExperience: WorkExperience[] = [
       "puppeteer",
     ],
   },
-  {
-    id: 2,
-    company: "MixR",
-    role: "Full Stack Developer",
-    type: "Freelance",
-    location: "Remote",
-    period: "Mar 2024 - Feb 2026",
-    summary:
-      "Full-stack work on a community-first shopping marketplace, from the Go backend to an AI shopping agent.",
-    bullets: [
-      {
-        lead: "Backend",
-        text: "Built the Go services on PostgreSQL, Redis and GraphQL that power search, catalog sync and order flows.",
-      },
-      {
-        lead: "AI agent",
-        text: "Created a shopping agent with the Vercel AI SDK and OpenAI that finds and buys products for users, and reshaped the APIs so it can read and act on them reliably.",
-      },
-      {
-        lead: "Web and payments",
-        text: "Built the Next.js client and AI chat service with Stripe checkout and Privy authentication, plus MixR Pay, a crypto checkout on Privy embedded wallets that lets the agent pay on-chain.",
-      },
-      {
-        lead: "Catalog and search",
-        text: "Synced the Shopify catalog through the Rye API and sped up queries with Redis caching and PostgreSQL trigram search.",
-      },
-      {
-        lead: "Infrastructure",
-        text: "Deployed with Docker Compose on a VPS, with CI/CD and webhook and cron-driven order and notification flows.",
-      },
-    ],
-    stack: [
-      "go",
-      "postgresql",
-      "redis",
-      "graphql",
-      "nextjs",
-      "openai",
-      "stripe",
-      "docker",
-    ],
-  },
 ];
 
 export const achievements = [
-  "Research paper on OpenMAIC published in JCST 2026 (Tsinghua University Press / Springer)",
   "Winner of the TON NFT Challenge; active in hackathons including HackCBS, GLATHON and Solana Hacker House",
   "Solved 600+ DSA problems on LeetCode and GeeksforGeeks",
   "Google Cloud Digital Leader certified; completed the Google Cloud Facilitator Program",
@@ -400,8 +394,8 @@ export const projects: PortfolioProject[] = [
     title: "Mera Coach",
     kind: "Coaching app and web",
     summary:
-      "Client, lead and assessment management for health coaches, on Android and web.",
-    des: "A platform for health coaches in India, with an Expo Android app and a Next.js website on a .NET API. Coaches manage clients, leads and due checkups, run an assessment wizard that produces a shareable BMI report and diet plan as a PDF, and sell packages. Visitors find coaches, send enquiries or reach them on WhatsApp. Razorpay powers premium plans.",
+      "Run a coaching practice from your phone: clients, leads, assessments and plans.",
+    des: "Coaches get one place for clients, leads and due checkups in an Expo Android app, plus an assessment wizard that produces a shareable BMI report and diet plan as a PDF. A Next.js website helps visitors find coaches, send enquiries or message them on WhatsApp, and Razorpay powers premium plans. I built the app and the website on its .NET API.",
     img: "/images/projects/mera-coach.jpg",
     tech: ["expo", "react", "nextjs", "typescript", "dotnet", "razorpay"],
     siteLink: "https://www.mera-coach.com/",
@@ -410,8 +404,9 @@ export const projects: PortfolioProject[] = [
     id: 2,
     title: "Abvela By Kiara",
     kind: "Fashion storefront",
-    summary: "Online store for a Delhi fashion label, with Razorpay checkout.",
-    des: "An online store for a Delhi label selling curated fabrics and ready-to-wear. The Next.js storefront covers the catalog, cart, Razorpay checkout and customer accounts with orders and addresses, backed by an Express and PostgreSQL API with admin tooling, invoice PDFs and S3 uploads.",
+    summary:
+      "A fashion label's online store, from catalog to Razorpay checkout.",
+    des: "A Delhi label selling curated fabrics and ready-to-wear needed a store of its own. I built the Next.js storefront (catalog, cart, Razorpay checkout, customer accounts with orders and addresses) and the Express and PostgreSQL API behind it, including admin tooling, invoice PDFs and S3 uploads.",
     img: "/images/projects/abvela.jpg",
     tech: [
       "nextjs",
@@ -429,8 +424,9 @@ export const projects: PortfolioProject[] = [
     id: 3,
     title: "Vyloo",
     kind: "Online pharmacy",
-    summary: "An online pharmacy built as five connected apps.",
-    des: "An online pharmacy built as five apps: customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API. Customers order medicines and upload prescriptions, and merchants accept and deliver orders live. The API runs on Node.js with Hono on MongoDB, Redis, AWS S3 and SQS, with Firebase push notifications and Puppeteer PDFs.",
+    summary:
+      "An online pharmacy: ordering, merchant fulfilment and admin, as five connected apps.",
+    des: "Customers order medicines and upload prescriptions, merchants accept and deliver orders live, and admins run the network. I built all five apps (customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API) on Node.js with Hono, MongoDB, Redis and AWS S3 and SQS, with Firebase push notifications and Puppeteer PDFs.",
     img: "/images/projects/vyloo.jpg",
     tech: [
       "nextjs",
@@ -448,8 +444,8 @@ export const projects: PortfolioProject[] = [
     id: 4,
     title: "BillBook",
     kind: "Billing SaaS",
-    summary: "Multi-tenant GST billing, inventory and invoicing.",
-    des: "Multi-tenant billing for Indian businesses. Teams draft and finalize GST invoices (finalized ones are immutable), keep append-only ledgers for parties, payments, receipts, credit notes and stock, and export GST and report CSVs. An Express, PostgreSQL and Drizzle API sits behind a Next.js app, with OTP login, JWT, audit logs and OpenAPI docs.",
+    summary: "GST billing, inventory and ledgers for Indian businesses.",
+    des: "Built for businesses that need an auditable paper trail. Teams draft and finalize GST invoices (finalized ones are immutable), track parties, payments, credit notes and stock in append-only ledgers, and export GST and report CSVs. I built the Express, PostgreSQL and Drizzle API and the Next.js app, with OTP login, JWT, audit logs and OpenAPI docs.",
     img: "/images/projects/billbook.jpg",
     tech: ["nextjs", "typescript", "express", "postgresql", "drizzle", "aws"],
     siteLink: "https://billbook.khushalagarwal.dev",
@@ -458,8 +454,8 @@ export const projects: PortfolioProject[] = [
     id: 5,
     title: "Capsule Cloud",
     kind: "Pharmacy ERP",
-    summary: "Batch and expiry tracking inventory ERP for pharmacies.",
-    des: "An inventory ERP for pharmacies, built for Vyloo. It tracks medicines by batch and expiry, with stock levels and reorder alerts, a live dashboard, role-based access with permission gates, audit trails and light and dark themes.",
+    summary: "Pharmacy inventory ERP with batch and expiry tracking.",
+    des: "Built for Vyloo's pharmacies to know what is on the shelf and when it expires. It tracks medicines by batch and expiry, raises reorder alerts, shows a live dashboard and enforces role-based access with permission gates and audit trails, in light and dark themes.",
     img: "/images/projects/capsule-cloud-dashboard.jpg",
     tech: ["nextjs", "typescript", "tailwind", "reactquery", "mongodb", "aws"],
     siteLink: "https://capsule.vyloo.in/signin",
@@ -468,9 +464,8 @@ export const projects: PortfolioProject[] = [
     id: 6,
     title: "MixR",
     kind: "AI shopping marketplace",
-    summary:
-      "AI shopping agent and checkout for a community-first marketplace.",
-    des: "A community-first marketplace with an AI agent that finds products across stores and checks out on MixR. I built the Go, PostgreSQL, Redis and GraphQL backend, MixR Pay on Privy wallets, agent-friendly APIs, Shopify sync through Rye, trigram search and Docker Compose deployments with CI/CD.",
+    summary: "An AI agent that finds and buys products across stores.",
+    des: "MixR is a community-first marketplace where an AI agent finds products across stores and checks out for you. I built the Go, PostgreSQL, Redis and GraphQL backend, the agent-friendly APIs, MixR Pay on Privy wallets, Shopify sync through Rye, trigram search and Docker Compose deployments with CI/CD.",
     img: "/images/projects/mixr.jpg",
     tech: [
       "nextjs",
@@ -489,8 +484,8 @@ export const projects: PortfolioProject[] = [
     id: 7,
     title: "GitControl",
     kind: "Git simulator",
-    summary: "Interactive Git simulator with a live commit graph.",
-    des: "A learning playground that runs real Git commands in a simulated terminal and updates the commit graph, working directory, staging area, stash and reflog live. It includes six guided lessons, a side-by-side merge conflict resolver and undo and redo. Next.js, TypeScript and Zustand, with the Git engine as a pure, unit-tested function.",
+    summary: "Learn Git by doing: real commands and a live commit graph.",
+    des: "Git is easier to learn when you can see what a command does. GitControl runs real Git commands in a simulated terminal and updates the commit graph, working directory, staging area, stash and reflog live, with six guided lessons, a side-by-side merge conflict resolver and undo and redo. Built end to end with Next.js, TypeScript and Zustand, with the Git engine as a pure, unit-tested function.",
     img: "/images/projects/git-control.jpg",
     tech: ["nextjs", "react", "typescript", "tailwind", "git", "vitest"],
     siteLink: "https://git-control.khushalagarwal.dev/",
@@ -500,8 +495,9 @@ export const projects: PortfolioProject[] = [
     id: 8,
     title: "Next.js Starter",
     kind: "Open-source template",
-    summary: "Lean Next.js 16 starter with themes, SEO and security headers.",
-    des: "A lean starter for Next.js 16 with React 19, Tailwind v4 and TypeScript. It ships Cache Components, the React Compiler, light, dark and system themes, SEO metadata with JSON-LD, security headers and a validate script covering lint, types, Prettier and build.",
+    summary:
+      "A production-minded Next.js 16 starting point with themes, SEO and security headers.",
+    des: "Every new Next.js app repeats the same setup, so this open-source template ships it once: React 19, Tailwind v4 and TypeScript with Cache Components, the React Compiler, light, dark and system themes, SEO metadata with JSON-LD, security headers and one validate script for lint, types, Prettier and build.",
     img: "/images/projects/nextjs-template.jpg",
     tech: ["nextjs", "react", "typescript", "tailwind", "vercel"],
     siteLink: "https://nextjs-template.khushalagarwal.dev/",

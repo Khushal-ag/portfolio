@@ -68,7 +68,7 @@ export default function Hero() {
   // Cursor spotlight behind the whole hero.
   const spotX = useMotionValue(0);
   const spotY = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${spotX}px ${spotY}px, var(--color-accent-dim), transparent 65%)`;
+  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${spotX}px ${spotY}px, var(--color-spot), transparent 65%)`;
 
   // Pointer-driven tilt for the portrait stack.
   const tiltX = useMotionValue(0);
@@ -104,12 +104,16 @@ export default function Hero() {
   return (
     <section
       onPointerMove={onSectionPointerMove}
-      className="group/hero relative flex min-h-dvh items-center overflow-hidden px-4 pt-28 pb-20"
+      className="group/hero relative flex min-h-dvh items-center overflow-hidden px-4 pt-24 pb-24 sm:pt-28 sm:pb-20"
     >
       <div aria-hidden className="bg-grid absolute inset-0" />
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 -left-32 size-[34rem] rounded-full bg-accent-dim blur-[110px]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-32 -bottom-40 size-[32rem] rounded-full bg-accent-2-dim blur-[110px]"
       />
       <motion.div
         aria-hidden
@@ -134,7 +138,7 @@ export default function Hero() {
             {nameWords.map((word, i) => (
               <span key={word}>
                 <span
-                  className="reveal-word"
+                  className={`reveal-word ${i === nameWords.length - 1 ? "text-gradient" : ""}`}
                   style={{ "--i": i } as React.CSSProperties}
                 >
                   {word}
@@ -153,17 +157,23 @@ export default function Hero() {
           </p>
 
           <div
-            className="fade-up flex flex-wrap items-center gap-3"
+            className="fade-up flex w-full items-center gap-3 sm:w-auto sm:flex-wrap"
             style={{ "--d": "600ms" } as React.CSSProperties}
           >
-            <Magnetic>
-              <ExternalLink href={site.resumeUrl} className="btn-primary">
+            <Magnetic className="min-w-0 flex-1 sm:flex-none">
+              <ExternalLink
+                href={site.resumeUrl}
+                className="btn-primary w-full py-3.5 sm:w-auto sm:py-3"
+              >
                 Resume
                 <FaArrowRight className="size-3" aria-hidden />
               </ExternalLink>
             </Magnetic>
-            <Magnetic>
-              <ExternalLink href={site.links.github} className="btn-ghost">
+            <Magnetic className="min-w-0 flex-1 sm:flex-none">
+              <ExternalLink
+                href={site.links.github}
+                className="btn-ghost w-full py-3.5 sm:w-auto sm:py-3"
+              >
                 <FaGithub className="size-4" aria-hidden />
                 GitHub
               </ExternalLink>
@@ -183,31 +193,27 @@ export default function Hero() {
               rotateY,
               transformPerspective: 1100,
             }}
-            className="relative sm:pb-14"
+            className="relative sm:pb-36"
           >
-            <div className="relative ml-auto aspect-square w-[82%] overflow-hidden rounded-3xl border border-border-strong bg-bg-panel shadow-2xl ring-1 shadow-black/25 ring-accent/15">
+            <div className="relative ml-auto aspect-square w-[82%] overflow-hidden rounded-3xl border border-border-strong bg-gradient-to-br from-accent/20 via-bg-panel to-accent-2/20 shadow-2xl ring-1 shadow-black/20 ring-accent/15 sm:aspect-[5/6] sm:w-[80%]">
               <Image
                 src={site.author.avatar}
                 alt={site.author.name}
                 fill
                 priority
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="(max-width: 1024px) 340px, 420px"
-              />
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-bg-panel/50 via-transparent to-transparent"
               />
             </div>
 
-            <div className="relative -mt-14 w-full overflow-hidden rounded-xl border border-border-strong bg-bg-panel/95 shadow-2xl shadow-black/30 backdrop-blur-md sm:absolute sm:bottom-0 sm:left-0 sm:mt-0 sm:w-[82%]">
+            <div className="relative -mt-14 w-full overflow-hidden rounded-xl border border-border-strong bg-bg-panel/95 shadow-2xl shadow-black/30 backdrop-blur-md sm:absolute sm:bottom-0 sm:left-0 sm:mt-0 sm:w-max sm:max-w-[78%]">
               <div className="flex items-center gap-2 border-b border-border bg-bg-elevated px-3 py-2">
                 <TrafficLights />
                 <span className="font-editor ml-2 text-xs text-text-dim">
                   intro.ts
                 </span>
               </div>
-              <div className="font-editor px-3 py-4 text-[clamp(0.5625rem,2.9vw,0.6875rem)] leading-relaxed sm:px-4 sm:text-[0.8125rem]">
+              <div className="font-editor px-3 py-4 text-[clamp(0.5625rem,2.9vw,0.6875rem)] leading-relaxed sm:pr-8 sm:pl-4 sm:text-xs">
                 {codeLines.map((line, i) => (
                   <span
                     key={i}

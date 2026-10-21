@@ -21,7 +21,7 @@ export default function Summary() {
         <motion.div variants={fadeUp} className="space-y-6 lg:col-span-7">
           <ScrollText
             text={lead}
-            className="text-xl leading-relaxed text-text md:text-2xl md:leading-relaxed"
+            className="text-lg leading-relaxed text-text sm:text-xl md:text-2xl md:leading-relaxed"
           />
           {rest.map((paragraph) => (
             <p
@@ -33,7 +33,7 @@ export default function Summary() {
           ))}
           <Link
             href="/khushal-agarwal"
-            className="link-accent font-editor inline-block text-sm underline underline-offset-4"
+            className="link-accent font-editor inline-flex min-h-11 items-center text-sm underline underline-offset-4"
           >
             More about me
           </Link>

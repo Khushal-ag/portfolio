@@ -16,6 +16,7 @@ const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const layoutDescription = seo.metaDescription;
 
 export const viewport: Viewport = {
+  viewportFit: "cover",
   colorScheme: "dark light",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f7f7f8" },

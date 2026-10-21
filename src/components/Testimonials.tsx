@@ -17,10 +17,13 @@ export default function Testimonials() {
       </SectionHeading>
       <motion.div
         variants={stagger(0.1)}
-        className="grid gap-5 md:grid-cols-12"
+        className="-mx-5 flex snap-x snap-mandatory scroll-px-5 [scrollbar-width:none] items-stretch gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-12 md:gap-5 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden"
       >
         {featured && (
-          <motion.div variants={fadeUp} className="md:col-span-7 md:row-span-2">
+          <motion.div
+            variants={fadeUp}
+            className="w-[88%] shrink-0 snap-start sm:w-[70%] md:col-span-7 md:row-span-2 md:w-auto md:shrink"
+          >
             <Spotlight className="editor-panel h-full">
               <blockquote className="flex h-full flex-col justify-between p-6 md:p-10">
                 <p className="text-xl leading-relaxed text-text md:text-2xl md:leading-relaxed">
@@ -42,7 +45,11 @@ export default function Testimonials() {
           </motion.div>
         )}
         {rest.map((t) => (
-          <motion.div key={t.name} variants={fadeUp} className="md:col-span-5">
+          <motion.div
+            key={t.name}
+            variants={fadeUp}
+            className="w-[80%] shrink-0 snap-start sm:w-[60%] md:col-span-5 md:w-auto md:shrink"
+          >
             <Spotlight className="card-surface h-full">
               <blockquote className="p-5">
                 <p className="text-sm leading-relaxed text-text-muted">

@@ -37,78 +37,65 @@ Full-stack developer with **3+ years** building web and mobile products across *
 | Role                     | Company         | Type      | Location | Period              |
 | :----------------------- | :-------------- | :-------- | :------- | :------------------ |
 | **Full Stack Developer** | Kreedalabs      | Full-time | Pune     | Aug 2024 – Present  |
-| **Full Stack Developer** | Hench Solutions | Freelance | Remote   | 2025 – Present      |
-| **Full Stack Developer** | Vyloo           | Freelance | Remote   | 2025 – Jun 2026     |
-| **Full Stack Developer** | MixR            | Freelance | Remote   | Mar 2024 – Feb 2026 |
+| **Full Stack Developer** | MixR            | Full-time | Remote   | Mar 2024 – Aug 2024 |
+| **Full Stack Developer** | Hench Solutions | Freelance | Remote   | -                   |
+| **Full Stack Developer** | Vyloo           | Freelance | Remote   | -                   |
 
 ### Kreedalabs · Full Stack Developer (Full-time)
 
-Product engineering across AI platforms, Web3 infrastructure and mobile apps.
+Owning features end to end on AI, Web3 and mobile products, from API and data design to production releases.
 
-- **AI image search:** Built a multimodal search and analytics platform for an enterprise fashion client, with a React frontend, an Express and PostgreSQL API, AI keyword and catalog matching, and S3 presigned delivery.
-- **Collection builder:** Developed features for a generative-AI collection builder: multi-select surfaces, range-plan validation and per-build AI usage and cost tracking.
-- **Syncora:** Worked across an AI data marketplace, including WebSocket job updates, dataset quality scoring, Stripe subscriptions with automated credit recharge, and HuggingFace fine-tuning workflows.
-- **On-chain:** Wrote Solidity contracts (UUPS proxy on Base L2) and a Solana Anchor program for contribution records and token rewards, plus a Rust service that streams chain events without overloading RPC nodes.
-- **Mobile:** Built React Native features, including wallet transactions and refunds, for a social creator app.
+- **AI image search:** Shipped a multimodal AI search and analytics platform for an enterprise fashion client, so teams can find catalog items from images and keywords. Built the React UI, the Express and PostgreSQL API, AI matching and secure S3 delivery.
+- **Generative AI tooling:** Built features for a generative-AI collection builder, including multi-select workflows and range-plan validation, and added per-build AI usage and cost tracking so spend stays visible.
+- **Syncora:** Delivered core parts of an AI data marketplace: real-time job updates over WebSockets, dataset quality scoring, Stripe subscriptions with automated credit recharge and HuggingFace fine-tuning workflows.
+- **On-chain:** Designed and shipped smart contracts (upgradeable Solidity on Base and a Solana Anchor program) for contribution records and token rewards, plus a Rust service that streams chain events without overloading RPC nodes.
+- **Mobile:** Built React Native wallet features, including transactions and refunds, for a social creator app.
+
+### MixR · Full Stack Developer (Full-time)
+
+Backend and AI engineer on a community-first shopping marketplace, shipping the Go services and an agent that finds and buys products for users.
+
+- **Go backend:** Built the Go services on PostgreSQL, Redis and GraphQL behind search, catalog sync and order flows.
+- **AI shopping agent:** Built an agent on the Vercel AI SDK and OpenAI that finds products across stores and completes the purchase, and reshaped the APIs so the agent can read and act on them reliably.
+- **Payments:** Shipped checkout with Stripe and Privy authentication, plus MixR Pay, a crypto checkout on embedded wallets that lets the agent pay on-chain.
+- **Fast search:** Kept browsing quick with Redis caching and PostgreSQL trigram search over a Shopify catalog synced through the Rye API.
+- **Delivery:** Owned deployment: Docker Compose on a VPS with CI/CD, plus webhook and cron-driven order and notification flows.
 
 ### Hench Solutions · Full Stack Developer (Freelance)
 
-Designed and shipped client products across billing, insurance, coaching and retail.
+Freelance engineer taking client products from idea to production across billing, insurance, coaching and retail: API design, web, mobile and deployment.
 
-- **BillBook:** Multi-tenant billing and invoicing with GST reports, inventory and PDF exports, on Next.js, Express and PostgreSQL.
-- **IAM:** Authentication, roles and policies shared across multiple service modules.
-- **IAMS:** An ASP.NET Core app for broker and insurer management, with KYC uploads, OTP and premium-reminder emails, and CI/CD to AWS ECR and EC2.
-- **Mera Coach:** An Expo mobile app with EAS builds and a Next.js website, both on a .NET API.
-- **Abvela:** A fashion storefront with Razorpay checkout, backed by an Express and PostgreSQL API.
-- **Vimpact:** An offline-capable gate-pass PWA with camera capture, and a migration of its API from .NET to Node.js and SQL Server with S3 photo storage.
+- **BillBook:** Built a multi-tenant billing and invoicing SaaS for Indian businesses, with GST reports, inventory tracking and PDF exports on Next.js, Express and PostgreSQL.
+- **IAM and IAMS:** Created shared authentication, roles and policies used across service modules, and an ASP.NET Core broker and insurer app with KYC uploads, OTP and premium-reminder emails, deployed through CI/CD to AWS ECR and EC2.
+- **Mera Coach:** Shipped an Expo mobile app (EAS builds) and a Next.js website for health coaches, both on one .NET API.
+- **Abvela:** Launched a fashion storefront with Razorpay checkout on an Express and PostgreSQL API, so the label can sell online.
+- **Vimpact:** Migrated the API of an offline-capable gate-pass PWA from .NET to Node.js and SQL Server, keeping camera capture working and moving photos to S3.
 
 ### Vyloo · Full Stack Developer (Freelance)
 
-Built the full stack behind an online pharmacy and its operations tooling.
+Built the full stack behind an online pharmacy, from customer ordering to merchant fulfilment and admin operations.
 
-- **Suite:** Delivered five connected apps: customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API.
-- **Backend:** Node.js with Hono and NestJS on MongoDB, Redis, AWS S3 and SQS, with Firebase push notifications and Puppeteer-generated PDF receipts and reports.
-- **Maps:** Google Maps for delivery zones and live, location-aware order tracking.
-- **Operations:** Real-time order acceptance and delivery workflows for merchants, and onboarding, analytics and billing for admins.
-
-### MixR · Full Stack Developer (Freelance)
-
-Full-stack work on a community-first shopping marketplace, from the Go backend to an AI shopping agent.
-
-- **Backend:** Built the Go services on PostgreSQL, Redis and GraphQL that power search, catalog sync and order flows.
-- **AI agent:** Created a shopping agent with the Vercel AI SDK and OpenAI that finds and buys products for users, and reshaped the APIs so it can read and act on them reliably.
-- **Web and payments:** Built the Next.js client and AI chat service with Stripe checkout and Privy authentication, plus MixR Pay, a crypto checkout on Privy embedded wallets that lets the agent pay on-chain.
-- **Catalog and search:** Synced the Shopify catalog through the Rye API and sped up queries with Redis caching and PostgreSQL trigram search.
-- **Infrastructure:** Deployed with Docker Compose on a VPS, with CI/CD and webhook and cron-driven order and notification flows.
+- **Five apps, one platform:** Delivered customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API as one connected system.
+- **Live fulfilment:** Built real-time order acceptance and delivery for merchants, with Google Maps delivery zones and live, location-aware tracking for customers.
+- **Backend:** Designed the Node.js API (Hono, NestJS) on MongoDB, Redis, AWS S3 and SQS, with Firebase push notifications and Puppeteer PDF receipts and reports.
+- **Admin tooling:** Gave admins onboarding, analytics and billing tools to manage merchants.
 
 ---
 
 ## Projects
 
-| Project             | Summary                                                                        | Tech highlights                                   | Links                                                                                                       |
-| :------------------ | :----------------------------------------------------------------------------- | :------------------------------------------------ | :---------------------------------------------------------------------------------------------------------- |
-| **Mera Coach**      | Client, lead and assessment management for health coaches, on Android and web. | Expo, React, Next.js, TypeScript                  | [Live](https://www.mera-coach.com/)                                                                         |
-| **Abvela By Kiara** | Online store for a Delhi fashion label, with Razorpay checkout.                | Next.js, TypeScript, Tailwind CSS, Express        | [Live](https://www.abvelabykiara.com/)                                                                      |
-| **Vyloo**           | An online pharmacy built as five connected apps.                               | Next.js, Hono, MongoDB, Redis                     | [Live](https://www.vyloo.in/)                                                                               |
-| **BillBook**        | Multi-tenant GST billing, inventory and invoicing.                             | Next.js, TypeScript, Express, PostgreSQL          | [Live](https://billbook.khushalagarwal.dev)                                                                 |
-| **Capsule Cloud**   | Batch and expiry tracking inventory ERP for pharmacies.                        | Next.js, TypeScript, Tailwind CSS, TanStack Query | [Live](https://capsule.vyloo.in/signin)                                                                     |
-| **MixR**            | AI shopping agent and checkout for a community-first marketplace.              | Next.js, TypeScript, Go, PostgreSQL               | -                                                                                                           |
-| **GitControl**      | Interactive Git simulator with a live commit graph.                            | Next.js, React, TypeScript, Tailwind CSS          | [Live](https://git-control.khushalagarwal.dev/) · [Code](https://github.com/Khushal-ag/git-control)         |
-| **Next.js Starter** | Lean Next.js 16 starter with themes, SEO and security headers.                 | Next.js, React, TypeScript, Tailwind CSS          | [Live](https://nextjs-template.khushalagarwal.dev/) · [Code](https://github.com/Khushal-ag/nextjs-template) |
+| Project             | Summary                                                                              | Tech highlights                                   | Links                                                                                                       |
+| :------------------ | :----------------------------------------------------------------------------------- | :------------------------------------------------ | :---------------------------------------------------------------------------------------------------------- |
+| **Mera Coach**      | Run a coaching practice from your phone: clients, leads, assessments and plans.      | Expo, React, Next.js, TypeScript                  | [Live](https://www.mera-coach.com/)                                                                         |
+| **Abvela By Kiara** | A fashion label's online store, from catalog to Razorpay checkout.                   | Next.js, TypeScript, Tailwind CSS, Express        | [Live](https://www.abvelabykiara.com/)                                                                      |
+| **Vyloo**           | An online pharmacy: ordering, merchant fulfilment and admin, as five connected apps. | Next.js, Hono, MongoDB, Redis                     | [Live](https://www.vyloo.in/)                                                                               |
+| **BillBook**        | GST billing, inventory and ledgers for Indian businesses.                            | Next.js, TypeScript, Express, PostgreSQL          | [Live](https://billbook.khushalagarwal.dev)                                                                 |
+| **Capsule Cloud**   | Pharmacy inventory ERP with batch and expiry tracking.                               | Next.js, TypeScript, Tailwind CSS, TanStack Query | [Live](https://capsule.vyloo.in/signin)                                                                     |
+| **MixR**            | An AI agent that finds and buys products across stores.                              | Next.js, TypeScript, Go, PostgreSQL               | -                                                                                                           |
+| **GitControl**      | Learn Git by doing: real commands and a live commit graph.                           | Next.js, React, TypeScript, Tailwind CSS          | [Live](https://git-control.khushalagarwal.dev/) · [Code](https://github.com/Khushal-ag/git-control)         |
+| **Next.js Starter** | A production-minded Next.js 16 starting point with themes, SEO and security headers. | Next.js, React, TypeScript, Tailwind CSS          | [Live](https://nextjs-template.khushalagarwal.dev/) · [Code](https://github.com/Khushal-ag/nextjs-template) |
 
 Open-source and personal project code: [github.com/Khushal-ag](https://github.com/Khushal-ag).
-
----
-
-## Skills
-
-| Category                | Technologies                                                                                                                                                                            |
-| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Languages**           | TypeScript, JavaScript, C#, Golang, Rust, Dart, C++                                                                                                                                     |
-| **Backend & cloud**     | Node.js, Express.js, NestJS, Hono, ASP.NET Core, Bun, REST, GraphQL, WebSockets, microservices, serverless, Docker, AWS (S3, SQS, Lambda, Cognito), GitHub Actions, Firebase            |
-| **Frontend & mobile**   | Next.js, React.js, React Native, Expo, Redux Toolkit, TanStack Query, Tailwind CSS, ShadCN UI, Vite, PWA                                                                                |
-| **Databases & tooling** | PostgreSQL, MongoDB, Redis, MySQL, SQL Server, Prisma, Drizzle ORM, Git                                                                                                                 |
-| **AI, Web3 & Payments** | LangGraph, Vercel AI SDK, OpenAI API, HuggingFace, multimodal AI search, Solidity, EVM, Solana (Anchor), Privy, Ethers.js, IPFS, Stripe, Razorpay, PDF generation (Playwright, pdf-lib) |
 
 ---
 
@@ -120,7 +107,6 @@ Open-source and personal project code: [github.com/Khushal-ag](https://github.co
 
 ## Achievements
 
-- Research paper on **OpenMAIC** published in **JCST 2026** (Tsinghua University Press / Springer)
 - **Winner** — TON NFT Challenge; HackCBS, GLATHON, Solana Hacker House
 - **600+** DSA problems (LeetCode, GeeksforGeeks)
 - **Google Cloud Digital Leader** certified; completed the Google Cloud Facilitator Program

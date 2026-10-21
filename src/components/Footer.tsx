@@ -29,7 +29,7 @@ export default function Footer({ year }: { year: number }) {
         className="pointer-events-none absolute -bottom-48 left-1/2 size-[40rem] -translate-x-1/2 rounded-full bg-accent-dim blur-[120px]"
       />
 
-      <div className="section-container relative z-10 py-24 text-center md:py-32">
+      <div className="section-container relative z-10 py-24 text-center max-lg:pb-40 md:py-32">
         <FadeIn>
           <h2 className="mx-auto max-w-4xl text-4xl leading-[1.05] font-bold tracking-tighter text-text sm:text-6xl lg:text-7xl">
             {words.join(" ")} <span className="text-accent">{lastWord}</span>
@@ -42,26 +42,29 @@ export default function Footer({ year }: { year: number }) {
         </FadeIn>
         <FadeIn
           delay={0.1}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3"
+          className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center"
         >
           <CopyEmail />
-          <ExternalLink href={site.resumeUrl} className="btn-ghost px-6 py-3.5">
+          <ExternalLink
+            href={site.resumeUrl}
+            className="btn-ghost min-h-14 px-6 py-3.5 sm:min-h-0"
+          >
             Resume
           </ExternalLink>
         </FadeIn>
 
         <FadeIn delay={0.15} className="mt-14">
-          <p className="font-editor text-xs text-text-muted">
+          <p className="font-editor flex flex-wrap items-center justify-center text-xs text-text-muted">
             <a
               href={`mailto:${site.author.mail}`}
-              className="hover:text-accent"
+              className="inline-flex min-h-11 items-center px-3 hover:text-accent"
             >
               {footer.ctaText}
             </a>
-            {" · "}
+            <span aria-hidden>·</span>
             <a
               href={`tel:${site.author.phone.replace(/\s/g, "")}`}
-              className="hover:text-accent"
+              className="inline-flex min-h-11 items-center px-3 hover:text-accent"
             >
               {site.author.phone}
             </a>
@@ -84,9 +87,9 @@ export default function Footer({ year }: { year: number }) {
           {footer.copyright.replace("{year}", String(year))} ·{" "}
           <Link
             href="/khushal-agarwal"
-            className="underline underline-offset-2 hover:text-accent"
+            className="inline-block py-3 underline underline-offset-2 hover:text-accent"
           >
-            {site.author.name}
+            Full profile
           </Link>
         </p>
       </div>

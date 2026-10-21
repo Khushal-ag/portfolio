@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { FaCertificate, FaCode, FaFileLines, FaTrophy } from "react-icons/fa6";
+import { LuAward, LuCode, LuGraduationCap, LuTrophy } from "react-icons/lu";
 
 import { Section, SectionHeading } from "@/components/Section";
 import Spotlight from "@/components/Spotlight";
@@ -9,7 +9,7 @@ import { achievements, education } from "@/content";
 import { fadeUp, stagger } from "@/lib/motion";
 
 /** Icon per achievement, in `achievements` order. */
-const icons = [FaFileLines, FaTrophy, FaCode, FaCertificate] as const;
+const icons = [LuTrophy, LuCode, LuAward] as const;
 
 export default function Achievements() {
   return (
@@ -21,6 +21,13 @@ export default function Achievements() {
       >
         <motion.div variants={fadeUp} className="self-start">
           <Spotlight className="editor-panel p-6 md:p-8">
+            <span className="mb-4 flex size-10 items-center justify-center rounded-lg border border-border-strong bg-bg text-accent">
+              <LuGraduationCap
+                className="size-5"
+                strokeWidth={1.75}
+                aria-hidden
+              />
+            </span>
             <h3 className="text-xs font-semibold tracking-wider text-accent uppercase">
               Education
             </h3>
@@ -34,17 +41,20 @@ export default function Achievements() {
 
         <ul className="divide-y divide-border border-y border-border">
           {achievements.map((text, i) => {
-            const Icon = icons[i % icons.length] ?? FaTrophy;
+            const Icon = icons[i % icons.length] ?? LuTrophy;
             return (
               <motion.li
                 key={text}
                 variants={fadeUp}
                 className="flex items-start gap-4 py-4 text-text-muted md:text-lg"
               >
-                <Icon
-                  className="mt-1.5 size-4 shrink-0 text-accent"
-                  aria-hidden
-                />
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border-strong bg-bg-panel text-accent">
+                  <Icon
+                    className="size-[1.125rem]"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
+                </span>
                 {text}
               </motion.li>
             );

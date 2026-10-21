@@ -14,6 +14,7 @@ import type { PortfolioProject } from "@/content";
 
 import ExternalLink from "@/components/ExternalLink";
 import GitHubCTA from "@/components/GitHubCTA";
+import ProjectCarousel from "@/components/ProjectCarousel";
 import {
   Section,
   SectionFileLabel,
@@ -121,7 +122,6 @@ export default function Projects() {
 
   function onPointerEnter(e: React.PointerEvent, index: number) {
     if (e.pointerType !== "mouse") return;
-    if (!window.matchMedia("(min-width: 1024px)").matches) return;
     setActive(index);
   }
 
@@ -132,9 +132,13 @@ export default function Projects() {
       <SectionFileLabel file="~/portfolio/projects.ts" />
       <SectionHeading>Projects</SectionHeading>
 
+      <motion.div variants={fadeUp}>
+        <ProjectCarousel />
+      </motion.div>
+
       <motion.div
         variants={fadeUp}
-        className="grid items-start gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10"
+        className="hidden items-start gap-10 lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
       >
         <ul className="flex flex-col gap-1.5" aria-label="Projects">
           {projects.map((p, i) => {
@@ -146,8 +150,7 @@ export default function Projects() {
                     rowRefs.current[i] = el;
                   }}
                   type="button"
-                  aria-expanded={selected}
-                  aria-controls={`project-inline-${p.id}`}
+                  aria-current={selected ? "true" : undefined}
                   onClick={() => setActive(i)}
                   onKeyDown={(e) => onKeyDown(e, i)}
                   onPointerEnter={(e) => onPointerEnter(e, i)}
@@ -193,28 +196,6 @@ export default function Projects() {
                     }`}
                   />
                 </button>
-
-                {/* Mobile and tablet: details open inline under the row. */}
-                <div id={`project-inline-${p.id}`} className="lg:hidden">
-                  <AnimatePresence initial={false}>
-                    {selected && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: EASE }}
-                        className="overflow-hidden"
-                      >
-                        <div className="space-y-5 px-1 pt-4 pb-5">
-                          <div className="relative aspect-16/10 overflow-hidden rounded-xl border border-border bg-bg-elevated">
-                            <ProjectImage project={p} />
-                          </div>
-                          <ProjectDetails project={p} />
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
               </li>
             );
           })}

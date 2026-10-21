@@ -10,7 +10,7 @@ export default function GitHubCTA() {
       <p className="text-sm text-text-muted md:text-base">{githubCta.blurb}</p>
       <ExternalLink
         href={site.links.github}
-        className="link-accent font-editor inline-flex items-center gap-2 text-sm font-medium"
+        className="link-accent font-editor inline-flex min-h-11 items-center gap-2 text-sm font-medium"
       >
         <FaGithub className="size-4" aria-hidden />
         {githubCta.label}

@@ -26,7 +26,7 @@ export default function KhushalAgarwalPage() {
     <SiteShell>
       <main
         id="main-content"
-        className="section-padding section-container mx-auto max-w-3xl pt-24 pb-20"
+        className="section-padding section-container mx-auto max-w-3xl pt-24 pb-20 max-lg:pb-36"
       >
         <p className="font-editor mb-6 text-xs text-comment" aria-hidden>
           ~/khushal-agarwal
@@ -66,10 +66,10 @@ export default function KhushalAgarwalPage() {
             </p>
             <p>
               The portfolio highlights work at Kreedalabs (AI search,
-              generative-AI tools, Syncora) and client projects for MixR, Hench
-              Solutions (BillBook, IAMS, Mera Coach, Abvela) and Vyloo, spanning
-              AI platforms, social commerce and agents, billing and insurance
-              tools, and pharmacy operations.
+              generative-AI tools, Syncora), MixR, and freelance client projects
+              for Hench Solutions (BillBook, IAMS, Mera Coach, Abvela) and
+              Vyloo, spanning AI platforms, social commerce and agents, billing
+              and insurance tools, and pharmacy operations.
             </p>
           </div>
         </section>
@@ -85,7 +85,9 @@ export default function KhushalAgarwalPage() {
                   <h3 className="text-lg font-semibold text-text">
                     {job.role} · {job.company}
                   </h3>
-                  <span className="text-sm text-accent/90">{job.period}</span>
+                  {job.period && (
+                    <span className="text-sm text-accent/90">{job.period}</span>
+                  )}
                 </div>
                 <p className="mt-1 text-sm text-text-dim">
                   {job.type} · {job.location}

@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { motion, useInView, useScroll, useSpring } from "motion/react";
+import { FaChevronDown } from "react-icons/fa6";
 
 import type { WorkExperience } from "@/content";
 
@@ -25,7 +26,14 @@ function TimelineDot({ reached }: { reached: boolean }) {
   );
 }
 
-function Job({ job }: { job: WorkExperience }) {
+function Job({
+  job,
+  defaultOpen,
+}: {
+  job: WorkExperience;
+  defaultOpen: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
   const ref = useRef<HTMLElement>(null);
   const reached = useInView(ref, { margin: "-35% 0px -35% 0px", once: true });
 
@@ -60,8 +68,12 @@ function Job({ job }: { job: WorkExperience }) {
               <p className="mt-1 text-sm text-text-muted">{job.role}</p>
             </div>
             <p className="font-editor text-xs leading-relaxed text-text-subtle sm:text-right">
-              <span className="text-accent">{job.period}</span>
-              <br />
+              {job.period && (
+                <>
+                  <span className="text-accent">{job.period}</span>
+                  <br />
+                </>
+              )}
               {job.location}
             </p>
           </header>
@@ -70,39 +82,59 @@ function Job({ job }: { job: WorkExperience }) {
             {job.summary}
           </p>
 
-          <ul className="mt-6 space-y-4">
-            {job.bullets.map((bullet) => (
-              <li
-                key={bullet.lead}
-                className="grid gap-1 sm:grid-cols-[9.5rem_1fr] sm:gap-5"
-              >
-                <span className="font-editor pt-0.5 text-xs text-accent">
-                  {bullet.lead}
-                </span>
-                <span className="text-sm leading-relaxed text-text-muted sm:text-[0.9375rem]">
-                  {bullet.text}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <ul
-            className="mt-7 flex flex-wrap gap-2 border-t border-border pt-5"
-            aria-label={`${job.company} tech stack`}
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls={`job-${job.id}-details`}
+            onClick={() => setOpen((o) => !o)}
+            className="font-editor mt-5 flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-border bg-surface text-xs text-text-muted transition-colors active:bg-surface-hover sm:hidden"
           >
-            {job.stack.map((key) => {
-              const { label, Icon } = techStack[key];
-              return (
+            {open ? "Hide details" : "Show details"}
+            <FaChevronDown
+              aria-hidden
+              className={`size-3 transition-transform ${open ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          {/* Collapsed on phones, always open from `sm` up; stays in the DOM. */}
+          <div
+            id={`job-${job.id}-details`}
+            className={open ? "block" : "hidden sm:block"}
+          >
+            <ul className="mt-6 space-y-4">
+              {job.bullets.map((bullet) => (
                 <li
-                  key={key}
-                  className="font-editor inline-flex items-center gap-1.5 rounded-md border border-border bg-surface px-2 py-1 text-xs text-text-muted"
+                  key={bullet.lead}
+                  className="grid gap-1 sm:grid-cols-[9.5rem_1fr] sm:gap-5"
                 >
-                  <Icon className="size-3.5 shrink-0" aria-hidden />
-                  {label}
+                  <span className="font-editor pt-0.5 text-xs text-accent">
+                    {bullet.lead}
+                  </span>
+                  <span className="text-sm leading-relaxed text-text-muted sm:text-[0.9375rem]">
+                    {bullet.text}
+                  </span>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul>
+
+            <ul
+              className="mt-7 flex flex-wrap gap-2 border-t border-border pt-5"
+              aria-label={`${job.company} tech stack`}
+            >
+              {job.stack.map((key) => {
+                const { label, Icon } = techStack[key];
+                return (
+                  <li
+                    key={key}
+                    className="font-editor inline-flex items-center gap-1.5 rounded-md border border-border bg-surface px-2 py-1 text-xs text-text-muted"
+                  >
+                    <Icon className="size-3.5 shrink-0" aria-hidden />
+                    {label}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </Spotlight>
     </motion.article>
@@ -135,8 +167,8 @@ export default function Experience() {
           />
         </div>
         <motion.div variants={stagger(0.12)} className="space-y-6 sm:space-y-8">
-          {workExperience.map((job) => (
-            <Job key={job.id} job={job} />
+          {workExperience.map((job, i) => (
+            <Job key={job.id} job={job} defaultOpen={i === 0} />
           ))}
         </motion.div>
       </div>

@@ -10,11 +10,14 @@
 :root {
   color-scheme: light;
   --grid-line: rgba(0, 0, 0, 0.055);
+  --panel-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04), 0 14px 30px -16px rgba(10, 60, 40, 0.18);
   --bg: #f7f7f8;
   --bg-elevated: #fbfbfc;
   --bg-panel: #fefefe;
-  --surface: rgba(0, 0, 0, 0.03);
-  --surface-hover: rgba(0, 0, 0, 0.06);
+  --surface: rgba(10, 60, 40, 0.035);
+  --surface-hover: rgba(10, 122, 82, 0.09);
+  --spot: rgba(20, 190, 140, 0.16);
   --surface-active: rgba(10, 122, 82, 0.1);
   --border: rgba(0, 0, 0, 0.09);
   --border-strong: rgba(0, 0, 0, 0.16);
@@ -25,6 +28,8 @@
   --text-dim: rgba(24, 24, 27, 0.5);
   --accent: #0a7a52;
   --accent-dim: rgba(10, 122, 82, 0.1);
+  --accent-2: #0b8aa6;
+  --accent-2-dim: rgba(11, 138, 166, 0.09);
   --on-accent: #f7f7f8;
   --keyword: #8e2fc0;
   --string: #3d7a1c;
@@ -34,21 +39,25 @@
 .dark {
   color-scheme: dark;
   --grid-line: rgba(255, 255, 255, 0.05);
+  --panel-shadow: none;
   --bg: #0f0f10;
   --bg-elevated: #18181b;
   --bg-panel: #1c1c1f;
   --surface: rgba(255, 255, 255, 0.03);
   --surface-hover: rgba(255, 255, 255, 0.06);
+  --spot: rgba(62, 207, 142, 0.12);
   --surface-active: rgba(62, 207, 142, 0.08);
   --border: rgba(255, 255, 255, 0.06);
   --border-strong: rgba(255, 255, 255, 0.1);
   --border-muted: rgba(255, 255, 255, 0.04);
   --text: #ededed;
   --text-muted: rgba(237, 237, 237, 0.7);
-  --text-subtle: rgba(237, 237, 237, 0.5);
-  --text-dim: rgba(237, 237, 237, 0.35);
+  --text-subtle: rgba(237, 237, 237, 0.6);
+  --text-dim: rgba(237, 237, 237, 0.45);
   --accent: #3ecf8e;
   --accent-dim: rgba(62, 207, 142, 0.12);
+  --accent-2: #2dd4e6;
+  --accent-2-dim: rgba(45, 212, 230, 0.08);
   --on-accent: #0f0f10;
   --keyword: #c678dd;
   --string: #98c379;
@@ -61,6 +70,7 @@
   --color-bg-panel: var(--bg-panel);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
+  --color-spot: var(--spot);
   --color-surface-active: var(--surface-active);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
@@ -71,6 +81,8 @@
   --color-text-dim: var(--text-dim);
   --color-accent: var(--accent);
   --color-accent-dim: var(--accent-dim);
+  --color-accent-2: var(--accent-2);
+  --color-accent-2-dim: var(--accent-2-dim);
   --color-on-accent: var(--on-accent);
   --color-keyword: var(--keyword);
   --color-string: var(--string);
@@ -99,6 +111,13 @@
     scroll-behavior: smooth;
   }
 
+  /* Touch: no grey flash on tap, no double-tap-zoom delay. */
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
   /* Scale the rem base on large displays so layout and type grow together. */
   @media (width >= 1920px) {
     html {
@@ -117,6 +136,20 @@
     color: var(--color-text);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    /* Soft green and teal washes that repeat down the page so flat areas never read as grey. */
+    background-image:
+      radial-gradient(
+        640px 340px at 0% 20%,
+        var(--color-accent-dim),
+        transparent 72%
+      ),
+      radial-gradient(
+        640px 340px at 100% 70%,
+        var(--color-accent-2-dim),
+        transparent 72%
+      );
+    background-size: 100% 1800px;
+    background-repeat: repeat-y;
   }
 
   h1,
@@ -170,6 +203,31 @@
     }
   }
 
+  .section-heading::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 3px;
+    margin-top: 0.75rem;
+    border-radius: 9999px;
+    background: linear-gradient(
+      90deg,
+      var(--color-accent),
+      var(--color-accent-2)
+    );
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      100deg,
+      var(--color-accent),
+      var(--color-accent-2)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .section-heading {
     font-family: var(--font-heading);
     font-size: 1.875rem;
@@ -203,10 +261,12 @@
     border: 1px solid var(--color-border);
     border-left: 3px solid var(--color-accent);
     border-radius: var(--radius-lg);
+    box-shadow: var(--panel-shadow);
   }
 
   .editor-panel:hover {
-    border-color: var(--color-border-strong);
+    border-color: var(--color-border-strong) var(--color-border-strong)
+      var(--color-border-strong) var(--color-accent);
   }
 
   .file-path {
@@ -409,6 +469,15 @@
     animation-delay: var(--d, 0ms);
   }
 
+  /* Brand-coloured logos: per-theme colours come in through --brand-l / --brand-d. */
+  .brand-icon {
+    color: var(--brand-l, var(--color-text));
+  }
+
+  .dark .brand-icon {
+    color: var(--brand-d, var(--color-text));
+  }
+
   .marquee {
     mask-image: linear-gradient(
       to right,
@@ -420,7 +489,12 @@
   }
 
   .marquee-track {
-    animation: marquee 45s linear infinite;
+    animation: marquee 55s linear infinite;
+  }
+
+  .marquee-track.reverse {
+    animation-direction: reverse;
+    animation-duration: 70s;
   }
 
   .marquee:hover .marquee-track {

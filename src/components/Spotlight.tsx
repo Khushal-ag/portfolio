@@ -14,7 +14,7 @@ export default function Spotlight({
 }: SpotlightProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const background = useMotionTemplate`radial-gradient(420px circle at ${x}px ${y}px, var(--color-accent-dim), transparent 70%)`;
+  const background = useMotionTemplate`radial-gradient(280px circle at ${x}px ${y}px, var(--color-spot), transparent 70%)`;
 
   function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
     if (e.pointerType !== "mouse") return;
