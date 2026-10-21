@@ -1,114 +1,94 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
 
-import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
-import { footer as footerContent, site, socialMedia } from "@/content";
-import { githubProfileHref } from "@/lib/links";
+import CopyEmail from "@/components/CopyEmail";
+import ExternalLink from "@/components/ExternalLink";
+import FadeIn from "@/components/FadeIn";
+import { footer, site } from "@/content";
 
-export default function Footer() {
+const socialLinks = [
+  { label: "GitHub", href: site.links.github, Icon: FaGithub },
+  { label: "X", href: site.links.twitter, Icon: FaXTwitter },
+  { label: "LinkedIn", href: site.links.linkedin, Icon: FaLinkedin },
+  { label: "Instagram", href: site.links.instagram, Icon: FaInstagram },
+] as const;
+
+export default function Footer({ year }: { year: number }) {
+  const words = footer.heading.split(" ");
+  const lastWord = words.pop();
+
   return (
     <footer
       id="contact"
-      className="section-padding scroll-mt-20 border-t border-border bg-bg-elevated"
+      className="relative scroll-mt-20 overflow-hidden border-t border-border bg-bg-elevated"
     >
-      <div className="section-container text-center">
-        <p className="font-editor mb-2 text-xs text-comment" aria-hidden>
-          ~/portfolio/contact.ts
-        </p>
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.4 }}
-          className="section-heading text-text"
+      <div aria-hidden className="bg-grid absolute inset-0 opacity-70" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-48 left-1/2 size-[40rem] -translate-x-1/2 rounded-full bg-accent-dim blur-[120px]"
+      />
+
+      <div className="section-container relative z-10 py-24 text-center md:py-32">
+        <FadeIn>
+          <h2 className="mx-auto max-w-4xl text-4xl leading-[1.05] font-bold tracking-tighter text-text sm:text-6xl lg:text-7xl">
+            {words.join(" ")} <span className="text-accent">{lastWord}</span>
+          </h2>
+        </FadeIn>
+        <FadeIn delay={0.05}>
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-text-muted">
+            {footer.subtext}
+          </p>
+        </FadeIn>
+        <FadeIn
+          delay={0.1}
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
-          {footerContent.heading}
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.4, delay: 0.05 }}
-          className="mt-3 text-text-muted"
-        >
-          {footerContent.subtext}
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="mt-6 flex flex-wrap items-center justify-center gap-3"
-        >
-          <Link
-            href={`mailto:${footerContent.contactEmail}`}
-            className="btn-primary inline-flex"
-          >
-            {footerContent.ctaText}
-          </Link>
-          <a
-            href={githubProfileHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost inline-flex items-center gap-2"
-          >
-            <FaGithub className="size-4" />
-            {site.github?.label ?? "View GitHub"}
-          </a>
-        </motion.div>
-        <p className="font-editor mt-6 text-center text-xs text-text-muted">
-          {site.github?.blurb ?? "More projects and code on GitHub."}
-        </p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          {socialMedia.map((item) => (
+          <CopyEmail />
+          <ExternalLink href={site.resumeUrl} className="btn-ghost px-6 py-3.5">
+            Resume
+          </ExternalLink>
+        </FadeIn>
+
+        <FadeIn delay={0.15} className="mt-14">
+          <p className="font-editor text-xs text-text-muted">
             <a
-              key={item.id}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex size-12 items-center justify-center rounded-lg border border-border bg-bg-panel transition hover:border-accent/40 hover:bg-surface-hover"
-              aria-label={item.label ?? "Social link"}
+              href={`mailto:${site.author.mail}`}
+              className="hover:text-accent"
             >
-              <Image
-                src={item.img}
-                alt=""
-                width={22}
-                height={22}
-                className="size-[22px]"
-                unoptimized
-              />
+              {footer.ctaText}
             </a>
-          ))}
-        </motion.div>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-10 text-sm text-text-subtle"
-        >
-          {footerContent.copyright.replace(
-            "{year}",
-            String(new Date().getFullYear()),
-          )}{" "}
-          ·{" "}
+            {" · "}
+            <a
+              href={`tel:${site.author.phone.replace(/\s/g, "")}`}
+              className="hover:text-accent"
+            >
+              {site.author.phone}
+            </a>
+          </p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            {socialLinks.map(({ label, href, Icon }) => (
+              <ExternalLink
+                key={label}
+                href={href}
+                className="flex size-11 items-center justify-center rounded-full border border-border bg-bg-panel text-text-muted transition hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent"
+                aria-label={label}
+              >
+                <Icon className="size-[1.125rem]" aria-hidden />
+              </ExternalLink>
+            ))}
+          </div>
+        </FadeIn>
+
+        <p className="mt-14 text-sm text-text-subtle">
+          {footer.copyright.replace("{year}", String(year))} ·{" "}
           <Link
             href="/khushal-agarwal"
             className="underline underline-offset-2 hover:text-accent"
           >
-            Khushal Agarwal
+            {site.author.name}
           </Link>
-        </motion.p>
+        </p>
       </div>
     </footer>
   );

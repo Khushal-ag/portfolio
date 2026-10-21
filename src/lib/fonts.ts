@@ -1,22 +1,15 @@
-import { Inter, JetBrains_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist-sans",
   display: "swap",
 });
 
-const poppins = Poppins({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-export const fontVariables = `${inter.variable} ${poppins.variable} ${mono.variable}`;
+export const fontVariables = `${geist.variable} ${geistMono.variable}`;

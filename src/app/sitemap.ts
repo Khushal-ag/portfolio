@@ -1,19 +1,17 @@
-import { siteConfig } from "@/config/site";
+import type { MetadataRoute } from "next";
 
-export default function sitemap() {
-  const base = siteConfig.url;
-  return [
-    {
-      url: `${base}${siteConfig.routes.home}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 1,
-    },
-    {
-      url: `${base}${siteConfig.routes.resume}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
-  ];
+import { site } from "@/content";
+
+const routes = [
+  { path: "", priority: 1 },
+  { path: "/khushal-agarwal", priority: 0.9 },
+] as const;
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return routes.map(({ path, priority }) => ({
+    url: `${site.url}${path || "/"}`,
+    lastModified: site.lastUpdated,
+    changeFrequency: "monthly",
+    priority,
+  }));
 }

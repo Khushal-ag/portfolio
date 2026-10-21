@@ -2,48 +2,20 @@
 
 import { useRef } from "react";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 
-const defaultReveal = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
-};
-
-const sectionVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
-  },
-};
+import { fadeUp, stagger } from "@/lib/motion";
 
 type SectionProps = {
   id?: string;
   className?: string;
   children: React.ReactNode;
-  reveal?: boolean;
 };
 
-export function Section({
-  id,
-  className = "",
-  children,
-  reveal = true,
-}: SectionProps) {
+/** Reveals on scroll: descendants with `variants={fadeUp}` animate in sequence. */
+export function Section({ id, className = "", children }: SectionProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  if (!reveal) {
-    return (
-      <section
-        id={id}
-        ref={ref}
-        className={`section-padding scroll-mt-20 ${className}`}
-      >
-        <div className="section-container">{children}</div>
-      </section>
-    );
-  }
 
   return (
     <motion.section
@@ -51,27 +23,19 @@ export function Section({
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      variants={sectionVariants}
+      variants={stagger()}
       className={`section-padding scroll-mt-20 ${className}`}
     >
-      <motion.div className="section-container">{children}</motion.div>
+      <div className="section-container">{children}</div>
     </motion.section>
   );
 }
 
-type SectionHeadingProps = {
-  children: React.ReactNode;
-  className?: string;
-};
-
-export function SectionHeading({
-  children,
-  className = "",
-}: SectionHeadingProps) {
+export function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <motion.h2
-      variants={defaultReveal}
-      className={`section-heading mb-12 text-center font-(--font-heading) text-text md:mb-14 ${className}`}
+      variants={fadeUp}
+      className="section-heading mb-10 font-(--font-heading) text-text md:mb-12"
     >
       {children}
     </motion.h2>
@@ -89,26 +53,5 @@ export function SectionFileLabel({
     <p className={`file-path mb-4 ${className}`} aria-hidden>
       {file}
     </p>
-  );
-}
-
-type RevealProps = {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-};
-
-export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
-  return (
-    <motion.div
-      variants={{
-        ...defaultReveal,
-        hidden: { ...defaultReveal.hidden, transition: { delay } },
-      }}
-      transition={defaultReveal.transition}
-      className={className}
-    >
-      {children}
-    </motion.div>
   );
 }

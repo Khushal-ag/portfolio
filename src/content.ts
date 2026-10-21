@@ -1,16 +1,13 @@
-const SITE_ORIGIN_WWW = "https://www.khushalagarwal.dev" as const;
-const SITE_ORIGIN_BARE = "https://khushalagarwal.dev" as const;
+import type { TechKey } from "@/lib/tech";
 
-export const GITHUB_USERNAME = "Khushal-ag" as const;
-export const GITHUB_PROFILE_URL =
-  `https://github.com/${GITHUB_USERNAME}` as const;
+const TWITTER_HANDLE = "starkhush5";
 
 export const site = {
   name: "Khushal Agarwal | Full-Stack Developer",
-  description:
-    "Full-stack developer building web and mobile products across AI, Web3, and SaaS — React/Next.js, Node.js/Go, smart contracts, and LLM integrations. Open to full-time roles and freelance work: India (onsite) and remote worldwide.",
-  url: SITE_ORIGIN_WWW,
-  urlBare: SITE_ORIGIN_BARE,
+  url: "https://www.khushalagarwal.dev",
+  urlBare: "https://khushalagarwal.dev",
+  /** Bump when page content changes; feeds sitemap lastmod and JSON-LD dateModified. */
+  lastUpdated: "2026-10-21",
 
   author: {
     name: "Khushal Agarwal",
@@ -18,42 +15,29 @@ export const site = {
     subtitle: "TypeScript · Go · AI · Web3",
     location: "Pune, Maharashtra",
     phone: "+91 9557429766",
-    url: SITE_ORIGIN_WWW,
     avatar: "/images/profile/github-profile.png",
     mail: "starkhush5@gmail.com",
-    linkedin: "https://www.linkedin.com/in/khushal-agarwal",
   },
 
   links: {
-    github: { title: "GitHub", href: GITHUB_PROFILE_URL },
-    linkedin: {
-      title: "LinkedIn",
-      href: "https://www.linkedin.com/in/khushal-agarwal",
-    },
-    twitter: { title: "Twitter", href: "https://twitter.com/starkhush5" },
+    github: "https://github.com/Khushal-ag",
+    linkedin: "https://www.linkedin.com/in/khushal-agarwal",
+    twitter: `https://x.com/${TWITTER_HANDLE}`,
+    instagram: "https://www.instagram.com/starkhush/",
   },
 
   resumeUrl:
     "https://drive.google.com/file/d/1nW1Xe0eYhQ0QTlKrlM6XRfnFxD7GChOZ/view?usp=sharing",
 
-  github: {
-    username: GITHUB_USERNAME,
-    href: GITHUB_PROFILE_URL,
-    label: "View my GitHub",
-    blurb: "More projects, open-source contributions, and code on GitHub.",
-  },
-
-  twitterHandle: "starkhush5",
+  twitterHandle: TWITTER_HANDLE,
 
   keywords: [
     "Khushal Agarwal",
     "Kushal Agarwal",
-    "Khusal Agarwal",
     "Khushal Agrawal",
-    "Khushaal Agarwal",
     "Full-Stack Developer",
-    "portfolio",
-    "Full-stack developer",
+    "full-stack developer Pune",
+    "developer portfolio",
     "TypeScript",
     "Golang",
     "React",
@@ -61,18 +45,20 @@ export const site = {
     "AI",
     "Web3",
     "Node.js",
+    "React Native",
+    ".NET",
   ],
-};
+} as const;
 
 export const seo = {
   metaDescription:
-    "Full-stack developer (TypeScript, Go, AI, Web3) in Pune, India. Open to full-time & freelance — onsite in India, remote worldwide. Portfolio, projects & resume.",
+    "Portfolio of Khushal Agarwal, a full-stack developer in Pune, India working with TypeScript, Go, AI and Web3. Open to full-time roles and freelance projects.",
 
   homeMetaDescription:
-    "Khushal Agarwal — full-stack developer building AI, Web3 & SaaS with React, Next.js, Node.js & Go. Pune. Open to full-time & freelance; India onsite or remote worldwide.",
+    "Full-stack developer in Pune, India building AI, Web3 and SaaS products with React, Next.js, Node.js and Go. Open to full-time and freelance work.",
 
   profileMetaDescription:
-    "Khushal Agarwal — full-stack developer & software engineer in Pune, India. Experience, tech stack, education. Name variants: Kushal Agarwal, Khushal Agrawal.",
+    "Khushal Agarwal, full-stack developer and software engineer in Pune, India. Work at Kreedalabs, MixR, Hench Solutions and Vyloo, plus tech stack and education.",
 } as const;
 
 export const personAlternateNames = [
@@ -83,136 +69,305 @@ export const personAlternateNames = [
 ] as const;
 
 export const hero = {
-  greeting: "Hi, I'm",
-  title: "Khushal Agarwal",
-  subtitle: "Full-Stack Developer",
-  tagline: "TypeScript · Go · AI · Web3",
-  avatar: "/images/profile/github-profile.png",
+  status: "Open to full-time and freelance work",
+  blurb:
+    "I build AI, Web3 and SaaS products for web and mobile, with React, Node.js, Go and .NET.",
 };
 
 export const summary = {
-  paragraph:
-    "Full-stack developer with 2+ years building web and mobile products across AI, Web3, and SaaS. Comfortable across the stack — from React/Next.js frontends and Node.js/Go backends to smart contracts and LLM integrations — shipping production systems for startups. Open to full-time roles and freelance engagements: happy to work onsite in India or remotely with teams anywhere.",
-};
+  paragraphs: [
+    "I'm a full-stack developer with 3+ years of experience shipping production software for startups across AI, Web3 and SaaS. I work end to end: React, Next.js and React Native on the front, Node.js, Go and .NET on the back, and smart contracts and LLM integrations wherever a product needs them.",
+    "I work full-time at Kreedalabs and take on freelance projects in parallel. I'm open to full-time roles and freelance work, onsite in India or remote worldwide.",
+  ],
+  facts: [
+    { label: "Based in", value: "Pune, India" },
+    {
+      label: "Right now",
+      value: "Full-time at Kreedalabs, with freelance projects in parallel",
+    },
+    { label: "Focus", value: "AI, Web3 and SaaS products" },
+    { label: "Open to", value: "Full-time roles and freelance projects" },
+  ],
+} as const;
 
-export const skills = {
-  languages: ["TypeScript", "JavaScript", "Golang", "Rust", "Dart"],
-  backendCloud: [
-    "Node.js",
-    "Express.js",
-    "Hono",
-    "Bun",
-    "REST APIs",
-    "GraphQL",
-    "Microservices",
-    "Docker",
-    "AWS (S3, SQS)",
-    "CI/CD",
-    "Firebase",
-  ],
-  frontendMobile: [
-    "Next.js",
-    "React.js",
-    "React Native",
-    "Expo",
-    "Tailwind CSS",
-    "ShadCN UI",
-    "Vite",
-  ],
-  databasesDevOps: [
-    "PostgreSQL",
-    "MongoDB",
-    "Redis",
-    "MySQL",
-    "Prisma",
-    "Drizzle ORM",
-    "Git",
-  ],
-  other: [
-    "LangGraph",
-    "Vercel AI SDK",
-    "OpenAI API",
-    "HuggingFace",
-    "Solidity",
-    "EVM",
-    "Solana (Anchor)",
-    "Privy",
-    "Ethers.js",
-    "IPFS",
-    "Stripe",
-  ],
-};
+export const skillGroups = [
+  {
+    label: "Languages",
+    items: ["TypeScript", "JavaScript", "C#", "Golang", "Rust", "Dart", "C++"],
+  },
+  {
+    label: "Backend & Cloud",
+    items: [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "Hono",
+      "ASP.NET Core",
+      "Bun",
+      "REST APIs",
+      "GraphQL",
+      "WebSockets",
+      "Microservices",
+      "Serverless",
+      "Docker",
+      "AWS (S3, SQS, Lambda, Cognito)",
+      "CI/CD (GitHub Actions)",
+      "Firebase",
+    ],
+  },
+  {
+    label: "Frontend & Mobile",
+    items: [
+      "Next.js",
+      "React.js",
+      "React Native",
+      "Expo",
+      "Redux Toolkit",
+      "TanStack Query",
+      "Tailwind CSS",
+      "ShadCN UI",
+      "Vite",
+      "PWA",
+    ],
+  },
+  {
+    label: "Databases & DevOps",
+    items: [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "MySQL",
+      "SQL Server",
+      "Prisma",
+      "Drizzle ORM",
+      "Git",
+    ],
+  },
+  {
+    label: "AI, Web3 & Payments",
+    items: [
+      "LangGraph",
+      "Vercel AI SDK",
+      "OpenAI API",
+      "HuggingFace",
+      "Multimodal AI search",
+      "Solidity",
+      "EVM",
+      "Solana (Anchor)",
+      "Privy",
+      "Ethers.js",
+      "IPFS",
+      "Stripe",
+      "Razorpay",
+      "PDF generation (Playwright, pdf-lib)",
+    ],
+  },
+] as const;
+
+/** Flat list of every skill, in group order. */
+export const allSkills = skillGroups.flatMap((group) => group.items);
 
 export const education = {
   degree: "B.Tech, Computer Science",
   school: "GLA University",
   cpi: "8.3 CPI",
-  years: "2020 – 2024",
+  years: "2020 - 2024",
 };
 
-export const workExperience = [
+type WorkBullet = { lead: string; text: string };
+
+export type WorkExperience = {
+  id: number;
+  company: string;
+  role: string;
+  type: "Full-time" | "Freelance";
+  location: string;
+  period: string;
+  summary: string;
+  bullets: readonly WorkBullet[];
+  stack: readonly TechKey[];
+};
+
+export const workExperience: WorkExperience[] = [
   {
     id: 1,
     company: "Kreedalabs",
     role: "Full Stack Developer",
+    type: "Full-time",
     location: "Pune",
-    period: "Aug 2024 – Present",
+    period: "Aug 2024 - Present",
+    summary:
+      "Product engineering across AI platforms, Web3 infrastructure and mobile apps.",
     bullets: [
-      "Worked on Syncora — an AI data marketplace — building and maintaining frontend (React/Next.js), backend APIs (Node.js/TypeScript), and HuggingFace integrations for model fine-tuning workflows.",
-      "Built a Rust service (Actix-web) to stream blockchain event data to the frontend without hammering RPC nodes.",
-      "Wrote and deployed smart contracts (Solidity, UUPS proxy on Base L2) and a Solana Anchor program for on-chain contribution records and token rewards.",
-      "Integrated Stripe subscriptions and automated credit recharge flows, reducing manual billing work significantly.",
-      "Built React Native screens and cross-platform mobile features alongside web work.",
+      {
+        lead: "AI image search",
+        text: "Built a multimodal search and analytics platform for an enterprise fashion client, with a React frontend, an Express and PostgreSQL API, AI keyword and catalog matching, and S3 presigned delivery.",
+      },
+      {
+        lead: "Collection builder",
+        text: "Developed features for a generative-AI collection builder: multi-select surfaces, range-plan validation and per-build AI usage and cost tracking.",
+      },
+      {
+        lead: "Syncora",
+        text: "Worked across an AI data marketplace, including WebSocket job updates, dataset quality scoring, Stripe subscriptions with automated credit recharge, and HuggingFace fine-tuning workflows.",
+      },
+      {
+        lead: "On-chain",
+        text: "Wrote Solidity contracts (UUPS proxy on Base L2) and a Solana Anchor program for contribution records and token rewards, plus a Rust service that streams chain events without overloading RPC nodes.",
+      },
+      {
+        lead: "Mobile",
+        text: "Built React Native features, including wallet transactions and refunds, for a social creator app.",
+      },
+    ],
+    stack: [
+      "react",
+      "nextjs",
+      "typescript",
+      "nodejs",
+      "postgresql",
+      "mongodb",
+      "openai",
+      "huggingface",
+      "solidity",
+      "solana",
+      "rust",
+      "stripe",
+    ],
+  },
+  {
+    id: 3,
+    company: "Hench Solutions",
+    role: "Full Stack Developer",
+    type: "Freelance",
+    location: "Remote",
+    period: "2025 - Present",
+    summary:
+      "Designed and shipped client products across billing, insurance, coaching and retail.",
+    bullets: [
+      {
+        lead: "BillBook",
+        text: "Multi-tenant billing and invoicing with GST reports, inventory and PDF exports, on Next.js, Express and PostgreSQL.",
+      },
+      {
+        lead: "IAM",
+        text: "Authentication, roles and policies shared across multiple service modules.",
+      },
+      {
+        lead: "IAMS",
+        text: "An ASP.NET Core app for broker and insurer management, with KYC uploads, OTP and premium-reminder emails, and CI/CD to AWS ECR and EC2.",
+      },
+      {
+        lead: "Mera Coach",
+        text: "An Expo mobile app with EAS builds and a Next.js website, both on a .NET API.",
+      },
+      {
+        lead: "Abvela",
+        text: "A fashion storefront with Razorpay checkout, backed by an Express and PostgreSQL API.",
+      },
+      {
+        lead: "Vimpact",
+        text: "An offline-capable gate-pass PWA with camera capture, and a migration of its API from .NET to Node.js and SQL Server with S3 photo storage.",
+      },
+    ],
+    stack: [
+      "nextjs",
+      "expo",
+      "express",
+      "postgresql",
+      "dotnet",
+      "razorpay",
+      "aws",
+      "typescript",
+    ],
+  },
+  {
+    id: 4,
+    company: "Vyloo",
+    role: "Full Stack Developer",
+    type: "Freelance",
+    location: "Remote",
+    period: "2025 - Jun 2026",
+    summary:
+      "Built the full stack behind an online pharmacy and its operations tooling.",
+    bullets: [
+      {
+        lead: "Suite",
+        text: "Delivered five connected apps: customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API.",
+      },
+      {
+        lead: "Backend",
+        text: "Node.js with Hono and NestJS on MongoDB, Redis, AWS S3 and SQS, with Firebase push notifications and Puppeteer-generated PDF receipts and reports.",
+      },
+      {
+        lead: "Maps",
+        text: "Google Maps for delivery zones and live, location-aware order tracking.",
+      },
+      {
+        lead: "Operations",
+        text: "Real-time order acceptance and delivery workflows for merchants, and onboarding, analytics and billing for admins.",
+      },
+    ],
+    stack: [
+      "nextjs",
+      "hono",
+      "nestjs",
+      "mongodb",
+      "redis",
+      "aws",
+      "firebase",
+      "puppeteer",
     ],
   },
   {
     id: 2,
     company: "MixR",
     role: "Full Stack Developer",
+    type: "Freelance",
     location: "Remote",
-    period: "Mar 2024 – Aug 2024",
+    period: "Mar 2024 - Feb 2026",
+    summary:
+      "Full-stack work on a community-first shopping marketplace, from the Go backend to an AI shopping agent.",
     bullets: [
-      "Built backend services for a social commerce platform using Golang, PostgreSQL, Redis, and GraphQL.",
-      "Built an AI shopping agent (Vercel AI SDK + OpenAI) that can autonomously browse and purchase products on behalf of users.",
-      "Built MixR Pay — a crypto checkout system using Privy embedded wallets so the AI agent could handle payments end-to-end on-chain.",
-      "Rewrote backend APIs with agent-friendly response structures so the AI agent could reliably consume and act on them.",
-      "Integrated Shopify product catalog via the Rye API wrapper; added Redis caching and PostgreSQL trigram search for faster product queries.",
-      "Set up Docker Compose deployments on VPS with basic CI/CD; automated order and notification flows via webhooks and cron jobs.",
+      {
+        lead: "Backend",
+        text: "Built the Go services on PostgreSQL, Redis and GraphQL that power search, catalog sync and order flows.",
+      },
+      {
+        lead: "AI agent",
+        text: "Created a shopping agent with the Vercel AI SDK and OpenAI that finds and buys products for users, and reshaped the APIs so it can read and act on them reliably.",
+      },
+      {
+        lead: "Web and payments",
+        text: "Built the Next.js client and AI chat service with Stripe checkout and Privy authentication, plus MixR Pay, a crypto checkout on Privy embedded wallets that lets the agent pay on-chain.",
+      },
+      {
+        lead: "Catalog and search",
+        text: "Synced the Shopify catalog through the Rye API and sped up queries with Redis caching and PostgreSQL trigram search.",
+      },
+      {
+        lead: "Infrastructure",
+        text: "Deployed with Docker Compose on a VPS, with CI/CD and webhook and cron-driven order and notification flows.",
+      },
     ],
-  },
-  {
-    id: 3,
-    company: "Hench Solutions",
-    role: "Full Stack Developer (Freelance)",
-    location: "Remote",
-    period: "2025 – Present",
-    bullets: [
-      "Built BillBook — a multi-tenant billing and invoicing web app (Next.js + Express/TypeScript + PostgreSQL) with invoice management, GST reports, inventory tracking, and PDF exports.",
-      "Built an IAM system (authentication, roles, policies) across multiple service modules.",
-      "Shipped Mera Coach, a React Native/Expo mobile app, with EAS build setup for Android and iOS.",
-    ],
-  },
-  {
-    id: 4,
-    company: "Vyloo",
-    role: "Full Stack Developer (Freelance)",
-    location: "Remote",
-    period: "2025 – Present",
-    bullets: [
-      "Built a full pharmacy operations suite of five applications: customer-facing web app, merchant portal, pharmacy ERP, admin dashboard, and a shared serverless backend API.",
-      "Backend (Node.js/Hono) uses MongoDB, Redis, AWS S3, AWS SQS, Firebase Admin for push notifications, and Puppeteer/Chromium for PDF generation (receipts, reports).",
-      "ERP and customer web include Google Maps integration for delivery zone management and live location-aware order tracking.",
-      "Merchant portal handles real-time order acceptance, delivery workflow management, and live status updates.",
-      "Admin dashboard covers merchant onboarding, order oversight, analytics, and billing operations.",
+    stack: [
+      "go",
+      "postgresql",
+      "redis",
+      "graphql",
+      "nextjs",
+      "openai",
+      "stripe",
+      "docker",
     ],
   },
 ];
 
 export const achievements = [
   "Research paper on OpenMAIC published in JCST 2026 (Tsinghua University Press / Springer)",
-  "Winner — TON NFT Challenge; participated in HackCBS, GLATHON, and Solana Hacker House",
+  "Winner of the TON NFT Challenge; active in hackathons including HackCBS, GLATHON and Solana Hacker House",
   "Solved 600+ DSA problems on LeetCode and GeeksforGeeks",
-  "Google Cloud Digital Leader certified",
+  "Google Cloud Digital Leader certified; completed the Google Cloud Facilitator Program",
 ];
 
 export const navItems = [
@@ -225,162 +380,135 @@ export const navItems = [
   { name: "Contact", link: "#contact" },
 ];
 
-export const projects = [
+export type PortfolioProject = {
+  id: number;
+  title: string;
+  /** Short label such as "Online pharmacy", shown beside the title. */
+  kind: string;
+  /** One line for list rows. */
+  summary: string;
+  /** Full description for the preview and structured data. */
+  des: string;
+  img: string;
+  tech: readonly TechKey[];
+  siteLink?: string;
+  githubLink?: string;
+};
+
+export const projects: PortfolioProject[] = [
   {
     id: 1,
-    title: "Syncora – AI Data Marketplace",
-    des: "Syncora (strova.xyz): AI data marketplace — React/Next.js frontend, Node.js/TypeScript APIs, HuggingFace for model fine-tuning, Rust (Actix-web) streaming for blockchain events, Solidity on Base L2, Solana Anchor for rewards, Stripe subscriptions, and React Native. Proof-of-data rails with on-chain provenance via Coinbase. Note: public live environment is temporarily unavailable; project remains active work.",
-    img: "/images/projects/strova.png",
-    iconLists: [
-      "/icons/projects/vite.svg",
-      "/icons/projects/ts.svg",
-      "/icons/projects/nodejs.svg",
-      "/icons/projects/mongodb-icon.svg",
-      "/icons/projects/aws.svg",
-      "/icons/projects/coinbase.svg",
-    ],
-    siteLink: "https://strova.xyz/",
-    githubLink: "https://strova.xyz/",
+    title: "Mera Coach",
+    kind: "Coaching app and web",
+    summary:
+      "Client, lead and assessment management for health coaches, on Android and web.",
+    des: "A platform for health coaches in India, with an Expo Android app and a Next.js website on a .NET API. Coaches manage clients, leads and due checkups, run an assessment wizard that produces a shareable BMI report and diet plan as a PDF, and sell packages. Visitors find coaches, send enquiries or reach them on WhatsApp. Razorpay powers premium plans.",
+    img: "/images/projects/mera-coach.jpg",
+    tech: ["expo", "react", "nextjs", "typescript", "dotnet", "razorpay"],
+    siteLink: "https://www.mera-coach.com/",
   },
   {
     id: 2,
-    title: "MixR – Community-First Marketplace",
-    des: "Social commerce backend (Go, PostgreSQL, Redis, GraphQL) with an AI shopping agent (Vercel AI SDK + OpenAI), MixR Pay (Privy), agent-friendly APIs, Shopify via Rye API, Redis caching, trigram search, and Docker Compose on VPS with CI/CD.",
-    img: "/images/projects/mixr.png",
-    iconLists: [
-      "/icons/projects/next.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/supabase-icon.png",
-      "/icons/projects/ts.svg",
-      "/icons/projects/golang.svg",
+    title: "Abvela By Kiara",
+    kind: "Fashion storefront",
+    summary: "Online store for a Delhi fashion label, with Razorpay checkout.",
+    des: "An online store for a Delhi label selling curated fabrics and ready-to-wear. The Next.js storefront covers the catalog, cart, Razorpay checkout and customer accounts with orders and addresses, backed by an Express and PostgreSQL API with admin tooling, invoice PDFs and S3 uploads.",
+    img: "/images/projects/abvela.jpg",
+    tech: [
+      "nextjs",
+      "typescript",
+      "tailwind",
+      "express",
+      "postgresql",
+      "drizzle",
+      "razorpay",
+      "aws",
     ],
-    siteLink: "https://mixr.gg/",
-    githubLink: "https://github.com/MixR-gg",
+    siteLink: "https://www.abvelabykiara.com/",
   },
   {
     id: 3,
-    title: "BillBook – Billing & Invoicing",
-    des: "Multi-tenant billing and invoicing web app (Next.js + Express/TypeScript + PostgreSQL): invoices, credit notes, parties, inventory, GST-ready reports, audit logs, role-based IAM, and PDF exports — built for Hench Solutions.",
-    img: "/images/projects/billbook.png",
-    iconLists: [
-      "/icons/projects/next.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/ts.svg",
-      "/icons/projects/nodejs.svg",
+    title: "Vyloo",
+    kind: "Online pharmacy",
+    summary: "An online pharmacy built as five connected apps.",
+    des: "An online pharmacy built as five apps: customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API. Customers order medicines and upload prescriptions, and merchants accept and deliver orders live. The API runs on Node.js with Hono on MongoDB, Redis, AWS S3 and SQS, with Firebase push notifications and Puppeteer PDFs.",
+    img: "/images/projects/vyloo.jpg",
+    tech: [
+      "nextjs",
+      "hono",
+      "mongodb",
+      "redis",
+      "aws",
+      "firebase",
+      "puppeteer",
+      "typescript",
     ],
-    siteLink: "https://billbook.khushalagarwal.dev",
-    githubLink: site.github.href,
+    siteLink: "https://www.vyloo.in/",
   },
   {
     id: 4,
-    title: "Capsule Cloud – Pharmacy ERP",
-    des: "Pharmacy ERP in the Vyloo suite: stock, catalog, ordering, and operations with Next.js, ShadCN UI, and a Hono/MongoDB backend with AWS and Firebase — part of a five-app pharmacy platform.",
-    img: "/images/projects/capsule-cloud.png",
-    iconLists: [
-      "/icons/projects/next.svg",
-      "/icons/projects/nestjs.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/mongodb-icon.svg",
-      "/icons/projects/ts.svg",
-      "/icons/projects/aws.svg",
-    ],
-    siteLink: "https://capsule.vyloo.in/signin",
-    githubLink: "https://www.vyloo.in/",
+    title: "BillBook",
+    kind: "Billing SaaS",
+    summary: "Multi-tenant GST billing, inventory and invoicing.",
+    des: "Multi-tenant billing for Indian businesses. Teams draft and finalize GST invoices (finalized ones are immutable), keep append-only ledgers for parties, payments, receipts, credit notes and stock, and export GST and report CSVs. An Express, PostgreSQL and Drizzle API sits behind a Next.js app, with OTP login, JWT, audit logs and OpenAPI docs.",
+    img: "/images/projects/billbook.jpg",
+    tech: ["nextjs", "typescript", "express", "postgresql", "drizzle", "aws"],
+    siteLink: "https://billbook.khushalagarwal.dev",
   },
   {
     id: 5,
-    title: "Vyloo – Pharmacy Operations Suite",
-    des: "Five applications: customer web, merchant portal, pharmacy ERP, admin dashboard, and serverless API. Node.js/Hono, MongoDB, Redis, S3, SQS, Firebase push, Puppeteer PDFs, Google Maps for zones and live order tracking.",
-    img: "/images/projects/vyloo.png",
-    iconLists: [
-      "/icons/projects/next.svg",
-      "/icons/projects/nestjs.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/mongodb-icon.svg",
-      "/icons/projects/ts.svg",
-      "/icons/projects/aws.svg",
-    ],
-    siteLink: "https://www.vyloo.in/",
-    githubLink: "https://www.vyloo.in/",
+    title: "Capsule Cloud",
+    kind: "Pharmacy ERP",
+    summary: "Batch and expiry tracking inventory ERP for pharmacies.",
+    des: "An inventory ERP for pharmacies, built for Vyloo. It tracks medicines by batch and expiry, with stock levels and reorder alerts, a live dashboard, role-based access with permission gates, audit trails and light and dark themes.",
+    img: "/images/projects/capsule-cloud.jpg",
+    tech: ["nextjs", "typescript", "tailwind", "reactquery", "mongodb", "aws"],
+    siteLink: "https://capsule.vyloo.in/signin",
   },
   {
     id: 6,
-    title: "Eventloop – Event Management Web App",
-    des: "Full-featured event management platform for creating and organizing events. Includes user authentication, event creation and listing, ticket purchase flow with Stripe, and attendee management. Built with Next.js, Tailwind, and TypeScript.",
-    img: "/images/projects/eventloop.png",
-    iconLists: [
-      "/icons/projects/next.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/c.svg",
-      "/icons/projects/ts.svg",
-      "/icons/projects/stripe-icon.svg",
+    title: "MixR",
+    kind: "AI shopping marketplace",
+    summary:
+      "AI shopping agent and checkout for a community-first marketplace.",
+    des: "A community-first marketplace with an AI agent that finds products across stores and checks out on MixR. I built the Go, PostgreSQL, Redis and GraphQL backend, MixR Pay on Privy wallets, agent-friendly APIs, Shopify sync through Rye, trigram search and Docker Compose deployments with CI/CD.",
+    img: "/images/projects/mixr.jpg",
+    tech: [
+      "nextjs",
+      "typescript",
+      "go",
+      "postgresql",
+      "redis",
+      "graphql",
+      "openai",
+      "privy",
+      "stripe",
+      "docker",
     ],
-    siteLink: "https://eventloop.khushalagarwal.tech/",
-    githubLink: `${site.github.href}/eventloop`,
   },
   {
     id: 7,
-    title: "Infinitunes – Music Streaming Platform",
-    des: "Web-based music streaming platform with playlist creation, library management, and discovery features. Users can browse, search, and stream music with a modern UI. Built with Next.js, Supabase for auth and database, and deployed on Vercel.",
-    img: "/images/projects/infinitunes.png",
-    iconLists: [
-      "/icons/projects/next.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/supabase-icon.png",
-      "/icons/projects/ts.svg",
-      "/icons/projects/vercel-light.png",
-    ],
-    siteLink: "https://infinitunes.khushalagarwal.tech/",
-    githubLink: `${site.github.href}/infinitunes`,
+    title: "GitControl",
+    kind: "Git simulator",
+    summary: "Interactive Git simulator with a live commit graph.",
+    des: "A learning playground that runs real Git commands in a simulated terminal and updates the commit graph, working directory, staging area, stash and reflog live. It includes six guided lessons, a side-by-side merge conflict resolver and undo and redo. Next.js, TypeScript and Zustand, with the Git engine as a pure, unit-tested function.",
+    img: "/images/projects/git-control.jpg",
+    tech: ["nextjs", "react", "typescript", "tailwind", "git", "vitest"],
+    siteLink: "https://git-control.khushalagarwal.dev/",
+    githubLink: "https://github.com/Khushal-ag/git-control",
   },
   {
     id: 8,
-    title: "Sealog – Hotel Management System",
-    des: "Hotel management system for employees to manage cabins, rooms, bookings, and guest information. Includes availability calendars, reservation handling, and guest records. Built with React, Tailwind, Supabase, and React Query for data fetching.",
-    img: "/images/projects/sealog.png",
-    iconLists: [
-      "/icons/projects/re.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/supabase-icon.png",
-      "/icons/projects/js.svg",
-      "/icons/projects/react-query.svg",
-    ],
-    siteLink: "https://sealog.khushalagarwal.tech",
-    githubLink: `${site.github.href}/sealog`,
-  },
-  {
-    id: 9,
-    title: "Triphive – Hotel Review Website",
-    des: "Hotel discovery and review platform where users find hotels, read and write reviews, and earn rewards for valuable feedback. Features Passport-based authentication, MongoDB for flexible data, and a Node.js backend. Deployed on Vercel.",
-    img: "/images/projects/triphive.png",
-    iconLists: [
-      "/icons/projects/nodejs.svg",
-      "/icons/projects/mongodb-icon.svg",
-      "/icons/projects/js.svg",
-      "/icons/projects/passport.svg",
-      "/icons/projects/vercel-light.png",
-    ],
-    siteLink: "https://triphive.khushalagarwal.tech/",
-    githubLink: `${site.github.href}/TripHive`,
-  },
-  {
-    id: 10,
-    title: "Next.js Starter Template",
-    des: "Production-ready Next.js starter with TailwindCSS, TypeScript, Prettier, and ESLint pre-configured. Jumpstart new projects with sensible defaults and a clean structure. Deployed on Vercel.",
-    img: "/images/projects/nextjs-template.png",
-    iconLists: [
-      "/icons/projects/next.svg",
-      "/icons/projects/tail.svg",
-      "/icons/projects/nodejs.svg",
-      "/icons/projects/ts.svg",
-      "/icons/projects/vercel-light.png",
-    ],
-    siteLink: "https://nextjs-template.khushalagarwal.tech/",
-    githubLink: `${site.github.href}/nextjs-template`,
+    title: "Next.js Starter",
+    kind: "Open-source template",
+    summary: "Lean Next.js 16 starter with themes, SEO and security headers.",
+    des: "A lean starter for Next.js 16 with React 19, Tailwind v4 and TypeScript. It ships Cache Components, the React Compiler, light, dark and system themes, SEO metadata with JSON-LD, security headers and a validate script covering lint, types, Prettier and build.",
+    img: "/images/projects/nextjs-template.jpg",
+    tech: ["nextjs", "react", "typescript", "tailwind", "vercel"],
+    siteLink: "https://nextjs-template.khushalagarwal.dev/",
+    githubLink: "https://github.com/Khushal-ag/nextjs-template",
   },
 ];
-
-export type PortfolioProject = (typeof projects)[number];
 
 export const testimonials = [
   {
@@ -397,12 +525,6 @@ export const testimonials = [
   },
   {
     quote:
-      "Having Khushal on board as our full stack developer was a game-changer. His comprehensive understanding of both front-end and back-end technologies allowed us to create a seamless application.",
-    name: "Hemant Rajput",
-    title: "Infinitunes",
-  },
-  {
-    quote:
       "Collaborating with Khushal on our backend infrastructure was a decision we're proud of. His in-depth knowledge of database management and API integrations played a crucial role.",
     name: "Yash Goyal",
     title: "MixR.gg",
@@ -412,35 +534,12 @@ export const testimonials = [
 export const footer = {
   heading: "Let's build something together",
   subtext:
-    "Open to full-time roles and freelance projects — India (onsite) or remote worldwide. Reach out anytime.",
-  ctaText: "Get in touch",
-  contactEmail: "starkhush5@gmail.com",
+    "Open to full-time roles and freelance projects, onsite in India or remote worldwide. Reach out anytime.",
+  ctaText: "Send an email",
   copyright: "© {year} Khushal Agarwal",
 };
 
-export const socialMedia = [
-  {
-    id: 1,
-    img: "/icons/social/git.svg",
-    link: site.github.href,
-    label: "GitHub",
-  },
-  {
-    id: 2,
-    img: "/icons/social/twit.svg",
-    link: "https://x.com/starkhush5",
-    label: "X",
-  },
-  {
-    id: 3,
-    img: "/icons/social/link.svg",
-    link: "https://www.linkedin.com/in/khushal-agarwal/",
-    label: "LinkedIn",
-  },
-  {
-    id: 4,
-    img: "/icons/social/insta.svg",
-    link: "https://www.instagram.com/starkhush/",
-    label: "Instagram",
-  },
-];
+export const githubCta = {
+  label: "View my GitHub",
+  blurb: "More projects, open-source contributions, and code on GitHub.",
+};

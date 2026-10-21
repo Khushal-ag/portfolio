@@ -1,36 +1,92 @@
 @import "tailwindcss";
-@import "tailwind-animate";
+
+/* next-themes sets .dark / .light on <html>; enable Tailwind dark: variants */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Theme tokens. Dark is the original editor look; light is a cool neutral
+  paper with a darker green so accent text stays AA-readable.
+*/
+:root {
+  color-scheme: light;
+  --grid-line: rgba(0, 0, 0, 0.055);
+  --bg: #f7f7f8;
+  --bg-elevated: #fbfbfc;
+  --bg-panel: #fefefe;
+  --surface: rgba(0, 0, 0, 0.03);
+  --surface-hover: rgba(0, 0, 0, 0.06);
+  --surface-active: rgba(10, 122, 82, 0.1);
+  --border: rgba(0, 0, 0, 0.09);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --border-muted: rgba(0, 0, 0, 0.05);
+  --text: #18181b;
+  --text-muted: rgba(24, 24, 27, 0.74);
+  --text-subtle: rgba(24, 24, 27, 0.62);
+  --text-dim: rgba(24, 24, 27, 0.5);
+  --accent: #0a7a52;
+  --accent-dim: rgba(10, 122, 82, 0.1);
+  --on-accent: #f7f7f8;
+  --keyword: #8e2fc0;
+  --string: #3d7a1c;
+  --comment: #6b7280;
+}
+
+.dark {
+  color-scheme: dark;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --bg: #0f0f10;
+  --bg-elevated: #18181b;
+  --bg-panel: #1c1c1f;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --surface-active: rgba(62, 207, 142, 0.08);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --border-muted: rgba(255, 255, 255, 0.04);
+  --text: #ededed;
+  --text-muted: rgba(237, 237, 237, 0.7);
+  --text-subtle: rgba(237, 237, 237, 0.5);
+  --text-dim: rgba(237, 237, 237, 0.35);
+  --accent: #3ecf8e;
+  --accent-dim: rgba(62, 207, 142, 0.12);
+  --on-accent: #0f0f10;
+  --keyword: #c678dd;
+  --string: #98c379;
+  --comment: #5c6370;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-panel: var(--bg-panel);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-active: var(--surface-active);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-muted: var(--border-muted);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-text-dim: var(--text-dim);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-on-accent: var(--on-accent);
+  --color-keyword: var(--keyword);
+  --color-string: var(--string);
+  --color-comment: var(--comment);
+  --font-heading: var(--font-geist-sans), system-ui, sans-serif;
+  --font-body: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
 
 @theme {
-  --color-bg: #0f0f10;
-  --color-bg-elevated: #18181b;
-  --color-bg-panel: #1c1c1f;
-  --color-surface: rgba(255, 255, 255, 0.03);
-  --color-surface-hover: rgba(255, 255, 255, 0.06);
-  --color-surface-active: rgba(62, 207, 142, 0.08);
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-strong: rgba(255, 255, 255, 0.1);
-  --color-border-muted: rgba(255, 255, 255, 0.04);
-  --color-text: #ededed;
-  --color-text-muted: rgba(237, 237, 237, 0.7);
-  --color-text-subtle: rgba(237, 237, 237, 0.5);
-  --color-text-dim: rgba(237, 237, 237, 0.35);
-  --color-accent: #3ecf8e;
-  --color-accent-dim: rgba(62, 207, 142, 0.12);
-  --color-accent-glow: rgba(62, 207, 142, 0.2);
-  --color-keyword: #c678dd;
-  --color-string: #98c379;
-  --color-comment: #5c6370;
-  --color-number: #d19a66;
-  --color-line-number: rgba(255, 255, 255, 0.2);
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.625rem;
   --radius-2xl: 0.75rem;
   --radius-full: 9999px;
-  --font-heading: var(--font-poppins), system-ui, sans-serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
   --z-nav: 1000;
 }
 
@@ -41,6 +97,19 @@
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Scale the rem base on large displays so layout and type grow together. */
+  @media (width >= 1920px) {
+    html {
+      font-size: 112.5%;
+    }
+  }
+
+  @media (width >= 2560px) {
+    html {
+      font-size: 150%;
+    }
   }
 
   body {
@@ -70,6 +139,7 @@
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
@@ -139,47 +209,11 @@
     border-color: var(--color-border-strong);
   }
 
-  .experience-card {
-    cursor: default;
-    transition:
-      background-color 0.25s ease,
-      border-color 0.25s ease,
-      box-shadow 0.25s ease,
-      transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .experience-card:hover {
-    background-color: var(--color-bg-elevated);
-    border-color: var(--color-border-strong);
-    border-left-width: 4px;
-    border-left-color: var(--color-accent);
-    box-shadow:
-      0 4px 6px -2px rgba(0, 0, 0, 0.3),
-      0 12px 24px -8px rgba(0, 0, 0, 0.4),
-      4px 0 16px -4px var(--color-accent-glow);
-  }
-
   .file-path {
     font-family: var(--font-mono);
     font-size: 0.8125rem;
     color: var(--color-text-subtle);
     letter-spacing: 0.02em;
-  }
-
-  .editor-tab {
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
-    transition:
-      color 0.2s,
-      background 0.2s;
-  }
-
-  .editor-tab:hover {
-    color: var(--color-text);
-    background: var(--color-surface-hover);
   }
 
   .link-accent {
@@ -191,7 +225,7 @@
   }
 
   .link-accent:hover {
-    color: #6ee7a6;
+    color: color-mix(in oklab, var(--color-accent) 78%, var(--color-text));
     text-decoration: underline;
     text-decoration-color: var(--color-accent);
   }
@@ -205,7 +239,7 @@
     font-weight: 600;
     font-family: var(--font-mono);
     font-size: 0.875rem;
-    color: #0f0f10;
+    color: var(--color-on-accent);
     background: var(--color-accent);
     border: none;
     border-radius: var(--radius-md);
@@ -250,15 +284,6 @@
     transform: translateY(-1px);
   }
 
-  .line-numbers {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--color-line-number);
-    text-align: right;
-    user-select: none;
-    padding-right: 1rem;
-  }
-
   .font-editor {
     font-family: var(--font-mono);
   }
@@ -269,7 +294,136 @@
     }
   }
 
+  /* Faint engineering-paper grid that fades toward the edges. */
+  .bg-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(
+      ellipse 75% 65% at 50% 35%,
+      #000 25%,
+      transparent 78%
+    );
+  }
+
+  /* Hero headline: words rise and sharpen. Never fully transparent, so the
+     text stays a valid LCP candidate. */
+  @keyframes word-in {
+    from {
+      transform: translateY(0.4em);
+      filter: blur(10px);
+    }
+    to {
+      transform: none;
+      filter: blur(0);
+    }
+  }
+
+  .reveal-word {
+    display: inline-block;
+    animation: word-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  /* One line of "typed" code: width steps from 0 to --chars characters. */
+  @keyframes type {
+    from {
+      width: 0;
+    }
+    to {
+      width: calc(var(--chars) * 1ch);
+    }
+  }
+
+  .type-line {
+    display: block;
+    width: 0;
+    overflow: hidden;
+    white-space: pre;
+    animation: type calc(var(--chars) * 28ms) steps(var(--chars)) var(--d, 0ms)
+      forwards;
+  }
+
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .caret {
+    display: inline-block;
+    width: 0.55ch;
+    height: 1.1em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    background: var(--color-accent);
+    animation: caret 1s steps(1) infinite;
+  }
+
+  /* Skill chips: restarts whenever their tab panel becomes visible. */
+  @keyframes chip-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .chip-in {
+    animation: chip-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 28ms);
+  }
+
+  @keyframes float-y {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -8px;
+    }
+  }
+
+  .float-y {
+    animation: float-y 5s ease-in-out infinite;
+    animation-delay: var(--d, 0ms);
+  }
+
+  .marquee {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
   .marquee-track {
     animation: marquee 45s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
   }
 }

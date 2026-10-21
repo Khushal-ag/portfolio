@@ -1,74 +1,121 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
-import { motion, useInView } from "framer-motion";
+import { motion } from "motion/react";
 
-import {
-  Section,
-  SectionFileLabel,
-  SectionHeading,
-} from "@/components/Section";
-import { skills } from "@/content";
-
-const groups = [
-  { label: "Languages", items: skills.languages },
-  { label: "Backend & Cloud", items: skills.backendCloud },
-  { label: "Frontend & Mobile", items: skills.frontendMobile },
-  { label: "Databases & DevOps", items: skills.databasesDevOps },
-  { label: "Other", items: skills.other },
-] as const;
-
-const stagger = {
-  visible: { transition: { staggerChildren: 0.03, delayChildren: 0.05 } },
-};
-const pill = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0 },
-};
+import { Section, SectionHeading } from "@/components/Section";
+import { skillGroups } from "@/content";
+import { fadeUp } from "@/lib/motion";
 
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [active, setActive] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  function select(index: number) {
+    const next = (index + skillGroups.length) % skillGroups.length;
+    setActive(next);
+    tabRefs.current[next]?.focus();
+  }
+
+  function onKeyDown(e: React.KeyboardEvent, index: number) {
+    const keys: Record<string, number | undefined> = {
+      ArrowDown: index + 1,
+      ArrowRight: index + 1,
+      ArrowUp: index - 1,
+      ArrowLeft: index - 1,
+      Home: 0,
+      End: skillGroups.length - 1,
+    };
+    const target = keys[e.key];
+    if (target === undefined) return;
+    e.preventDefault();
+    select(target);
+  }
 
   return (
-    <Section id="skills" reveal={false}>
-      <div ref={ref}>
-        <SectionFileLabel file="~/portfolio/skills.ts" />
-        <SectionHeading>Technical skills</SectionHeading>
-        <motion.div
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={stagger}
-          className="flex flex-col gap-8"
+    <Section id="skills">
+      <SectionHeading>Technical skills</SectionHeading>
+      <motion.div
+        variants={fadeUp}
+        className="grid gap-5 lg:grid-cols-[17rem_1fr] lg:gap-8"
+      >
+        <div
+          role="tablist"
+          aria-label="Skill categories"
+          aria-orientation="vertical"
+          className="-mx-1 flex snap-x gap-2 overflow-x-auto px-1 pb-2 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0 lg:pb-0"
         >
-          {groups.map(({ label, items }) => (
-            <div key={label}>
-              <motion.h3
-                variants={pill}
-                className="mb-3 text-xs font-semibold tracking-wider text-accent uppercase"
+          {skillGroups.map((group, i) => {
+            const selected = i === active;
+            return (
+              <button
+                key={group.label}
+                ref={(el) => {
+                  tabRefs.current[i] = el;
+                }}
+                id={`skill-tab-${i}`}
+                role="tab"
+                type="button"
+                aria-selected={selected}
+                aria-controls={`skill-panel-${i}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActive(i)}
+                onKeyDown={(e) => onKeyDown(e, i)}
+                className={`relative flex shrink-0 cursor-pointer snap-start items-center justify-between gap-4 rounded-xl border px-4 py-3 text-left transition-colors lg:w-full ${
+                  selected ?
+                    "border-accent/40 text-text"
+                  : "border-border text-text-muted hover:border-border-strong hover:text-text"
+                }`}
               >
-                {label}
-              </motion.h3>
-              <div className="flex flex-wrap gap-2">
-                {items.map((skill) => (
+                {selected && (
                   <motion.span
+                    layoutId="skill-tab"
+                    aria-hidden
+                    className="absolute inset-0 rounded-xl bg-surface-active"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="relative text-sm font-medium whitespace-nowrap">
+                  {group.label}
+                </span>
+                <span
+                  className={`font-editor relative text-xs ${selected ? "text-accent" : "text-text-dim"}`}
+                >
+                  {group.items.length}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="editor-panel min-h-72 p-5 sm:p-7">
+          {skillGroups.map((group, i) => (
+            <div
+              key={group.label}
+              id={`skill-panel-${i}`}
+              role="tabpanel"
+              aria-labelledby={`skill-tab-${i}`}
+              hidden={i !== active}
+            >
+              <h3 className="font-editor mb-5 text-xs text-text-subtle">
+                {`// ${group.label}`}
+              </h3>
+              <ul className="flex flex-wrap gap-2.5">
+                {group.items.map((skill, j) => (
+                  <li
                     key={skill}
-                    variants={pill}
-                    whileHover={{
-                      scale: 1.03,
-                      borderColor: "var(--color-accent)",
-                    }}
-                    className="font-editor rounded-md border border-border bg-bg-panel px-3 py-1.5 text-xs text-text-muted transition-colors hover:border-accent/30 hover:text-text"
+                    className="chip-in font-editor rounded-lg border border-border bg-bg-elevated px-4 py-2.5 text-sm text-text-muted transition-colors hover:border-accent/50 hover:text-text"
+                    style={{ "--i": j } as React.CSSProperties}
                   >
                     {skill}
-                  </motion.span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </Section>
   );
 }

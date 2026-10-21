@@ -1,20 +1,14 @@
-"use client";
+import { allSkills } from "@/content";
 
-import { skills } from "@/content";
-
-const allSkills = [
-  ...skills.languages,
-  ...skills.backendCloud,
-  ...skills.frontendMobile,
-  ...skills.databasesDevOps,
-  ...skills.other,
-];
-
+/** Decorative skill ticker; the Skills section carries the accessible list. */
 export default function MarqueeStrip() {
   const row = [...allSkills, ...allSkills];
 
   return (
-    <section className="relative overflow-hidden border-y border-border-muted bg-bg-panel/80 py-3">
+    <section
+      className="marquee relative overflow-hidden border-y border-border-muted bg-bg-panel/80 py-3"
+      aria-hidden
+    >
       <div className="marquee-track flex w-max gap-4">
         {row.map((skill, i) => (
           <span

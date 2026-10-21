@@ -1,6 +1,16 @@
-import { hero, site } from "@/content";
+import { ImageResponse } from "next/og";
 
-export function OgCardMarkup() {
+import { site } from "@/content";
+
+export const ogAlt = `${site.author.name} | ${site.author.title} (${site.author.subtitle.replaceAll(" · ", ", ")})`;
+export const ogSize = { width: 1200, height: 630 };
+export const ogContentType = "image/png";
+
+export function renderOgImage() {
+  return new ImageResponse(<OgCardMarkup />, ogSize);
+}
+
+function OgCardMarkup() {
   const host = new URL(site.urlBare).hostname;
 
   return (
@@ -49,7 +59,7 @@ export function OgCardMarkup() {
             lineHeight: 1.35,
           }}
         >
-          {hero.tagline}
+          {site.author.subtitle}
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>

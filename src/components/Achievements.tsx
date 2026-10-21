@@ -1,77 +1,56 @@
 "use client";
 
-import { useRef } from "react";
+import { motion } from "motion/react";
+import { FaCertificate, FaCode, FaFileLines, FaTrophy } from "react-icons/fa6";
 
-import { motion, useInView } from "framer-motion";
-
-import {
-  Section,
-  SectionFileLabel,
-  SectionHeading,
-} from "@/components/Section";
+import { Section, SectionHeading } from "@/components/Section";
+import Spotlight from "@/components/Spotlight";
 import { achievements, education } from "@/content";
+import { fadeUp, stagger } from "@/lib/motion";
 
-const item = {
-  hidden: { opacity: 0, x: -12 },
-  visible: { opacity: 1, x: 0 },
-};
+/** Icon per achievement, in `achievements` order. */
+const icons = [FaFileLines, FaTrophy, FaCode, FaCertificate] as const;
 
 export default function Achievements() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
   return (
-    <Section id="achievements" reveal={false}>
-      <div ref={ref}>
-        <SectionFileLabel file="~/portfolio/achievements.ts" />
-        <SectionHeading>Education & achievements</SectionHeading>
-
-        <motion.div
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.06, delayChildren: 0.05 },
-            },
-          }}
-          className="space-y-8"
-        >
-          <motion.div
-            variants={item}
-            transition={{ duration: 0.35 }}
-            className="editor-panel p-6 md:p-8"
-          >
+    <Section id="achievements">
+      <SectionHeading>Education & achievements</SectionHeading>
+      <motion.div
+        variants={stagger(0.06)}
+        className="grid gap-8 md:grid-cols-[1fr_1.7fr] md:gap-12"
+      >
+        <motion.div variants={fadeUp} className="self-start">
+          <Spotlight className="editor-panel p-6 md:p-8">
             <h3 className="text-xs font-semibold tracking-wider text-accent uppercase">
               Education
             </h3>
-            <p className="mt-2 font-semibold text-text">
-              {education.degree} · {education.school}
-            </p>
-            <p className="text-sm text-text-muted">
+            <p className="mt-3 font-semibold text-text">{education.degree}</p>
+            <p className="text-text-muted">{education.school}</p>
+            <p className="font-editor mt-3 text-xs text-text-subtle">
               {education.cpi} · {education.years}
             </p>
-          </motion.div>
-
-          <div>
-            <h3 className="mb-4 text-xs font-semibold tracking-wider text-accent uppercase">
-              Achievements
-            </h3>
-            <ul className="space-y-3">
-              {achievements.map((text, i) => (
-                <motion.li
-                  key={i}
-                  variants={item}
-                  transition={{ duration: 0.35 }}
-                  className="flex items-start gap-3 rounded-md border border-border bg-bg-panel px-4 py-3 text-sm text-text-muted md:text-base"
-                >
-                  <span className="mt-1.5 size-2 shrink-0 rounded-full bg-accent" />
-                  {text}
-                </motion.li>
-              ))}
-            </ul>
-          </div>
+          </Spotlight>
         </motion.div>
-      </div>
+
+        <ul className="divide-y divide-border border-y border-border">
+          {achievements.map((text, i) => {
+            const Icon = icons[i % icons.length] ?? FaTrophy;
+            return (
+              <motion.li
+                key={text}
+                variants={fadeUp}
+                className="flex items-start gap-4 py-4 text-text-muted md:text-lg"
+              >
+                <Icon
+                  className="mt-1.5 size-4 shrink-0 text-accent"
+                  aria-hidden
+                />
+                {text}
+              </motion.li>
+            );
+          })}
+        </ul>
+      </motion.div>
     </Section>
   );
 }

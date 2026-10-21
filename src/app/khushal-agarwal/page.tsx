@@ -3,56 +3,27 @@ import Link from "next/link";
 
 import type { Metadata } from "next";
 
-import Nav from "@/components/Nav";
-import ScrollProgress from "@/components/ScrollProgress";
-import { education, hero, seo, site, skills, workExperience } from "@/content";
-import { buildProfileBreadcrumbJsonLd } from "@/lib/json-ld";
+import ExternalLink from "@/components/ExternalLink";
+import JsonLd from "@/components/JsonLd";
+import SiteShell from "@/components/SiteShell";
+import { education, seo, site, skillGroups, workExperience } from "@/content";
+import { buildProfilePageJsonLd } from "@/lib/json-ld";
+import { pageMetadata } from "@/lib/seo";
 
-const title = "Khushal Agarwal – Full-Stack Developer & Software Engineer";
-const profileDescription = seo.profileMetaDescription;
-
-export const metadata: Metadata = {
-  title,
-  description: profileDescription,
+export const metadata: Metadata = pageMetadata({
+  title: `${site.author.name} | Full-Stack Developer & Software Engineer`,
+  description: seo.profileMetaDescription,
+  path: "/khushal-agarwal",
   keywords: [...site.keywords, "software engineer", "India", "Pune"],
-  openGraph: {
-    title,
-    description: profileDescription,
-    url: "/khushal-agarwal",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description: profileDescription,
-    creator: `@${site.twitterHandle}`,
-  },
-  alternates: { canonical: "/khushal-agarwal" },
-  robots: { index: true, follow: true },
-};
+  profile: true,
+});
 
 const navLinkClass =
   "hover:text-accent font-medium underline underline-offset-2";
 
-const skillGroups = [
-  { label: "Languages", items: skills.languages },
-  { label: "Backend & cloud", items: skills.backendCloud },
-  { label: "Frontend & mobile", items: skills.frontendMobile },
-  { label: "Databases & DevOps", items: skills.databasesDevOps },
-  { label: "Other", items: skills.other },
-] as const;
-
 export default function KhushalAgarwalPage() {
   return (
-    <div className="min-h-screen bg-bg">
-      <a
-        href="#main-content"
-        className="fixed top-4 left-4 z-[calc(var(--z-nav)+2)] rounded-md bg-accent px-3 py-2 text-sm font-medium text-bg opacity-0 focus:opacity-100 focus:ring-2 focus:ring-white focus:outline-none"
-      >
-        Skip to content
-      </a>
-      <ScrollProgress />
-      <Nav />
+    <SiteShell>
       <main
         id="main-content"
         className="section-padding section-container mx-auto max-w-3xl pt-24 pb-20"
@@ -65,8 +36,8 @@ export default function KhushalAgarwalPage() {
           <div className="mb-6 flex justify-center">
             <div className="relative size-24 overflow-hidden rounded-xl border border-border-strong bg-bg-panel shadow-lg md:size-28">
               <Image
-                src={hero.avatar}
-                alt={hero.title}
+                src={site.author.avatar}
+                alt={site.author.name}
                 fill
                 className="object-cover"
                 sizes="112px"
@@ -75,22 +46,12 @@ export default function KhushalAgarwalPage() {
             </div>
           </div>
           <h1 className="mb-2 text-center text-3xl font-bold tracking-tight text-text md:text-4xl">
-            Khushal Agarwal
+            {site.author.name}
           </h1>
           <h2 className="text-center text-xl font-semibold text-text-muted md:text-2xl">
-            Full-Stack Developer · TypeScript · Go · AI · Web3
+            {site.author.title} · {site.author.subtitle}
           </h2>
         </header>
-
-        <section className="sr-only" aria-label="Name spellings">
-          <h2>Name spellings</h2>
-          <p>
-            This is the official site for Khushal Agarwal. If you searched for
-            Kushal Agarwal, Khusal Agarwal, Khushal Agrawal, or Khushaal Agarwal
-            — you&apos;re in the right place; those are common spellings of the
-            same name.
-          </p>
-        </section>
 
         <section className="mb-12">
           <h2 className="section-heading mb-6 text-left text-xl text-text md:text-2xl">
@@ -98,17 +59,17 @@ export default function KhushalAgarwalPage() {
           </h2>
           <div className="space-y-4 text-lg leading-relaxed text-text-muted">
             <p>
-              <strong className="text-text">Khushal Agarwal</strong> (also
-              spelled Kushal Agarwal) is a full-stack developer with 2+ years
-              building web and mobile products across AI, Web3, and SaaS. This
-              is the official Khushal Agarwal developer portfolio and engineer
-              profile.
+              <strong className="text-text">Khushal Agarwal</strong> is a
+              full-stack developer with 3+ years of experience building web and
+              mobile products across AI, Web3, and SaaS. This is his official
+              developer portfolio and engineer profile.
             </p>
             <p>
-              The portfolio highlights work at Kreedalabs (Syncora), MixR, Hench
-              Solutions (BillBook, Mera Coach), and Vyloo — spanning AI data
-              marketplaces, social commerce and agents, billing and IAM, and
-              pharmacy operations platforms.
+              The portfolio highlights full-time work at Kreedalabs (AI search,
+              generative-AI tools, Syncora) and freelance work for MixR, Hench
+              Solutions (BillBook, IAMS, Mera Coach, Abvela) and Vyloo, spanning
+              AI platforms, social commerce and agents, billing and insurance
+              tools, and pharmacy operations.
             </p>
           </div>
         </section>
@@ -119,21 +80,17 @@ export default function KhushalAgarwalPage() {
           </h2>
           <ul className="space-y-4">
             {workExperience.map((job) => (
-              <li
-                key={job.id}
-                className="experience-card editor-panel p-5 transition-colors md:p-6"
-              >
+              <li key={job.id} className="editor-panel p-5 md:p-6">
                 <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
                   <h3 className="text-lg font-semibold text-text">
                     {job.role} · {job.company}
                   </h3>
-                  {job.period && (
-                    <span className="text-sm text-accent/90">{job.period}</span>
-                  )}
+                  <span className="text-sm text-accent/90">{job.period}</span>
                 </div>
-                {job.location && (
-                  <p className="mt-1 text-sm text-text-dim">{job.location}</p>
-                )}
+                <p className="mt-1 text-sm text-text-dim">
+                  {job.type} · {job.location}
+                </p>
+                <p className="mt-3 text-text-muted">{job.summary}</p>
               </li>
             ))}
           </ul>
@@ -169,15 +126,10 @@ export default function KhushalAgarwalPage() {
             Education
           </h2>
           <p className="text-text-muted">
-            {education.degree}, {education.school} — {education.cpi},{" "}
+            {education.degree}, {education.school} - {education.cpi},{" "}
             {education.years}
           </p>
         </section>
-
-        <p className="sr-only mb-12">
-          Kushal Agarwal, Khusal Agarwal, Khushal Agrawal, Khushaal Agarwal —
-          same person, this portfolio.
-        </p>
 
         <nav className="flex flex-wrap items-center gap-4 border-t border-border pt-8 text-text-muted">
           <Link href="/" className={navLinkClass}>
@@ -186,38 +138,18 @@ export default function KhushalAgarwalPage() {
           <span className="text-text-dim" aria-hidden>
             ·
           </span>
-          <a
-            href={site.author.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={navLinkClass}
-          >
+          <ExternalLink href={site.links.linkedin} className={navLinkClass}>
             LinkedIn
-          </a>
-          <a
-            href={site.links.github.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={navLinkClass}
-          >
+          </ExternalLink>
+          <ExternalLink href={site.links.github} className={navLinkClass}>
             GitHub
-          </a>
-          <a
-            href={site.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={navLinkClass}
-          >
+          </ExternalLink>
+          <ExternalLink href={site.resumeUrl} className={navLinkClass}>
             Resume
-          </a>
+          </ExternalLink>
         </nav>
       </main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(buildProfileBreadcrumbJsonLd()),
-        }}
-      />
-    </div>
+      <JsonLd data={buildProfilePageJsonLd()} />
+    </SiteShell>
   );
 }

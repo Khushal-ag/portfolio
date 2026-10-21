@@ -4,43 +4,27 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
-import { HiMenu, HiX } from "react-icons/hi";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "motion/react";
+import { FaBars, FaGithub, FaXmark } from "react-icons/fa6";
 
+import ExternalLink from "@/components/ExternalLink";
+import ThemeToggle from "@/components/ThemeToggle";
+import TrafficLights from "@/components/TrafficLights";
 import { navItems, site } from "@/content";
-import { githubProfileHref } from "@/lib/links";
+import { EASE } from "@/lib/motion";
 
-const SECTION_IDS = navItems
-  .map((item) => (item.link.startsWith("#") ? item.link.slice(1) : item.link))
-  .filter(Boolean);
+const SECTION_IDS = navItems.map((item) => item.link.slice(1));
+
+const mobileLinkClass =
+  "font-editor rounded-xl px-4 py-3 text-sm text-text transition hover:bg-surface-hover hover:text-accent";
 
 function getActiveHash(): string {
-  if (typeof window === "undefined") return "";
-  return window.location.hash.slice(1) || "";
-}
-
-function getSectionInView(): string {
-  if (typeof window === "undefined") return "";
-  const topThreshold = 120;
-  const candidates = SECTION_IDS.map((id) => ({
-    id,
-    top: document.getElementById(id)?.getBoundingClientRect().top ?? Infinity,
-  })).filter((s) => s.top <= topThreshold);
-  if (candidates.length === 0) {
-    const first = SECTION_IDS.map((id) => ({
-      id,
-      top: document.getElementById(id)?.getBoundingClientRect().top ?? Infinity,
-    })).filter((s) => s.top !== Infinity);
-
-    if (first.length > 0) {
-      return first.reduce((a, b) => (a.top < b.top ? a : b)).id;
-    }
-
-    return "";
-  }
-
-  return candidates.reduce((a, b) => (a.top > b.top ? a : b)).id;
+  return window.location.hash.slice(1);
 }
 
 export default function Nav() {
@@ -49,10 +33,6 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const isHome = pathname === "/";
-  const scrolledHeaderClass =
-    scrolled ?
-      "border-border bg-bg/95 shadow-lg shadow-black/5 backdrop-blur-md"
-    : "border-border-muted bg-bg/80 backdrop-blur-sm";
 
   useEffect(() => {
     const onHashChange = () => setActiveSection(getActiveHash());
@@ -64,96 +44,104 @@ export default function Nav() {
     };
   }, []);
 
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      setActiveSection((prev) => getSectionInView() || prev);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (y) => {
+    setScrolled(y > 24);
+    if (y < 120) setActiveSection("");
+  });
 
-  const linkToHash = (link: string) =>
-    link.startsWith("#") ? link.slice(1) : link;
+  useEffect(() => {
+    const targets = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (targets.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        }
+      },
+      { rootMargin: "-30% 0px -60% 0px" },
+    );
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const hrefFor = (link: string) => (isHome ? link : `/${link}`);
+  const closeMenu = () => setMobileOpen(false);
 
   return (
     <>
-      <header
-        className={`fixed top-0 right-0 left-0 z-(--z-nav) border-b transition-all duration-300 ${scrolledHeaderClass}`}
-      >
-        <div className="section-container flex h-14 items-center gap-3 md:h-12 md:gap-4">
-          <div className="flex shrink-0 items-center gap-3">
-            <div className="hidden shrink-0 items-center gap-1.5 md:flex">
-              <span className="size-2 rounded-full bg-[#ff5f56]" aria-hidden />
-              <span className="size-2 rounded-full bg-[#ffbd2e]" aria-hidden />
-              <span className="size-2 rounded-full bg-[#27c93f]" aria-hidden />
-            </div>
-            <Link
-              href={isHome ? "#" : "/"}
-              className="font-editor shrink-0 text-sm font-medium text-text transition hover:text-accent"
-            >
-              <span className="hidden sm:inline">
-                {isHome ? site.author.name.split(" ")[0] : "Portfolio"}
-              </span>
-              <span className="sm:hidden">{isHome ? "portfolio" : "Home"}</span>
-            </Link>
-          </div>
-
-          <nav
-            className="hidden flex-1 items-center justify-center gap-0.5 md:flex"
-            aria-label="Main"
+      <header className="fixed inset-x-0 top-3 z-(--z-nav) flex justify-center px-3 sm:top-4 sm:px-4">
+        <div
+          className={`flex w-full max-w-xl items-center gap-2 rounded-full border px-3 py-1.5 backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 lg:w-auto lg:max-w-none ${
+            scrolled ?
+              "border-border-strong bg-bg/85 shadow-lg shadow-black/10"
+            : "border-border bg-bg/55"
+          }`}
+        >
+          <Link
+            href={isHome ? "#" : "/"}
+            className="font-editor flex shrink-0 items-center gap-2.5 rounded-full py-1 pr-2 pl-1 text-sm font-medium text-text transition hover:text-accent"
           >
-            {navItems.map((item) => {
-              const hash = linkToHash(item.link);
-              const isActive = isHome && activeSection === hash;
-              const href = isHome ? item.link : `/${item.link}`;
-              const linkClass =
-                isActive ?
-                  "bg-surface-active text-accent"
-                : "text-text-muted hover:bg-surface-hover hover:text-text";
+            <TrafficLights />
+            <span>{isHome ? site.author.name.split(" ")[0] : "Home"}</span>
+          </Link>
 
+          <nav className="hidden items-center lg:flex" aria-label="Main">
+            {navItems.map((item) => {
+              const isActive = isHome && activeSection === item.link.slice(1);
               return (
                 <Link
                   key={item.link}
-                  href={href}
-                  className={`font-editor shrink-0 rounded-md px-3 py-2 text-xs transition md:text-[0.8125rem] ${linkClass}`}
+                  href={hrefFor(item.link)}
                   aria-current={isActive ? "true" : undefined}
+                  className={`font-editor relative rounded-full px-3 py-1.5 text-[0.8125rem] transition-colors ${
+                    isActive ? "text-accent" : "text-text-muted hover:text-text"
+                  }`}
                 >
-                  {item.name}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 rounded-full bg-surface-active"
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 32,
+                      }}
+                    />
+                  )}
+                  <span className="relative">{item.name}</span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="ml-auto flex shrink-0 items-center gap-2">
-            <a
-              href={githubProfileHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden size-9 items-center justify-center rounded-lg text-text-muted transition hover:text-accent md:flex"
+          <div className="ml-auto flex shrink-0 items-center gap-1">
+            <ExternalLink
+              href={site.links.github}
+              className="hidden size-9 items-center justify-center rounded-full text-text-muted transition hover:bg-surface-hover hover:text-accent lg:flex"
               aria-label="GitHub profile"
             >
-              <FaGithub className="size-5" />
-            </a>
-            <a
+              <FaGithub className="size-[1.125rem]" />
+            </ExternalLink>
+            <ThemeToggle />
+            <ExternalLink
               href={site.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary hidden shrink-0 py-2 text-xs md:inline-flex"
+              className="btn-primary hidden shrink-0 rounded-full px-4 py-1.5 text-xs lg:inline-flex"
             >
               Resume
-            </a>
+            </ExternalLink>
             <button
               type="button"
               onClick={() => setMobileOpen((o) => !o)}
-              className="flex size-10 items-center justify-center rounded-lg text-text-muted hover:bg-surface hover:text-text md:hidden"
+              className="flex size-9 items-center justify-center rounded-full text-text-muted transition hover:bg-surface-hover hover:text-text lg:hidden"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
             >
               {mobileOpen ?
-                <HiX className="size-5" />
-              : <HiMenu className="size-5" />}
+                <FaXmark className="size-5" />
+              : <FaBars className="size-5" />}
             </button>
           </div>
         </div>
@@ -167,36 +155,23 @@ export default function Nav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[calc(var(--z-nav)-1)] bg-bg/80 backdrop-blur-sm md:hidden"
-              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-[calc(var(--z-nav)-1)] bg-bg/70 backdrop-blur-sm lg:hidden"
+              onClick={closeMenu}
               aria-hidden
             />
             <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
-              className="fixed top-14 right-0 left-0 z-(--z-nav) border-t border-b border-border bg-bg-panel md:hidden"
+              initial={{ opacity: 0, y: -10, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
+              transition={{ duration: 0.2, ease: EASE }}
+              className="fixed inset-x-3 top-[4.25rem] z-(--z-nav) mx-auto max-w-xl rounded-2xl border border-border-strong bg-bg-panel p-2 shadow-2xl shadow-black/20 sm:top-[4.75rem] lg:hidden"
             >
-              <nav
-                className="section-container flex flex-col py-4"
-                aria-label="Main"
-              >
-                <a
-                  href={githubProfileHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="font-editor flex items-center gap-2 rounded-lg px-4 py-3 text-sm text-text transition hover:bg-surface-hover hover:text-accent"
-                >
-                  <FaGithub className="size-5 shrink-0" />
-                  GitHub
-                </a>
+              <nav className="flex flex-col" aria-label="Main">
                 {!isHome && (
                   <Link
                     href="/"
-                    onClick={() => setMobileOpen(false)}
-                    className="font-editor rounded-lg px-4 py-3 text-sm text-text transition hover:bg-surface-hover hover:text-accent"
+                    onClick={closeMenu}
+                    className={mobileLinkClass}
                   >
                     Home
                   </Link>
@@ -204,22 +179,30 @@ export default function Nav() {
                 {navItems.map((item) => (
                   <Link
                     key={item.link}
-                    href={isHome ? item.link : `/${item.link}`}
-                    onClick={() => setMobileOpen(false)}
-                    className="font-editor rounded-lg px-4 py-3 text-sm text-text transition hover:bg-surface-hover hover:text-accent"
+                    href={hrefFor(item.link)}
+                    onClick={closeMenu}
+                    className={mobileLinkClass}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <a
-                  href={site.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="btn-primary mx-4 mt-4 justify-center py-2.5 text-sm"
-                >
-                  Resume
-                </a>
+                <div className="mt-2 flex items-center gap-2 border-t border-border p-2 pt-3">
+                  <ExternalLink
+                    href={site.resumeUrl}
+                    onClick={closeMenu}
+                    className="btn-primary flex-1 justify-center py-2.5 text-sm"
+                  >
+                    Resume
+                  </ExternalLink>
+                  <ExternalLink
+                    href={site.links.github}
+                    onClick={closeMenu}
+                    className="btn-ghost flex-1 justify-center py-2.5 text-sm"
+                  >
+                    <FaGithub className="size-4" aria-hidden />
+                    GitHub
+                  </ExternalLink>
+                </div>
               </nav>
             </motion.div>
           </>

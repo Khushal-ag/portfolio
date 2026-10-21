@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "plugins": [{ "name": "next" }],
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
