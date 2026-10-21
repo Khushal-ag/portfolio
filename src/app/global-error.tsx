@@ -21,7 +21,7 @@ export default function GlobalError({
 
   return (
     <html lang="en" className={`dark ${fontVariables}`}>
-      <body className="bg-bg font-(--font-body) text-text antialiased">
+      <body className="bg-bg font-body text-text antialiased">
         <ErrorCard
           file="global-error.tsx"
           comment="Critical error"

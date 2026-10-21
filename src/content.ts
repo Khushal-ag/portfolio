@@ -6,7 +6,7 @@ export const site = {
   name: "Khushal Agarwal | Full-Stack Developer",
   url: "https://www.khushalagarwal.dev",
   /** Bump when page content changes; feeds sitemap lastmod and JSON-LD dateModified. */
-  lastUpdated: "2026-10-21",
+  lastUpdated: "2026-10-22",
 
   author: {
     name: "Khushal Agarwal",

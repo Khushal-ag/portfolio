@@ -67,7 +67,7 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
             {project.siteLink && (
               <ExternalLink
                 href={project.siteLink}
-                className="btn-primary min-h-12 flex-1 px-4 py-3"
+                className="btn-primary min-h-12 min-w-0 flex-1 gap-1.5 px-3 py-3 text-[0.8125rem] sm:gap-2 sm:text-sm max-[359px]:[&>svg]:hidden"
               >
                 <FaArrowUpRightFromSquare className="size-3.5" aria-hidden />
                 Live site
@@ -76,7 +76,7 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
             {isRepoLink(project.githubLink) && (
               <ExternalLink
                 href={project.githubLink}
-                className="btn-ghost min-h-12 flex-1 px-4 py-3"
+                className="btn-ghost min-h-12 min-w-0 flex-1 gap-1.5 px-3 py-3 text-[0.8125rem] sm:gap-2 sm:text-sm max-[359px]:[&>svg]:hidden"
               >
                 <FaGithub className="size-4" aria-hidden />
                 Source

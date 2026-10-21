@@ -155,7 +155,7 @@ export default function Experience() {
 
   return (
     <Section id="experience">
-      <SectionHeading>Work experience</SectionHeading>
+      <SectionHeading eyebrow="experience">Work experience</SectionHeading>
       <div ref={ref} className="relative">
         <div
           aria-hidden

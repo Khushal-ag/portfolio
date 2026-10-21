@@ -15,11 +15,7 @@ import type { PortfolioProject } from "@/content";
 import ExternalLink from "@/components/ExternalLink";
 import GitHubCTA from "@/components/GitHubCTA";
 import ProjectCarousel from "@/components/ProjectCarousel";
-import {
-  Section,
-  SectionFileLabel,
-  SectionHeading,
-} from "@/components/Section";
+import { Section, SectionHeading } from "@/components/Section";
 import Spotlight from "@/components/Spotlight";
 import { projects } from "@/content";
 import { EASE, fadeUp } from "@/lib/motion";
@@ -129,8 +125,7 @@ export default function Projects() {
 
   return (
     <Section id="projects">
-      <SectionFileLabel file="~/portfolio/projects.ts" />
-      <SectionHeading>Projects</SectionHeading>
+      <SectionHeading eyebrow="projects">Projects</SectionHeading>
 
       <motion.div variants={fadeUp}>
         <ProjectCarousel />

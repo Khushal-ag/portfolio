@@ -14,7 +14,9 @@ const icons = [LuTrophy, LuCode, LuAward] as const;
 export default function Achievements() {
   return (
     <Section id="achievements">
-      <SectionHeading>Education & achievements</SectionHeading>
+      <SectionHeading eyebrow="education">
+        Education & achievements
+      </SectionHeading>
       <motion.div
         variants={stagger(0.06)}
         className="grid gap-8 md:grid-cols-[1fr_1.7fr] md:gap-12"

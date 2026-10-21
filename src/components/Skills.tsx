@@ -56,7 +56,7 @@ export default function Skills() {
 
   return (
     <Section id="skills">
-      <SectionHeading>Technical skills</SectionHeading>
+      <SectionHeading eyebrow="skills">Technical skills</SectionHeading>
       <motion.div
         variants={fadeUp}
         className="grid gap-5 lg:grid-cols-[17rem_1fr] lg:gap-8"

@@ -16,7 +16,7 @@ export default function Summary() {
 
   return (
     <Section id="about">
-      <SectionHeading>About me</SectionHeading>
+      <SectionHeading eyebrow="about">About me</SectionHeading>
       <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
         <motion.div variants={fadeUp} className="space-y-6 lg:col-span-7">
           <ScrollText

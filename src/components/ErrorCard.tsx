@@ -25,7 +25,7 @@ export default function ErrorCard({
         </div>
         <div className="border-l-2 border-accent/20 bg-bg-panel px-6 py-8 md:px-8 md:py-10">
           <p className="font-editor text-sm text-comment">{`// ${comment}`}</p>
-          <p className="mt-2 text-2xl font-(--font-heading) tracking-tight text-text md:text-3xl">
+          <p className="mt-2 font-heading text-2xl tracking-tight text-text md:text-3xl">
             {title}
           </p>
           <p className="mt-3 text-sm leading-relaxed text-text-muted">

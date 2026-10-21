@@ -234,6 +234,7 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.2;
+    text-wrap: balance;
   }
 
   @media (width >= 768px) {
@@ -292,6 +293,7 @@
 
   .btn-primary {
     display: inline-flex;
+    white-space: nowrap;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
@@ -320,6 +322,7 @@
 
   .btn-ghost {
     display: inline-flex;
+    white-space: nowrap;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;

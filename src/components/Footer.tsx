@@ -74,6 +74,7 @@ export default function Footer({ year }: { year: number }) {
               <ExternalLink
                 key={label}
                 href={href}
+                rel="me noopener noreferrer"
                 className="flex size-11 items-center justify-center rounded-full border border-border bg-bg-panel text-text-muted transition hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent"
                 aria-label={label}
               >

@@ -31,27 +31,22 @@ export function Section({ id, className = "", children }: SectionProps) {
   );
 }
 
-export function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.h2
-      variants={fadeUp}
-      className="section-heading mb-10 font-(--font-heading) text-text md:mb-12"
-    >
-      {children}
-    </motion.h2>
-  );
-}
+type SectionHeadingProps = {
+  /** Short mono label above the heading, e.g. "about". */
+  eyebrow: string;
+  children: React.ReactNode;
+};
 
-export function SectionFileLabel({
-  file,
-  className = "",
-}: {
-  file: string;
-  className?: string;
-}) {
+export function SectionHeading({ eyebrow, children }: SectionHeadingProps) {
   return (
-    <p className={`file-path mb-4 ${className}`} aria-hidden>
-      {file}
-    </p>
+    <motion.div variants={fadeUp} className="mb-10 md:mb-12">
+      <p
+        className="font-editor mb-3 text-xs tracking-wide text-accent"
+        aria-hidden
+      >
+        {`// ${eyebrow}`}
+      </p>
+      <h2 className="section-heading text-text">{children}</h2>
+    </motion.div>
   );
 }
