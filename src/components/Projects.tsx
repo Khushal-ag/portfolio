@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -45,7 +46,9 @@ function ProjectDetails({ project }: { project: PortfolioProject }) {
     <div>
       <p className="font-editor text-xs text-accent">{project.kind}</p>
       <h3 className="mt-2 text-2xl font-semibold tracking-tight text-text sm:text-3xl">
-        {project.title}
+        <Link href={`/projects/${project.slug}`} className="hover:text-accent">
+          {project.title}
+        </Link>
       </h3>
       <p className="mt-4 text-[0.9375rem] leading-relaxed text-text-muted sm:text-base">
         {project.des}
@@ -86,6 +89,13 @@ function ProjectDetails({ project }: { project: PortfolioProject }) {
               Source
             </ExternalLink>
           )}
+          <Link
+            href={`/projects/${project.slug}`}
+            className="link-accent font-editor inline-flex min-h-11 items-center gap-2 px-2 text-sm"
+          >
+            Case study
+            <FaArrowRight className="size-3" aria-hidden />
+          </Link>
         </div>
       )}
     </div>

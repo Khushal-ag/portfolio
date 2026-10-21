@@ -2,8 +2,13 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-import { FaArrowUpRightFromSquare, FaGithub } from "react-icons/fa6";
+import {
+  FaArrowRight,
+  FaArrowUpRightFromSquare,
+  FaGithub,
+} from "react-icons/fa6";
 
 import type { PortfolioProject } from "@/content";
 
@@ -31,21 +36,35 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
       <div className="flex flex-1 flex-col p-5">
         <p className="font-editor text-xs text-accent">{project.kind}</p>
         <h3 className="mt-1.5 text-xl font-semibold tracking-tight text-text">
-          {project.title}
+          <Link
+            href={`/projects/${project.slug}`}
+            className="hover:text-accent"
+          >
+            {project.title}
+          </Link>
         </h3>
         <p
           className={`mt-3 text-sm leading-relaxed text-text-muted ${expanded ? "" : "line-clamp-3"}`}
         >
           {project.des}
         </p>
-        <button
-          type="button"
-          aria-expanded={expanded}
-          onClick={() => setExpanded((e) => !e)}
-          className="font-editor mt-1 -ml-1 min-h-11 cursor-pointer self-start px-1 text-xs text-accent"
-        >
-          {expanded ? "Show less" : "Read more"}
-        </button>
+        <div className="mt-1 flex items-center justify-between gap-3">
+          <button
+            type="button"
+            aria-expanded={expanded}
+            onClick={() => setExpanded((e) => !e)}
+            className="font-editor -ml-1 min-h-11 cursor-pointer px-1 text-xs text-accent"
+          >
+            {expanded ? "Show less" : "Read more"}
+          </button>
+          <Link
+            href={`/projects/${project.slug}`}
+            className="font-editor inline-flex min-h-11 items-center gap-1.5 px-1 text-xs text-text-muted hover:text-accent"
+          >
+            Case study
+            <FaArrowRight className="size-2.5" aria-hidden />
+          </Link>
+        </div>
 
         <ul className="mt-2 flex flex-wrap gap-1.5" aria-label="Tech stack">
           {project.tech.slice(0, expanded ? undefined : 5).map((key) => {

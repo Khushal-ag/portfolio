@@ -375,9 +375,15 @@ export const navItems = [
 
 export type PortfolioProject = {
   id: number;
+  /** URL segment for the project's case-study page. */
+  slug: string;
   title: string;
   /** Short label such as "Online pharmacy", shown beside the title. */
   kind: string;
+  /** Your part in the project, shown on its case-study page. */
+  role: string;
+  /** Key facts shown as a list on the case-study page. */
+  highlights: readonly string[];
   /** One line for list rows. */
   summary: string;
   /** Full description for the preview and structured data. */
@@ -392,7 +398,15 @@ export const projects: PortfolioProject[] = [
   {
     id: 1,
     title: "Mera Coach",
+    slug: "mera-coach",
     kind: "Coaching app and web",
+    role: "Full-stack developer, freelance for Hench Solutions",
+    highlights: [
+      "Expo Android app with EAS builds where coaches manage clients, leads and due checkups.",
+      "Assessment wizard that produces a shareable BMI report and diet plan as a PDF.",
+      "Next.js website where visitors find coaches, send enquiries or message them on WhatsApp.",
+      "Razorpay-powered premium plans, all on one .NET API.",
+    ],
     summary:
       "Run a coaching practice from your phone: clients, leads, assessments and plans.",
     des: "Coaches get one place for clients, leads and due checkups in an Expo Android app, plus an assessment wizard that produces a shareable BMI report and diet plan as a PDF. A Next.js website helps visitors find coaches, send enquiries or message them on WhatsApp, and Razorpay powers premium plans. I built the app and the website on its .NET API.",
@@ -403,7 +417,14 @@ export const projects: PortfolioProject[] = [
   {
     id: 2,
     title: "Abvela By Kiara",
+    slug: "abvela-by-kiara",
     kind: "Fashion storefront",
+    role: "Full-stack developer, freelance for Hench Solutions",
+    highlights: [
+      "Next.js storefront with catalog, cart and Razorpay checkout.",
+      "Customer accounts with order history and saved addresses.",
+      "Express and PostgreSQL API with admin tooling, invoice PDFs and S3 uploads.",
+    ],
     summary:
       "A fashion label's online store, from catalog to Razorpay checkout.",
     des: "A Delhi label selling curated fabrics and ready-to-wear needed a store of its own. I built the Next.js storefront (catalog, cart, Razorpay checkout, customer accounts with orders and addresses) and the Express and PostgreSQL API behind it, including admin tooling, invoice PDFs and S3 uploads.",
@@ -423,7 +444,15 @@ export const projects: PortfolioProject[] = [
   {
     id: 3,
     title: "Vyloo",
+    slug: "vyloo",
     kind: "Online pharmacy",
+    role: "Full-stack developer, freelance",
+    highlights: [
+      "Five connected apps: customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API.",
+      "Real-time order acceptance and delivery for merchants, with Google Maps delivery zones and live order tracking.",
+      "Node.js API (Hono, NestJS) on MongoDB, Redis, AWS S3 and SQS.",
+      "Firebase push notifications and Puppeteer-generated PDF receipts and reports.",
+    ],
     summary:
       "An online pharmacy: ordering, merchant fulfilment and admin, as five connected apps.",
     des: "Customers order medicines and upload prescriptions, merchants accept and deliver orders live, and admins run the network. I built all five apps (customer web, merchant portal, pharmacy ERP, admin dashboard and a shared serverless API) on Node.js with Hono, MongoDB, Redis and AWS S3 and SQS, with Firebase push notifications and Puppeteer PDFs.",
@@ -443,7 +472,15 @@ export const projects: PortfolioProject[] = [
   {
     id: 4,
     title: "BillBook",
+    slug: "billbook",
     kind: "Billing SaaS",
+    role: "Full-stack developer, freelance for Hench Solutions",
+    highlights: [
+      "Finalized GST invoices are immutable, so the paper trail stays auditable.",
+      "Append-only ledgers for parties, payments, receipts, credit notes and stock.",
+      "GST and report CSV exports.",
+      "OTP login, JWT, audit logs and OpenAPI docs on an Express, PostgreSQL and Drizzle API.",
+    ],
     summary: "GST billing, inventory and ledgers for Indian businesses.",
     des: "Built for businesses that need an auditable paper trail. Teams draft and finalize GST invoices (finalized ones are immutable), track parties, payments, credit notes and stock in append-only ledgers, and export GST and report CSVs. I built the Express, PostgreSQL and Drizzle API and the Next.js app, with OTP login, JWT, audit logs and OpenAPI docs.",
     img: "/images/projects/billbook.jpg",
@@ -453,7 +490,15 @@ export const projects: PortfolioProject[] = [
   {
     id: 5,
     title: "Capsule Cloud",
+    slug: "capsule-cloud",
     kind: "Pharmacy ERP",
+    role: "Full-stack developer, freelance for Vyloo",
+    highlights: [
+      "Medicines tracked by batch and expiry.",
+      "Stock levels with reorder alerts and a live dashboard.",
+      "Role-based access with permission gates and audit trails.",
+      "Light and dark themes.",
+    ],
     summary: "Pharmacy inventory ERP with batch and expiry tracking.",
     des: "Built for Vyloo's pharmacies to know what is on the shelf and when it expires. It tracks medicines by batch and expiry, raises reorder alerts, shows a live dashboard and enforces role-based access with permission gates and audit trails, in light and dark themes.",
     img: "/images/projects/capsule-cloud-dashboard.jpg",
@@ -463,7 +508,16 @@ export const projects: PortfolioProject[] = [
   {
     id: 6,
     title: "MixR",
+    slug: "mixr",
     kind: "AI shopping marketplace",
+    role: "Full-stack developer, full-time (Mar 2024 - Aug 2024)",
+    highlights: [
+      "Go services on PostgreSQL, Redis and GraphQL behind search, catalog sync and order flows.",
+      "Agent-friendly APIs so the AI shopping agent can read and act on them reliably.",
+      "MixR Pay, a crypto checkout on Privy embedded wallets that lets the agent pay on-chain.",
+      "Shopify catalog sync through the Rye API, with Redis caching and PostgreSQL trigram search.",
+      "Docker Compose deployments with CI/CD on a VPS.",
+    ],
     summary: "An AI agent that finds and buys products across stores.",
     des: "MixR is a community-first marketplace where an AI agent finds products across stores and checks out for you. I built the Go, PostgreSQL, Redis and GraphQL backend, the agent-friendly APIs, MixR Pay on Privy wallets, Shopify sync through Rye, trigram search and Docker Compose deployments with CI/CD.",
     img: "/images/projects/mixr.jpg",
@@ -483,7 +537,15 @@ export const projects: PortfolioProject[] = [
   {
     id: 7,
     title: "GitControl",
+    slug: "gitcontrol",
     kind: "Git simulator",
+    role: "Designer and developer, personal open-source project",
+    highlights: [
+      "Runs real Git commands in a simulated terminal.",
+      "Updates the commit graph, working directory, staging area, stash and reflog live.",
+      "Six guided lessons and a side-by-side merge conflict resolver.",
+      "Undo and redo, with the Git engine written as a pure, unit-tested function.",
+    ],
     summary: "Learn Git by doing: real commands and a live commit graph.",
     des: "Git is easier to learn when you can see what a command does. GitControl runs real Git commands in a simulated terminal and updates the commit graph, working directory, staging area, stash and reflog live, with six guided lessons, a side-by-side merge conflict resolver and undo and redo. Built end to end with Next.js, TypeScript and Zustand, with the Git engine as a pure, unit-tested function.",
     img: "/images/projects/git-control.jpg",
@@ -494,7 +556,16 @@ export const projects: PortfolioProject[] = [
   {
     id: 8,
     title: "Next.js Starter",
+    slug: "nextjs-starter",
     kind: "Open-source template",
+    role: "Author, personal open-source project",
+    highlights: [
+      "React 19, Tailwind v4 and TypeScript.",
+      "Cache Components and the React Compiler.",
+      "Light, dark and system themes.",
+      "SEO metadata with JSON-LD, plus security headers.",
+      "One validate script covering lint, types, Prettier and build.",
+    ],
     summary:
       "A production-minded Next.js 16 starting point with themes, SEO and security headers.",
     des: "Every new Next.js app repeats the same setup, so this open-source template ships it once: React 19, Tailwind v4 and TypeScript with Cache Components, the React Compiler, light, dark and system themes, SEO metadata with JSON-LD, security headers and one validate script for lint, types, Prettier and build.",

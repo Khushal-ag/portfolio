@@ -1,3 +1,5 @@
+import type { PortfolioProject } from "@/content";
+
 import {
   allSkills,
   education,
@@ -7,6 +9,7 @@ import {
   site,
   workExperience,
 } from "@/content";
+import { techStack } from "@/lib/tech";
 
 const KNOWS_ABOUT_TOPICS = [
   "Full-stack web development",
@@ -97,6 +100,45 @@ export function buildProfilePageJsonLd() {
             name: site.author.name,
             item: profileUrl,
           },
+        ],
+      },
+    ],
+  };
+}
+
+export function buildProjectJsonLd(project: PortfolioProject) {
+  const base = site.url;
+  const url = `${base}/projects/${project.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": `${url}#project`,
+        url,
+        name: project.title,
+        headline: `${project.title}: ${project.kind}`,
+        description: project.des,
+        image: `${base}${project.img}`,
+        inLanguage: "en",
+        dateModified: site.lastUpdated,
+        creator: { "@id": `${base}/#person` },
+        isPartOf: { "@id": `${base}/#website` },
+        keywords: project.tech.map((key) => techStack[key].label).join(", "),
+        ...(project.siteLink && { sameAs: [project.siteLink] }),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: base },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Projects",
+            item: `${base}/#projects`,
+          },
+          { "@type": "ListItem", position: 3, name: project.title, item: url },
         ],
       },
     ],
