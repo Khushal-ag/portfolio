@@ -22,19 +22,12 @@ import { projects } from "@/content";
 import { EASE, fadeUp } from "@/lib/motion";
 import { isRepoLink, techStack } from "@/lib/tech";
 
-function ProjectImage({
-  project,
-  priority = false,
-}: {
-  project: PortfolioProject;
-  priority?: boolean;
-}) {
+function ProjectImage({ project }: { project: PortfolioProject }) {
   return (
     <Image
       src={project.img}
       alt={`Screenshot of ${project.title}`}
       fill
-      priority={priority}
       className="object-contain"
       sizes="(max-width: 1024px) 100vw, 640px"
     />
@@ -220,22 +213,19 @@ export default function Projects() {
                     transition={{ duration: 0.5, ease: EASE }}
                     className="absolute inset-0"
                   >
-                    <ProjectImage project={project} priority={active === 0} />
+                    <ProjectImage project={project} />
                   </motion.div>
                 </AnimatePresence>
               </div>
-              {/* Every project stays in the DOM (hidden when inactive) so the
-                  full text and links remain crawlable. */}
-              {projects.map((p, i) => (
-                <div
-                  key={p.id}
-                  hidden={i !== active}
-                  className="fade-up mt-6 px-1 pb-1"
-                  style={{ "--d": "60ms" } as React.CSSProperties}
-                >
-                  <ProjectDetails project={p} />
-                </div>
-              ))}
+              {/* Only the selected project renders here; the carousel and the
+                  case-study pages already carry every project's text and links. */}
+              <div
+                key={project.id}
+                className="fade-up mt-6 px-1 pb-1"
+                style={{ "--d": "60ms" } as React.CSSProperties}
+              >
+                <ProjectDetails project={project} />
+              </div>
             </div>
           </Spotlight>
         </div>

@@ -138,7 +138,9 @@ export default function Skills() {
                     style={{ "--i": j } as React.CSSProperties}
                   >
                     <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-bg-panel transition-transform duration-200 group-hover:scale-110">
-                      <SkillIcon skill={skill} className="size-5" />
+                      {i === active && (
+                        <SkillIcon skill={skill} className="size-5" />
+                      )}
                     </span>
                     {skill}
                   </li>

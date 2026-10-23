@@ -62,8 +62,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/images/profile/github-profile.png",
-    apple: "/images/profile/github-profile.png",
+    apple: "/images/profile/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
 };

@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import { allSkills } from "@/content";
 import SkillIcon from "@/lib/skill-icons";
 
@@ -7,8 +11,19 @@ const rows = [
   { skills: allSkills.slice(middle), className: "reverse" },
 ];
 
-/** Decorative skill ticker; the Skills section carries the accessible list. */
+/**
+ * Decorative skill ticker; the Skills section carries the accessible list.
+ * The server sends one copy of each row. The copy that makes the loop seamless
+ * is added after hydration, which keeps roughly 170 inline icons out of the HTML.
+ */
 export default function MarqueeStrip() {
+  const [looping, setLooping] = useState(false);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setLooping(true), 0);
+    return () => window.clearTimeout(id);
+  }, []);
+
   return (
     <section
       className="marquee relative space-y-3 overflow-hidden border-y border-border bg-linear-to-b from-bg-panel to-bg-elevated py-5"
@@ -17,9 +32,9 @@ export default function MarqueeStrip() {
       {rows.map(({ skills, className }) => (
         <div
           key={className || "forward"}
-          className={`marquee-track flex w-max gap-3 ${className}`}
+          className={`flex w-max gap-3 ${looping ? `marquee-track ${className}` : ""}`}
         >
-          {[...skills, ...skills].map((skill, i) => (
+          {(looping ? [...skills, ...skills] : skills).map((skill, i) => (
             <span
               key={`${skill}-${i}`}
               className="font-editor inline-flex shrink-0 items-center gap-2.5 rounded-full border border-border-strong bg-bg-panel py-1.5 pr-4 pl-2.5 text-xs text-text shadow-sm shadow-black/5"

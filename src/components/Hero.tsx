@@ -151,14 +151,14 @@ export default function Hero() {
 
           <p
             className="fade-up mb-10 max-w-md text-lg leading-relaxed text-text-muted md:text-xl"
-            style={{ "--d": "450ms" } as React.CSSProperties}
+            style={{ "--d": "150ms" } as React.CSSProperties}
           >
             {hero.blurb}
           </p>
 
           <div
             className="fade-up flex w-full items-center gap-3 sm:w-auto sm:flex-wrap"
-            style={{ "--d": "600ms" } as React.CSSProperties}
+            style={{ "--d": "250ms" } as React.CSSProperties}
           >
             <Magnetic className="min-w-0 flex-1 sm:flex-none">
               <ExternalLink
@@ -185,7 +185,7 @@ export default function Hero() {
           onPointerMove={onTiltMove}
           onPointerLeave={onTiltLeave}
           className="fade-up relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none"
-          style={{ "--d": "300ms" } as React.CSSProperties}
+          style={{ "--d": "100ms" } as React.CSSProperties}
         >
           <motion.div
             style={{
