@@ -6,7 +6,7 @@ export const site = {
   name: "Khushal Agarwal | Full-Stack Developer",
   url: "https://www.khushalagarwal.dev",
   /** Bump when page content changes; feeds sitemap lastmod and JSON-LD dateModified. */
-  lastUpdated: "2026-10-22",
+  lastUpdated: "2026-10-27",
 
   author: {
     name: "Khushal Agarwal",
@@ -579,21 +579,21 @@ export const projects: PortfolioProject[] = [
 export const testimonials = [
   {
     quote:
+      "Had the chance to work closely with Khushal Agarwal while building Vyloo, and I can confidently say he’s been a key part of shaping our product experience. Khushal worked on the front end of our in-house ERP, website, and admin portal and did a solid job translating real operational chaos into clean, intuitive systems. In a startup like ours where things change fast, that kind of clarity in execution really matters. What stood out was his ownership. He didn’t just “build what was asked,” he understood the use case, questioned things when needed, and improved flows wherever possible. The end result was smoother internal operations and a much more usable system for the team. He’s reliable, detail-oriented, and works well in fast-moving environments. Happy to recommend him…",
+    name: "Animesh Mani Tripathi",
+    title: "Co-Founder, Vyloo",
+  },
+  {
+    quote:
       "Working with Khushal as our backend developer was a transformative experience. His technical expertise and meticulous approach ensured that our systems were both robust and scalable.",
     name: "Justin Martinez",
     title: "MixR.gg",
   },
   {
     quote:
-      "Participating in a hackathon with Khushal as our team leader was an inspiring experience. His leadership and organizational skills were key to our team's success.",
-    name: "Dev Busters",
-    title: "HackCBS 6.0",
-  },
-  {
-    quote:
-      "Collaborating with Khushal on our backend infrastructure was a decision we're proud of. His in-depth knowledge of database management and API integrations played a crucial role.",
+      "It was really amazing working with Khushal. He is a nice guy and a good backend developer. Would highly recommend him for any backend development role.",
     name: "Yash Goyal",
-    title: "MixR.gg",
+    title: "Integrations Engineer, ENS Labs",
   },
 ];
 
