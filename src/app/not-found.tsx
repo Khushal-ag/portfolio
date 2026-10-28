@@ -2,9 +2,11 @@ import Link from "next/link";
 
 import ErrorCard from "@/components/ErrorCard";
 import ExternalLink from "@/components/ExternalLink";
-import { site } from "@/content";
+import { getStaticFallback } from "@/lib/cms/content";
 
 export default function NotFound() {
+  const fallback = getStaticFallback();
+
   return (
     <ErrorCard
       file="404.ts"
@@ -21,7 +23,7 @@ export default function NotFound() {
       <Link href="/" className="btn-primary">
         Back home
       </Link>
-      <ExternalLink href={site.resumeUrl} className="btn-ghost">
+      <ExternalLink href={fallback.resumeUrl} className="btn-ghost">
         Resume
       </ExternalLink>
     </ErrorCard>

@@ -7,23 +7,24 @@ import { usePathname } from "next/navigation";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { FaGithub } from "react-icons/fa6";
 
+import type { SiteContent } from "@/lib/cms/types";
+
 import ExternalLink from "@/components/ExternalLink";
 import MobileDock from "@/components/MobileDock";
 import ThemeToggle from "@/components/ThemeToggle";
 import TrafficLights from "@/components/TrafficLights";
-import { navItems, site } from "@/content";
-
-const SECTION_IDS = navItems.map((item) => item.link.slice(1));
 
 function getActiveHash(): string {
   return window.location.hash.slice(1);
 }
 
-export default function Nav() {
+export default function Nav({ site }: { site: SiteContent }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const isHome = pathname === "/";
+  const sectionIds = site.navItems.map((item) => item.link.slice(1));
+  const sectionIdsKey = sectionIds.join("|");
 
   useEffect(() => {
     const onHashChange = () => setActiveSection(getActiveHash());
@@ -42,9 +43,10 @@ export default function Nav() {
   });
 
   useEffect(() => {
-    const targets = SECTION_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null,
-    );
+    const ids = sectionIdsKey ? sectionIdsKey.split("|") : [];
+    const targets = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
     if (targets.length === 0) return;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -59,7 +61,7 @@ export default function Nav() {
     );
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [pathname]);
+  }, [pathname, sectionIdsKey]);
 
   const hrefFor = (link: string) => (isHome ? link : `/${link}`);
 
@@ -82,7 +84,7 @@ export default function Nav() {
           </Link>
 
           <nav className="hidden items-center lg:flex" aria-label="Main">
-            {navItems.map((item) => {
+            {site.navItems.map((item) => {
               const isActive = isHome && activeSection === item.link.slice(1);
               return (
                 <Link
@@ -129,7 +131,11 @@ export default function Nav() {
         </div>
       </header>
 
-      <MobileDock activeSection={activeSection} isHome={isHome} />
+      <MobileDock
+        navItems={site.navItems}
+        activeSection={activeSection}
+        isHome={isHome}
+      />
     </>
   );
 }

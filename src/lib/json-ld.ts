@@ -1,15 +1,12 @@
-import type { PortfolioProject } from "@/content";
+import type {
+  EducationContent,
+  PortfolioProject,
+  SiteContent,
+  SkillGroup,
+  WorkExperience,
+} from "@/lib/cms/types";
 
-import {
-  allSkills,
-  education,
-  personAlternateNames,
-  projects,
-  seo,
-  site,
-  workExperience,
-} from "@/content";
-import { techStack } from "@/lib/tech";
+import { resolveTech } from "@/lib/tech";
 
 const KNOWS_ABOUT_TOPICS = [
   "Full-stack web development",
@@ -19,9 +16,22 @@ const KNOWS_ABOUT_TOPICS = [
 ] as const;
 const MAX_KNOWN_SKILLS = 36;
 
-export function buildRootJsonLd() {
+type RootJsonLdInput = {
+  site: SiteContent;
+  education: EducationContent;
+  skills: SkillGroup[];
+  experience: WorkExperience[];
+};
+
+export function buildRootJsonLd({
+  site,
+  education,
+  skills,
+  experience,
+}: RootJsonLdInput) {
   const base = site.url;
   const personId = `${base}/#person`;
+  const allSkills = skills.flatMap((group) => group.items);
 
   return {
     "@context": "https://schema.org",
@@ -31,7 +41,7 @@ export function buildRootJsonLd() {
         "@id": `${base}/#website`,
         url: base,
         name: site.name,
-        description: seo.metaDescription,
+        description: site.metaDescription,
         inLanguage: "en",
         publisher: { "@id": personId },
       },
@@ -39,15 +49,15 @@ export function buildRootJsonLd() {
         "@type": "Person",
         "@id": personId,
         name: site.author.name,
-        alternateName: [...personAlternateNames],
+        alternateName: [...site.alternateNames],
         url: base,
         image: `${base}${site.author.avatar}`,
         email: site.author.mail,
-        description: seo.metaDescription,
+        description: site.metaDescription,
         jobTitle: site.author.title,
         worksFor: {
           "@type": "Organization",
-          name: workExperience[0]?.company,
+          name: experience[0]?.company,
         },
         alumniOf: {
           "@type": "CollegeOrUniversity",
@@ -73,7 +83,7 @@ export function buildRootJsonLd() {
   };
 }
 
-export function buildProfilePageJsonLd() {
+export function buildProfilePageJsonLd(site: SiteContent) {
   const base = site.url;
   const profileUrl = `${base}/khushal-agarwal`;
 
@@ -106,9 +116,14 @@ export function buildProfilePageJsonLd() {
   };
 }
 
-export function buildProjectJsonLd(project: PortfolioProject) {
+export function buildProjectJsonLd(
+  project: PortfolioProject,
+  site: SiteContent,
+) {
   const base = site.url;
   const url = `${base}/projects/${project.slug}`;
+  const image =
+    project.img.startsWith("http") ? project.img : `${base}${project.img}`;
 
   return {
     "@context": "https://schema.org",
@@ -120,12 +135,12 @@ export function buildProjectJsonLd(project: PortfolioProject) {
         name: project.title,
         headline: `${project.title}: ${project.kind}`,
         description: project.des,
-        image: `${base}${project.img}`,
+        image,
         inLanguage: "en",
-        dateModified: site.lastUpdated,
+        dateModified: project.updatedAt || site.lastUpdated,
         creator: { "@id": `${base}/#person` },
         isPartOf: { "@id": `${base}/#website` },
-        keywords: project.tech.map((key) => techStack[key].label).join(", "),
+        keywords: project.tech.map((key) => resolveTech(key).label).join(", "),
         ...(project.siteLink && { sameAs: [project.siteLink] }),
       },
       {
@@ -145,7 +160,10 @@ export function buildProjectJsonLd(project: PortfolioProject) {
   };
 }
 
-export function buildProjectsJsonLd() {
+export function buildProjectsJsonLd(
+  projects: PortfolioProject[],
+  site: SiteContent,
+) {
   const base = site.url;
 
   return {
@@ -159,7 +177,10 @@ export function buildProjectsJsonLd() {
         "@type": "CreativeWork",
         name: project.title,
         description: project.des,
-        image: `${base}${project.img}`,
+        image:
+          project.img.startsWith("http") ?
+            project.img
+          : `${base}${project.img}`,
         creator: { "@id": `${base}/#person` },
         ...(project.siteLink && { url: project.siteLink }),
       },

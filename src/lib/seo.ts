@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { site } from "@/content";
+import type { SiteContent } from "@/lib/cms/types";
 
 type PageSeoInput = {
   title: string;
@@ -8,6 +8,7 @@ type PageSeoInput = {
   path: string;
   keywords?: readonly string[];
   profile?: boolean;
+  site: SiteContent;
 };
 
 /**
@@ -20,6 +21,7 @@ export function pageMetadata({
   path,
   keywords,
   profile = false,
+  site,
 }: PageSeoInput): Metadata {
   return {
     title: { absolute: title },
@@ -31,8 +33,8 @@ export function pageMetadata({
       ...(profile ?
         {
           type: "profile" as const,
-          firstName: "Khushal",
-          lastName: "Agarwal",
+          firstName: site.author.name.split(" ")[0] ?? site.author.name,
+          lastName: site.author.name.split(" ").slice(1).join(" ") || undefined,
           username: site.twitterHandle,
         }
       : { type: "website" as const }),

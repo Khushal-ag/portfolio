@@ -2,12 +2,11 @@
 
 import { motion } from "motion/react";
 
+import type { Testimonial } from "@/lib/cms/types";
+
 import { Section, SectionHeading } from "@/components/Section";
 import Spotlight from "@/components/Spotlight";
-import { testimonials } from "@/content";
 import { fadeUp, stagger } from "@/lib/motion";
-
-type Testimonial = (typeof testimonials)[number];
 
 /**
  * One card style on phones (the swipe row). From `md` up the first quote is the
@@ -73,7 +72,11 @@ function TestimonialCard({
   );
 }
 
-export default function Testimonials() {
+export default function Testimonials({
+  testimonials,
+}: {
+  testimonials: Testimonial[];
+}) {
   return (
     <Section id="testimonials">
       <SectionHeading eyebrow="testimonials">

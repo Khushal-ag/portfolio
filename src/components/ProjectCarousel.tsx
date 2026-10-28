@@ -10,11 +10,10 @@ import {
   FaGithub,
 } from "react-icons/fa6";
 
-import type { PortfolioProject } from "@/content";
+import type { PortfolioProject } from "@/lib/cms/types";
 
 import ExternalLink from "@/components/ExternalLink";
-import { projects } from "@/content";
-import { isRepoLink, techStack } from "@/lib/tech";
+import { isRepoLink, resolveTech } from "@/lib/tech";
 
 const GAP_PX = 16;
 
@@ -68,7 +67,7 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
 
         <ul className="mt-2 flex flex-wrap gap-1.5" aria-label="Tech stack">
           {project.tech.slice(0, expanded ? undefined : 5).map((key) => {
-            const { label, Icon } = techStack[key];
+            const { label, Icon } = resolveTech(key);
             return (
               <li
                 key={key}
@@ -109,7 +108,11 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
 }
 
 /** Phone and tablet projects: a swipeable, snap-scrolling row of full cards. */
-export default function ProjectCarousel() {
+export default function ProjectCarousel({
+  projects,
+}: {
+  projects: PortfolioProject[];
+}) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [current, setCurrent] = useState(0);
 

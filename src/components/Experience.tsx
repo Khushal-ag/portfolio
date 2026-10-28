@@ -5,13 +5,12 @@ import { useRef, useState } from "react";
 import { motion, useInView, useScroll, useSpring } from "motion/react";
 import { FaChevronDown } from "react-icons/fa6";
 
-import type { WorkExperience } from "@/content";
+import type { WorkExperience } from "@/lib/cms/types";
 
 import { Section, SectionHeading } from "@/components/Section";
 import Spotlight from "@/components/Spotlight";
-import { workExperience } from "@/content";
 import { fadeUp, stagger } from "@/lib/motion";
-import { techStack } from "@/lib/tech";
+import { resolveTech } from "@/lib/tech";
 
 function TimelineDot({ reached }: { reached: boolean }) {
   return (
@@ -122,7 +121,7 @@ function Job({
               aria-label={`${job.company} tech stack`}
             >
               {job.stack.map((key) => {
-                const { label, Icon } = techStack[key];
+                const { label, Icon } = resolveTech(key);
                 return (
                   <li
                     key={key}
@@ -141,7 +140,7 @@ function Job({
   );
 }
 
-export default function Experience() {
+export default function Experience({ jobs }: { jobs: WorkExperience[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -167,7 +166,7 @@ export default function Experience() {
           />
         </div>
         <motion.div variants={stagger(0.12)} className="space-y-6 sm:space-y-8">
-          {workExperience.map((job, i) => (
+          {jobs.map((job, i) => (
             <Job key={job.id} job={job} defaultOpen={i === 0} />
           ))}
         </motion.div>

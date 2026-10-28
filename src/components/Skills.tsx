@@ -11,8 +11,9 @@ import {
   FaServer,
 } from "react-icons/fa6";
 
+import type { SkillGroup } from "@/lib/cms/types";
+
 import { Section, SectionHeading } from "@/components/Section";
-import { skillGroups } from "@/content";
 import { fadeUp } from "@/lib/motion";
 import SkillIcon from "@/lib/skill-icons";
 
@@ -25,7 +26,7 @@ const groupIcons = [
   FaBrain,
 ] as const;
 
-export default function Skills() {
+export default function Skills({ skillGroups }: { skillGroups: SkillGroup[] }) {
   const [active, setActive] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 

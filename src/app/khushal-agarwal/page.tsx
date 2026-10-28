@@ -6,24 +6,40 @@ import type { Metadata } from "next";
 import ExternalLink from "@/components/ExternalLink";
 import JsonLd from "@/components/JsonLd";
 import SiteShell from "@/components/SiteShell";
-import { education, seo, site, skillGroups, workExperience } from "@/content";
+import {
+  getEducation,
+  getExperience,
+  getSite,
+  getSkills,
+} from "@/lib/cms/content";
 import { buildProfilePageJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: `${site.author.name} | Full-Stack Developer & Software Engineer`,
-  description: seo.profileMetaDescription,
-  path: "/khushal-agarwal",
-  keywords: [...site.keywords, "software engineer", "India", "Pune"],
-  profile: true,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSite();
+  return pageMetadata({
+    title: `${site.author.name} | Full-Stack Developer & Software Engineer`,
+    description: site.profileMetaDescription,
+    path: "/khushal-agarwal",
+    keywords: [...site.keywords, "software engineer", "India", "Pune"],
+    profile: true,
+    site,
+  });
+}
 
 const navLinkClass =
   "hover:text-accent font-medium underline underline-offset-2";
 
-export default function KhushalAgarwalPage() {
+export default async function KhushalAgarwalPage() {
+  const [site, education, skillGroups, workExperience] = await Promise.all([
+    getSite(),
+    getEducation(),
+    getSkills(),
+    getExperience(),
+  ]);
+
   return (
-    <SiteShell>
+    <SiteShell site={site}>
       <main
         id="main-content"
         className="section-padding section-container mx-auto max-w-3xl pt-24 pb-20 max-lg:pb-36"
@@ -151,7 +167,7 @@ export default function KhushalAgarwalPage() {
           </ExternalLink>
         </nav>
       </main>
-      <JsonLd data={buildProfilePageJsonLd()} />
+      <JsonLd data={buildProfilePageJsonLd(site)} />
     </SiteShell>
   );
 }

@@ -3,15 +3,22 @@
 import { motion } from "motion/react";
 import { LuAward, LuCode, LuGraduationCap, LuTrophy } from "react-icons/lu";
 
+import type { EducationContent } from "@/lib/cms/types";
+
 import { Section, SectionHeading } from "@/components/Section";
 import Spotlight from "@/components/Spotlight";
-import { achievements, education } from "@/content";
 import { fadeUp, stagger } from "@/lib/motion";
 
 /** Icon per achievement, in `achievements` order. */
 const icons = [LuTrophy, LuCode, LuAward] as const;
 
-export default function Achievements() {
+export default function Achievements({
+  achievements,
+  education,
+}: {
+  achievements: string[];
+  education: EducationContent;
+}) {
   return (
     <Section id="achievements">
       <SectionHeading eyebrow="education">

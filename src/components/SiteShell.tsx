@@ -1,8 +1,16 @@
+import type { SiteContent } from "@/lib/cms/types";
+
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
 
 /** Page chrome shared by every route: skip link, scroll progress and nav. */
-export default function SiteShell({ children }: { children: React.ReactNode }) {
+export default function SiteShell({
+  site,
+  children,
+}: {
+  site: SiteContent;
+  children: React.ReactNode;
+}) {
   return (
     <div className="min-h-dvh bg-bg">
       <a
@@ -12,7 +20,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <ScrollProgress />
-      <Nav />
+      <Nav site={site} />
       {children}
     </div>
   );

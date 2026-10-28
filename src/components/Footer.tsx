@@ -2,19 +2,28 @@ import Link from "next/link";
 
 import { FaGithub, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
+import type { HomeContent, SiteContent } from "@/lib/cms/types";
+
 import CopyEmail from "@/components/CopyEmail";
 import ExternalLink from "@/components/ExternalLink";
 import FadeIn from "@/components/FadeIn";
-import { footer, site } from "@/content";
 
-const socialLinks = [
-  { label: "GitHub", href: site.links.github, Icon: FaGithub },
-  { label: "X", href: site.links.twitter, Icon: FaXTwitter },
-  { label: "LinkedIn", href: site.links.linkedin, Icon: FaLinkedin },
-  { label: "Instagram", href: site.links.instagram, Icon: FaInstagram },
-] as const;
+export default function Footer({
+  site,
+  footer,
+  year,
+}: {
+  site: SiteContent;
+  footer: HomeContent["footer"];
+  year: number;
+}) {
+  const socialLinks = [
+    { label: "GitHub", href: site.links.github, Icon: FaGithub },
+    { label: "X", href: site.links.twitter, Icon: FaXTwitter },
+    { label: "LinkedIn", href: site.links.linkedin, Icon: FaLinkedin },
+    { label: "Instagram", href: site.links.instagram, Icon: FaInstagram },
+  ] as const;
 
-export default function Footer({ year }: { year: number }) {
   const words = footer.heading.split(" ");
   const lastWord = words.pop();
 
@@ -44,7 +53,7 @@ export default function Footer({ year }: { year: number }) {
           delay={0.1}
           className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center"
         >
-          <CopyEmail />
+          <CopyEmail email={site.author.mail} />
           <ExternalLink
             href={site.resumeUrl}
             className="btn-ghost min-h-14 px-6 py-3.5 sm:min-h-0"

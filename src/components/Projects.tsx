@@ -11,16 +11,15 @@ import {
   FaGithub,
 } from "react-icons/fa6";
 
-import type { PortfolioProject } from "@/content";
+import type { PortfolioProject } from "@/lib/cms/types";
 
 import ExternalLink from "@/components/ExternalLink";
 import GitHubCTA from "@/components/GitHubCTA";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import { Section, SectionHeading } from "@/components/Section";
 import Spotlight from "@/components/Spotlight";
-import { projects } from "@/content";
 import { EASE, fadeUp } from "@/lib/motion";
-import { isRepoLink, techStack } from "@/lib/tech";
+import { isRepoLink, resolveTech } from "@/lib/tech";
 
 function ProjectImage({ project }: { project: PortfolioProject }) {
   return (
@@ -49,7 +48,7 @@ function ProjectDetails({ project }: { project: PortfolioProject }) {
 
       <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tech stack">
         {project.tech.map((key) => {
-          const { label, Icon } = techStack[key];
+          const { label, Icon } = resolveTech(key);
           return (
             <li
               key={key}
@@ -95,7 +94,15 @@ function ProjectDetails({ project }: { project: PortfolioProject }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({
+  projects,
+  githubCta,
+  githubUrl,
+}: {
+  projects: PortfolioProject[];
+  githubCta: { label: string; blurb: string };
+  githubUrl: string;
+}) {
   const [active, setActive] = useState(0);
   const rowRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const project = projects[active] ?? projects[0];
@@ -131,7 +138,7 @@ export default function Projects() {
       <SectionHeading eyebrow="projects">Projects</SectionHeading>
 
       <motion.div variants={fadeUp}>
-        <ProjectCarousel />
+        <ProjectCarousel projects={projects} />
       </motion.div>
 
       <motion.div
@@ -231,7 +238,11 @@ export default function Projects() {
         </div>
       </motion.div>
 
-      <GitHubCTA />
+      <GitHubCTA
+        label={githubCta.label}
+        blurb={githubCta.blurb}
+        githubUrl={githubUrl}
+      />
     </Section>
   );
 }

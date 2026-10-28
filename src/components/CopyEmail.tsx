@@ -5,19 +5,18 @@ import { useState } from "react";
 import { FaCheck, FaRegCopy } from "react-icons/fa6";
 
 import Magnetic from "@/components/Magnetic";
-import { site } from "@/content";
 
 /** Primary contact action: copies the email address, with mailto as fallback. */
-export default function CopyEmail() {
+export default function CopyEmail({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
 
   async function copy() {
     try {
-      await navigator.clipboard.writeText(site.author.mail);
+      await navigator.clipboard.writeText(email);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      window.location.href = `mailto:${site.author.mail}`;
+      window.location.href = `mailto:${email}`;
     }
   }
 
@@ -31,7 +30,7 @@ export default function CopyEmail() {
         {copied ?
           <FaCheck className="size-4" aria-hidden />
         : <FaRegCopy className="size-4" aria-hidden />}
-        {copied ? "Copied to clipboard" : site.author.mail}
+        {copied ? "Copied to clipboard" : email}
       </button>
       <span className="sr-only" aria-live="polite">
         {copied ? "Email address copied" : ""}

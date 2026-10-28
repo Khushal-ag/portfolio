@@ -23,17 +23,26 @@
     "clean": "rm -rf .next",
     "cleani": "rm -rf .next && rm -rf node_modules && bun i",
     "prepare": "husky",
-    "validate": "eslint . && tsc --noEmit && prettier --check \"**/*.{ts,tsx,mdx,json}\" --cache && next build"
+    "validate": "eslint . && tsc --noEmit && prettier --check \"**/*.{ts,tsx,mdx,json}\" --cache && next build",
+    "cms:import": "bun --env-file=.env.local run scripts/import-cms-content.ts",
+    "cms:sync": "bun run scripts/sync-from-cms.ts"
   },
   "dependencies": {
+    "@sanity/client": "^8.11.0",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.20.0",
+    "@sanity/webhook": "^4.0.4",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "motion": "^14.6.0",
     "next": "^16.4.3",
+    "next-sanity": "^13.4.0",
     "next-themes": "^0.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "react-icons": "^5.7.0"
+    "react-icons": "^5.7.0",
+    "sanity": "^6.20.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -41,7 +50,7 @@
     "@next/eslint-plugin-next": "^16.4.3",
     "@tailwindcss/postcss": "^4.3.3",
     "@total-typescript/ts-reset": "^0.6.1",
-    "@types/node": "^22.20.5",
+    "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "babel-plugin-react-compiler": "1.0.0",

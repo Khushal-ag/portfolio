@@ -9,46 +9,67 @@ import type { Metadata } from "next";
 import ExternalLink from "@/components/ExternalLink";
 import JsonLd from "@/components/JsonLd";
 import SiteShell from "@/components/SiteShell";
-import { projects, site } from "@/content";
+import {
+  getProjectBySlug,
+  getProjects,
+  getProjectSlugs,
+  getSite,
+} from "@/lib/cms/content";
 import { buildProjectJsonLd } from "@/lib/json-ld";
 import { pageMetadata } from "@/lib/seo";
-import { isRepoLink, techStack } from "@/lib/tech";
+import { isRepoLink, resolveTech } from "@/lib/tech";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return projects.map(({ slug }) => ({ slug }));
+export async function generateStaticParams() {
+  const slugs = await getProjectSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const [site, project] = await Promise.all([
+    getSite(),
+    getProjectBySlug(slug),
+  ]);
   if (!project) return {};
 
+  const title =
+    project.seoTitle ??
+    `${project.title}: ${project.kind} | ${site.author.name}`;
+  const description =
+    project.seoDescription ??
+    `${project.summary} Built by ${site.author.name}, full-stack developer in ${site.author.location}, India.`;
+
   return pageMetadata({
-    title: `${project.title}: ${project.kind} | ${site.author.name}`,
-    description: `${project.summary} Built by ${site.author.name}, full-stack developer in ${site.author.location}, India.`,
+    title,
+    description,
     path: `/projects/${project.slug}`,
     keywords: [
       project.title,
       project.kind,
-      ...project.tech.map((key) => techStack[key].label),
+      ...project.tech.map((key) => resolveTech(key).label),
       ...site.keywords,
     ],
+    site,
   });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const [site, project, projects] = await Promise.all([
+    getSite(),
+    getProjectBySlug(slug),
+    getProjects(),
+  ]);
   if (!project) notFound();
 
   const others = projects.filter((p) => p.slug !== project.slug);
 
   return (
-    <SiteShell>
+    <SiteShell site={site}>
       <main
         id="main-content"
         className="section-padding section-container mx-auto max-w-3xl pt-24 pb-20 max-lg:pb-36"
@@ -79,7 +100,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="relative mb-8 aspect-16/10 overflow-hidden rounded-2xl border border-border-strong bg-bg-elevated">
           <Image
             src={project.img}
-            alt={`Screenshot of ${project.title}`}
+            alt={project.imgAlt || `Screenshot of ${project.title}`}
             fill
             priority
             className="object-contain"
@@ -118,7 +139,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </h2>
           <ul className="flex flex-wrap gap-2">
             {project.tech.map((key) => {
-              const { label, Icon } = techStack[key];
+              const { label, Icon } = resolveTech(key);
               return (
                 <li
                   key={key}
@@ -179,7 +200,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </Link>
         </section>
       </main>
-      <JsonLd data={buildProjectJsonLd(project)} />
+      <JsonLd data={buildProjectJsonLd(project, site)} />
     </SiteShell>
   );
 }

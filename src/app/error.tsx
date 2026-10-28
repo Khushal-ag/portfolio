@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 import ErrorCard from "@/components/ErrorCard";
-import { site } from "@/content";
+import { staticFallback } from "@/lib/cms/fallback";
 
 export default function Error({
   error,
@@ -33,7 +33,7 @@ export default function Error({
       <Link href="/" className="btn-ghost">
         Back home
       </Link>
-      <a href={`mailto:${site.author.mail}`} className="btn-ghost">
+      <a href={`mailto:${staticFallback.authorMail}`} className="btn-ghost">
         Contact
       </a>
     </ErrorCard>

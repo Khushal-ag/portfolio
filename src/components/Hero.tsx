@@ -12,13 +12,12 @@ import {
 } from "motion/react";
 import { FaArrowRight, FaGithub } from "react-icons/fa6";
 
+import type { SiteContent } from "@/lib/cms/types";
+
 import ExternalLink from "@/components/ExternalLink";
 import Magnetic from "@/components/Magnetic";
 import TrafficLights from "@/components/TrafficLights";
-import { hero, site } from "@/content";
 import { techStack } from "@/lib/tech";
-
-const nameWords = site.author.name.split(" ");
 
 /** Decorative tech badges that float around the portrait. */
 const badges = [
@@ -29,40 +28,50 @@ const badges = [
 
 type Segment = readonly [text: string, className?: string];
 
-const rawLines: readonly (readonly Segment[])[] = [
-  [
-    ["const", "text-keyword"],
-    [" "],
-    ["dev", "text-accent"],
-    [" "],
-    ["=", "text-keyword"],
-    [" {"],
-  ],
-  [["  role: "], [`"${site.author.title}"`, "text-string"], [","]],
-  [["  stack: "], [`"${site.author.subtitle}"`, "text-string"], [","]],
-  [["  base: "], [`"${site.author.location}"`, "text-string"], [","]],
-  [["  open: "], ["true", "text-number"], [","]],
-  [["};"]],
-];
-
 const CHAR_MS = 28;
 const LINE_GAP_MS = 140;
 const TYPING_START_MS = 1000;
 
 /** Each line types after the previous one; `chars` is measured from the text. */
-const codeLines = rawLines.reduce<
-  { segments: readonly Segment[]; chars: number; delay: number }[]
->((lines, segments) => {
-  const chars = segments.reduce((n, [text]) => n + text.length, 0);
-  const previous = lines.at(-1);
-  const delay =
-    previous ?
-      previous.delay + previous.chars * CHAR_MS + LINE_GAP_MS
-    : TYPING_START_MS;
-  return [...lines, { segments, chars, delay }];
-}, []);
+function buildCodeLines(author: SiteContent["author"]) {
+  const rawLines: readonly (readonly Segment[])[] = [
+    [
+      ["const", "text-keyword"],
+      [" "],
+      ["dev", "text-accent"],
+      [" "],
+      ["=", "text-keyword"],
+      [" {"],
+    ],
+    [["  role: "], [`"${author.title}"`, "text-string"], [","]],
+    [["  stack: "], [`"${author.subtitle}"`, "text-string"], [","]],
+    [["  base: "], [`"${author.location}"`, "text-string"], [","]],
+    [["  open: "], ["true", "text-number"], [","]],
+    [["};"]],
+  ];
 
-export default function Hero() {
+  return rawLines.reduce<
+    { segments: readonly Segment[]; chars: number; delay: number }[]
+  >((lines, segments) => {
+    const chars = segments.reduce((n, [text]) => n + text.length, 0);
+    const previous = lines.at(-1);
+    const delay =
+      previous ?
+        previous.delay + previous.chars * CHAR_MS + LINE_GAP_MS
+      : TYPING_START_MS;
+    return [...lines, { segments, chars, delay }];
+  }, []);
+}
+
+export default function Hero({
+  site,
+  hero,
+}: {
+  site: SiteContent;
+  hero: { status: string; blurb: string };
+}) {
+  const nameWords = site.author.name.split(" ");
+  const codeLines = buildCodeLines(site.author);
   const reduceMotion = useReducedMotion();
 
   // Cursor spotlight behind the whole hero.

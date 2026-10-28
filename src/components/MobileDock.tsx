@@ -11,7 +11,7 @@ import {
   FaUser,
 } from "react-icons/fa6";
 
-import { navItems } from "@/content";
+import type { NavItem } from "@/lib/cms/types";
 
 /** Thumb-reach tabs shown on phones and tablets; `link` "" means the top of the page. */
 const dockItems = [
@@ -22,10 +22,8 @@ const dockItems = [
   { label: "Contact", link: "#contact", Icon: FaEnvelope },
 ] as const;
 
-const sectionOrder = navItems.map((item) => item.link.slice(1));
-
 /** The last dock tab whose section the reader has reached (0 = Home). */
-function activeTab(activeSection: string): number {
+function activeTab(activeSection: string, sectionOrder: string[]): number {
   const current = sectionOrder.indexOf(activeSection);
   if (current === -1) return 0;
   let result = 0;
@@ -37,12 +35,18 @@ function activeTab(activeSection: string): number {
 }
 
 type MobileDockProps = {
+  navItems: NavItem[];
   activeSection: string;
   isHome: boolean;
 };
 
-export default function MobileDock({ activeSection, isHome }: MobileDockProps) {
-  const active = isHome ? activeTab(activeSection) : -1;
+export default function MobileDock({
+  navItems,
+  activeSection,
+  isHome,
+}: MobileDockProps) {
+  const sectionOrder = navItems.map((item) => item.link.slice(1));
+  const active = isHome ? activeTab(activeSection, sectionOrder) : -1;
 
   return (
     <nav

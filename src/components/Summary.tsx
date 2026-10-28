@@ -4,15 +4,20 @@ import Link from "next/link";
 
 import { motion } from "motion/react";
 
+import type { HomeContent } from "@/lib/cms/types";
+
 import ScrollText from "@/components/ScrollText";
 import { Section, SectionHeading } from "@/components/Section";
 import Spotlight from "@/components/Spotlight";
 import TrafficLights from "@/components/TrafficLights";
-import { summary } from "@/content";
 import { fadeUp } from "@/lib/motion";
 
-export default function Summary() {
-  const [lead, ...rest] = summary.paragraphs;
+export default function Summary({
+  summary,
+}: {
+  summary: HomeContent["summary"];
+}) {
+  const [lead = "", ...rest] = summary.paragraphs;
 
   return (
     <Section id="about">
