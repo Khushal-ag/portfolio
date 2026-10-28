@@ -11,7 +11,7 @@
 Pune, Maharashtra · **starkhush5@gmail.com** · **+91 9557429766**
 
 [![Portfolio](https://img.shields.io/badge/portfolio-View_Live-0f172a?style=for-the-badge&labelColor=0f172a)](https://www.khushalagarwal.dev)
-[![Resume](https://img.shields.io/badge/resume-Download_PDF-27c93f?style=for-the-badge&labelColor=0f172a)](https://drive.google.com/file/d/1nW1Xe0eYhQ0QTlKrlM6XRfnFxD7GChOZ/view?usp=sharing)
+[![Resume](https://img.shields.io/badge/resume-Download_PDF-27c93f?style=for-the-badge&labelColor=0f172a)](https://drive.google.com/file/d/1KUSGfSMAV2B5dou21xg5Txh4KAU9e06D/view?usp=sharing)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0a66c2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/khushal-agarwal)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/Khushal-ag)
 [![X](https://img.shields.io/badge/X-@starkhush5-000000?style=for-the-badge&logo=x)](https://twitter.com/starkhush5)
@@ -38,6 +38,7 @@ Full-stack developer with **3+ years** building web and mobile products across *
 | :----------------------- | :-------------- | :-------- | :------- | :------------------ |
 | **Full Stack Developer** | Kreedalabs      | Full-time | Pune     | Aug 2024 – Present  |
 | **Full Stack Developer** | MixR            | Full-time | Remote   | Mar 2024 – Aug 2024 |
+| **Backend Engineer**     | Humanyse AI     | Freelance | Remote   | -                   |
 | **Full Stack Developer** | Hench Solutions | Freelance | Remote   | -                   |
 | **Full Stack Developer** | Vyloo           | Freelance | Remote   | -                   |
 
@@ -60,6 +61,16 @@ Backend and AI engineer on a community-first shopping marketplace, shipping the 
 - **Payments:** Shipped checkout with Stripe and Privy authentication, plus MixR Pay, a crypto checkout on embedded wallets that lets the agent pay on-chain.
 - **Fast search:** Kept browsing quick with Redis caching and PostgreSQL trigram search over a Shopify catalog synced through the Rye API.
 - **Delivery:** Owned deployment: Docker Compose on a VPS with CI/CD, plus webhook and cron-driven order and notification flows.
+
+### Humanyse AI · Backend Engineer (Freelance)
+
+Built the PDF rendering service behind an AI interviewing platform, turning structured assessment data into polished, downloadable reports.
+
+- **Report rendering API:** Designed a REST service that turns a validated JSON render package into a paginated PDF, with fillable interview-notes fields on every competency page. It supports an immediate sync response or a fast async accept with the result delivered by callback.
+- **Reliable delivery:** Added idempotency keys, HMAC-signed callbacks with automatic retries, and a render queue that returns a retryable 503 at capacity, so the platform can integrate and retry safely.
+- **Security:** Protected the API with key auth and enforced HTTPS callbacks that block private-network targets. Candidate PII never appears in storage paths.
+- **Production on AWS:** Runs as a Docker container on ECS Fargate behind a load balancer with health checks, private S3 storage served through CloudFront links, secrets in AWS Secrets Manager, CloudWatch logs and least-privilege IAM roles.
+- **CI/CD:** Automated releases with GitHub Actions that build, push to ECR and roll out to ECS using short-lived OIDC credentials instead of stored AWS keys.
 
 ### Hench Solutions · Full Stack Developer (Freelance)
 
@@ -132,7 +143,7 @@ Open-source and personal project code: [github.com/Khushal-ag](https://github.co
 
 **Open to full-time roles, contracts and freelance projects.**
 
-[Portfolio](https://www.khushalagarwal.dev) · [Resume PDF](https://drive.google.com/file/d/1nW1Xe0eYhQ0QTlKrlM6XRfnFxD7GChOZ/view?usp=sharing) · [GitHub](https://github.com/Khushal-ag) · [LinkedIn](https://www.linkedin.com/in/khushal-agarwal) · [Email](mailto:starkhush5@gmail.com)
+[Portfolio](https://www.khushalagarwal.dev) · [Resume PDF](https://drive.google.com/file/d/1KUSGfSMAV2B5dou21xg5Txh4KAU9e06D/view?usp=sharing) · [GitHub](https://github.com/Khushal-ag) · [LinkedIn](https://www.linkedin.com/in/khushal-agarwal) · [Email](mailto:starkhush5@gmail.com)
 
 ---
 

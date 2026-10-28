@@ -26,7 +26,7 @@ export const site = {
   },
 
   resumeUrl:
-    "https://drive.google.com/file/d/1nW1Xe0eYhQ0QTlKrlM6XRfnFxD7GChOZ/view?usp=sharing",
+    "https://drive.google.com/file/d/1KUSGfSMAV2B5dou21xg5Txh4KAU9e06D/view?usp=sharing",
 
   twitterHandle: TWITTER_HANDLE,
 
@@ -279,6 +279,38 @@ export const workExperience: WorkExperience[] = [
   },
   {
     id: 3,
+    company: "Humanyse AI",
+    role: "Backend Engineer",
+    type: "Freelance",
+    location: "Remote",
+    summary:
+      "Built the PDF rendering service behind an AI interviewing platform, turning structured assessment data into polished, downloadable reports.",
+    bullets: [
+      {
+        lead: "Report rendering API",
+        text: "Designed a REST service that turns a validated JSON render package into a paginated PDF, with fillable interview-notes fields on every competency page. It supports an immediate sync response or a fast async accept with the result delivered by callback.",
+      },
+      {
+        lead: "Reliable delivery",
+        text: "Added idempotency keys, HMAC-signed callbacks with automatic retries, and a render queue that returns a retryable 503 at capacity, so the platform can integrate and retry safely.",
+      },
+      {
+        lead: "Security",
+        text: "Protected the API with key auth and enforced HTTPS callbacks that block private-network targets. Candidate PII never appears in storage paths.",
+      },
+      {
+        lead: "Production on AWS",
+        text: "Runs as a Docker container on ECS Fargate behind a load balancer with health checks, private S3 storage served through CloudFront links, secrets in AWS Secrets Manager, CloudWatch logs and least-privilege IAM roles.",
+      },
+      {
+        lead: "CI/CD",
+        text: "Automated releases with GitHub Actions that build, push to ECR and roll out to ECS using short-lived OIDC credentials instead of stored AWS keys.",
+      },
+    ],
+    stack: ["nestjs", "typescript", "nodejs", "aws", "docker"],
+  },
+  {
+    id: 4,
     company: "Hench Solutions",
     role: "Full Stack Developer",
     type: "Freelance",
@@ -319,7 +351,7 @@ export const workExperience: WorkExperience[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     company: "Vyloo",
     role: "Full Stack Developer",
     type: "Freelance",
