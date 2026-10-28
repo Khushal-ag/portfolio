@@ -37,8 +37,9 @@ export default function Nav() {
 
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (y) => {
-    setScrolled(y > 24);
-    if (y < 120) setActiveSection("");
+    // Functional updates bail out when unchanged, so scrolling doesn't re-render the nav.
+    setScrolled((prev) => (y > 24 === prev ? prev : y > 24));
+    if (y < 120) setActiveSection((prev) => (prev === "" ? prev : ""));
   });
 
   useEffect(() => {
@@ -67,10 +68,10 @@ export default function Nav() {
     <>
       <header className="fixed inset-x-0 top-3 z-(--z-nav) flex justify-center px-3 sm:top-4 sm:px-4">
         <div
-          className={`flex w-full max-w-xl items-center gap-2 rounded-full border px-3 py-1.5 backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 lg:w-auto lg:max-w-none ${
+          className={`flex w-full max-w-xl items-center gap-2 rounded-full border px-3 py-1.5 backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 lg:w-auto lg:max-w-none ${
             scrolled ?
               "border-border-strong bg-bg/85 shadow-lg shadow-black/10"
-            : "border-border bg-bg/55"
+            : "border-border bg-bg/70"
           }`}
         >
           <Link

@@ -49,7 +49,7 @@ export default function MobileDock({ activeSection, isHome }: MobileDockProps) {
       aria-label="Primary"
       className="fixed inset-x-0 bottom-0 z-(--z-nav) flex justify-center px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden"
     >
-      <ul className="flex w-full max-w-md items-stretch rounded-3xl border border-border-strong bg-bg/85 p-1.5 shadow-2xl shadow-black/25 backdrop-blur-xl">
+      <ul className="flex w-full max-w-md items-stretch rounded-3xl border border-border-strong bg-bg/85 p-1.5 shadow-2xl shadow-black/25 backdrop-blur-md">
         {dockItems.map(({ label, link, Icon }, i) => {
           const selected = i === active;
           const href =

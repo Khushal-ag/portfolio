@@ -206,7 +206,7 @@ export default function Hero() {
               />
             </div>
 
-            <div className="relative -mt-14 w-full overflow-hidden rounded-xl border border-border-strong bg-bg-panel/95 shadow-2xl shadow-black/30 backdrop-blur-md sm:absolute sm:bottom-0 sm:left-0 sm:mt-0 sm:w-max sm:max-w-[78%]">
+            <div className="relative -mt-14 w-full overflow-hidden rounded-xl border border-border-strong bg-bg-panel/95 shadow-2xl shadow-black/30 sm:absolute sm:bottom-0 sm:left-0 sm:mt-0 sm:w-max sm:max-w-[78%]">
               <div className="flex items-center gap-2 border-b border-border bg-bg-elevated px-3 py-2">
                 <TrafficLights />
                 <span className="font-editor ml-2 text-xs text-text-dim">
@@ -244,7 +244,7 @@ export default function Hero() {
                 <div
                   key={key}
                   aria-hidden
-                  className={`float-y font-editor absolute hidden items-center gap-1.5 rounded-full border border-border-strong bg-bg-panel/90 px-3 py-1.5 text-xs text-text shadow-lg shadow-black/20 backdrop-blur-md sm:flex ${className}`}
+                  className={`float-y font-editor absolute hidden items-center gap-1.5 rounded-full border border-border-strong bg-bg-panel/90 px-3 py-1.5 text-xs text-text shadow-lg shadow-black/20 sm:flex ${className}`}
                   style={
                     {
                       "--d": `${delay}ms`,

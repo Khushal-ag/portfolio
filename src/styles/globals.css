@@ -131,6 +131,13 @@
     }
   }
 
+  /* Tailwind v4 resets buttons to the default cursor. */
+  button:not(:disabled),
+  [role="button"],
+  summary {
+    cursor: pointer;
+  }
+
   body {
     background-color: var(--color-bg);
     color: var(--color-text);
